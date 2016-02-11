@@ -1,0 +1,485 @@
+
+/*================ common for application =================*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PT Sans', Tahoma, Arial, Helvetica, sans-serif;
+    background-image: url(../img/sprinkles.png);
+    color: #505050;
+    margin: 0px;
+}
+
+input[type="text"], input[type="password"]{
+    color: #333;
+    padding: 10px;
+    background: #f3efea;
+    border: 1px solid #d7d7d7;
+}
+
+input[type="submit"] {
+    color: #333;
+    padding: 10px;
+    background: #f3efea;
+    border: 1px solid #d7d7d7;
+    transition-duration: 0.4s;
+}
+
+input[type="submit"]:hover {
+    background-color: #d7d7d7;
+    color: white;
+}
+
+a:link {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+a:hover .book-image {
+    box-shadow: 0 5px 5px rgba(0,0,0,.2);
+}
+
+img {
+    vertical-align: bottom;
+}
+
+.book-image {
+    padding: 5px;
+}
+
+.form {
+    background-color: white;
+    width: 350px;
+    margin: 30px auto;
+    border: 1px solid #d7d7d7;
+}
+
+.form-header {
+    padding: 20px;
+    font-size: 20px;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.form-input form * {
+    margin: 20px;
+    display: block;
+}
+
+.form-input input[type="text"], input[type="password"]{
+    width: 300px;
+}
+
+.form-input input[type="submit"] {
+    width: 100px;
+}
+
+.extraction-header {
+    padding: 10px 5px;
+    font-size: 20px;
+    background-color: #d7d7d7;
+}
+
+.extraction table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #d7d7d7;
+}
+
+.extraction th, .extraction td {
+    padding: 10px 5px;
+    text-align: left;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pagination ul {
+    display: inline-block;
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.pagination li {display: inline;}
+
+.pagination li a {
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination #active a {
+    background-color: #505050;
+    color: white;
+}
+
+.pagination li a:hover:not(#active) {
+    background-color: #ddd;
+}
+
+#error-message {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    font-size: 20px;
+}
+
+/*================ index.html=================*/
+
+header {
+    width: 90%;
+    height: 100px;
+    margin: auto;
+}
+
+#authorization {
+    height: 25%;
+    font-size: 14px;
+    border-bottom: 1px dashed #505050;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#authorization a:first-child {
+    margin-right: 10px;
+}
+
+#search-line {
+    height: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    float: left;
+    font-size: 45px;
+}
+
+#logo a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+#search-input input[type="text"]{
+    width: 400px;
+}
+
+#search-input input[type="submit"] {
+    margin-left: -6px;
+    width: 120px;
+}
+
+#cart img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#cart a:hover img {
+    box-shadow: 0 5px 5px rgba(0,0,0,.2);
+}
+
+nav {
+    width: 90%;
+    height: 40px;
+    margin: auto;
+    border-top: 1px dashed #505050;
+    border-bottom: 1px dashed #505050;
+}
+
+nav * {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+nav ul li {
+    text-align: center;
+}
+
+nav a:hover {
+    color: dodgerblue;
+    background-color: beige;
+    text-decoration: none;
+}
+
+#quotes {
+    margin-top: -1px;
+    width: 100%;
+    height: 300px;
+    background-image: url(../img/index-page-books.jpg);
+}
+
+.books {
+    width: 90%;
+    height: 350px;
+    margin: 10px auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.books a:hover .book-title {
+    text-decoration: underline;
+}
+
+.book {
+    display: inline-block;
+    width: 170px;
+}
+
+.book * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+.book .book-image {
+    padding: 0;
+}
+
+footer {
+    border-top: 1px dashed #505050;
+    width: 90%;
+    height: 300px;
+    margin: auto;
+}
+
+#footer-lists {
+    height: 80%;
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-list li {
+    padding: 5px;
+}
+
+#copyright {
+    height: 20%;
+    font-size: 14px;
+    border-top: 1px dashed #505050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*================ signin.html and register.html=================*/
+
+
+/*================ description.html=================*/
+
+#book-exposition {
+    width: 90%;
+    height: 700px;
+    margin: 30px auto;
+    display: flex;
+}
+
+#book-description {
+    padding: 20px;
+    padding-right: 40px;
+}
+
+#description {
+    margin-right: -40px;
+}
+
+#details {
+    position: relative;
+}
+
+#details-header {
+    padding: 20px;
+    font-size: 20px;
+}
+
+#overview {
+    padding: 20px;
+    overflow: hidden;
+}
+
+#details form {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+}
+
+#book-exposition input[type="submit"] {
+    margin-left: 30px;
+}
+
+/*================ category.html=================*/
+
+.category-exposition {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.category-info-block {
+    padding: 20px;
+}
+
+.category-info-header {
+    padding: 20px;
+    padding-top: 0px;
+    font-size: 20px;
+}
+
+.category-info {
+    padding: 20px;
+}
+
+.category-exposition a {
+    display: flex;
+}
+
+.category-exposition a:hover .category-info-header {
+    text-decoration: underline;
+}
+
+/*================ cart.html =================*/
+
+#cart-header {
+    padding: 20px 0px;
+    font-size: 25px;
+}
+
+#cart-exposition {
+    width: 90%;
+    margin: auto;
+}
+
+#cart-items-and-checkout {
+    display: flex;
+}
+
+#cart-items {
+    flex-grow: 2;
+}
+
+.cart-item {
+    display: flex;
+    padding: 10px 0px;
+    border-top: 1px solid #d7d7d7;
+}
+
+.cart-item a {
+    width: 70%;
+    display: flex;
+}
+
+.cart-item-details * {
+    padding: 20px;
+}
+
+.cart-item-header {
+    font-size: 20px;
+}
+
+.cart-item-quantity, .cart-item-subtotal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-item-quantity {
+    width: 20%;
+}
+
+.cart-item-quantity input[type="text"] {
+    width: 50px;
+}
+
+.cart-item-quantity input[type="submit"] {
+    width: 70px;
+}
+
+.cart-item-subtotal {
+    width: 10%;
+}
+
+.cart-item a:hover .cart-item-info {
+    text-decoration: none;
+}
+
+#checkout-confirmation {
+    padding: 0px 10px;
+}
+
+#checkout-confirmation th, td {
+    text-align: center;
+}
+
+/*================ leave.html======Final===========*/
+
+#leave-page {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#leave-message {
+    margin: 30px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #d7d7d7;
+}
+
+#extraction-block {
+    display: flex;
+}
+
+#order-summary, #delivery-address {
+    width: 500px;
+    margin: 20px auto;
+}
+
+#delivery-address {
+    width: 300px;
+}
+
+#book-name {
+    width: 70%;
+}
+
+#address {
+    padding: 10px;
+}
+
+#total, #date-processed {
+    border-top: 1px solid #d7d7d7;
+}
+
+#order-summary tr:nth-child(even) {background-color: #f2f2f2}

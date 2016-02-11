@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bookstore.com</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+<header>
+    <div id="authorization">
+        <a href="signin">Sigh In</a>
+        <a href="registration">Create Account</a><br/>
+    </div>
+    <div id="search-line">
+        <div id="logo">
+            <a href="index">Bookstore</a>
+        </div>
+        <div id="search-input">
+            <form action="searchresult">
+                <input type="text" placeholder="Search books by Title, Author, or ISBN" name="search"/>
+                <input type="submit" value="Search"/>
+            </form>
+        </div>
+        <div id="cart">
+            <a href="cart">
+                <img src="img/cart-icon.png">
+            </a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <c:forEach var="category" items="${categories}">
+            <li><a href="category?id=${category.id}">${category.name}</a></li>
+        </c:forEach>
+    </ul>
+</nav>

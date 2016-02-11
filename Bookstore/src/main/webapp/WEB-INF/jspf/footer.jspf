@@ -1,0 +1,38 @@
+<footer>
+    <div id="footer-lists">
+        <div class="footer-list">
+            <div class="list-header">
+                Popular Categories
+            </div>
+            <ul>
+                <c:forEach var="category" items="${categories}">
+                    <li><a href="category?id=${category.id}">${category.name}</a></li>
+                </c:forEach>
+            </ul>
+        </div>
+        <div class="footer-list">
+            <div class="list-header">
+                My Account
+            </div>
+            <ul>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Shopping Cart</a></li>
+                <li><a href="#">Order History</a></li>
+            </ul>
+        </div>
+        <div class="footer-list">
+            <div class="list-header">
+                Quick Help
+            </div>
+            <ul>
+                <li><a href="#">Help &amp; Support</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="copyright">
+        Copyright &copy; 2016 Bookstore.com
+    </div>
+</footer>
+</body>
+</html>
