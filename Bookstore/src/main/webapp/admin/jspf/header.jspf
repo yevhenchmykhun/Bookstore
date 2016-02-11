@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Bookstore.com Admin Panel</title>
+    <link rel="stylesheet" href="/css/admin.css"/>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/js/admin.js"></script>
+
+</head>
+<body>
+<header>
+    <h2>Admin Panel</h2>
+    <div id="nav">
+        <a href="index" target="_blank">View the Site</a>
+        <a href="admin">Sign Out</a>
+    </div>
+    <div id="admin-menu">
+        <ul>
+            <li class="has-sub" class="active"><a href="#"><span>Books</span></a>
+                <ul>
+                    <li><a href="newbookform"><span>Add a new Book</span></a></li>
+                    <li><a href="viewbooks"><span>Manage Books</span></a></li>
+                    <li class="last"><a href="viewcategories"><span>Manage Categories</span></a></li>
+                </ul>
+            </li>
+            <li class="has-sub"><a href="#"><span>Customers</span></a>
+                <ul>
+                    <li class="last"><a href="viewcustomers"><span>View Customers</span></a></li>
+                </ul>
+            </li>
+            <li class="has-sub"><a href="#"><span>Orders</span></a>
+                <ul>
+                    <li class="last"><a href="vieworders"><span>View Orders</span></a></li>
+                </ul>
+            </li>
+            <li class="last"><a href="#"><span>Statistics</span></a></li>
+        </ul>
+    </div>
+</header>

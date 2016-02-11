@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PT Sans', Tahoma, Arial, Helvetica, sans-serif;
+    color: #e1e1e1; 
+    margin: 0px;
+}
+
+header {
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    background-image: url(../img/binding_dark.png);
+    opacity: 0.95; 
+    border-bottom: 1px solid #3D3D3D;
+}
+
+#head {
+    width: 100%;
+    padding-bottom: 30px;
+    position: absolute;
+    bottom: 0;
+}
+
+section {
+    position: absolute;
+    width: 100%;
+    height: 65%;
+    bottom: 0;
+    background-image: url(../img/binding_dark.png);
+}
+
+#login-form {
+    width: 250px;
+    margin: 20px auto;
+}
+
+#login-form label {
+    display: block;
+    position: relative;
+}
+
+#login-form label>span {
+    font-size: 14px;
+    float: left;
+    width: 30%;
+    text-align: left;
+/*    margin-right: 10px;*/
+    margin-top: 15px;
+}
+
+#login-form input[type="text"], #login-form input[type="password"] {
+    border: none;
+    color: #525252;
+    height: 25px;
+    line-height: 15px;
+    margin: 10px 0px;
+    outline: 0 none;
+    padding: 5px 0px 5px 5px;
+    width: 70%;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    background: #DFDFDF;
+}
+
+#login-form input[type="submit"] {
+    position: absolute;
+    right: 0;
+    background: #7FFF00;
+    border: none;
+    padding: 5px 20px;
+    color: #3D3D3D;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    text-shadow: 1px 1px 1px #FFE477;
+    box-shadow: 1px 1px 1px #3D3D3D;
+    -webkit-box-shadow:1px 1px 1px #3D3D3D;
+    -moz-box-shadow:1px 1px 1px #3D3D3D;
+}
+
+#login-form input[type="submit"]:hover {
+    background-color: #EBEBEB;
+}
