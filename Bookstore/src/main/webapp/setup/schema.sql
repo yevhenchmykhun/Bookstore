@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS customer_order (
   CONSTRAINT fk_customer_order_customer
   FOREIGN KEY (customer_id)
   REFERENCES customer (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
   ENGINE = InnoDB
   COMMENT = 'maintains customer order details';
@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS book (
   CONSTRAINT fk_book_category
   FOREIGN KEY (category_id)
   REFERENCES category (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
   ENGINE = InnoDB
   COMMENT = 'contains book details';
@@ -93,13 +93,13 @@ CREATE TABLE IF NOT EXISTS ordered_book (
   CONSTRAINT fk_ordered_book_customer_order
   FOREIGN KEY (customer_order_id)
   REFERENCES customer_order (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE ,
   CONSTRAINT fk_ordered_book_book
   FOREIGN KEY (book_id)
   REFERENCES book (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
   ENGINE = InnoDB
   COMMENT = 'matches books with customer orders and records their quantity';

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-@WebFilter(filterName = "CacheFilter", urlPatterns = {"/*"})
+/*@WebFilter(filterName = "CacheFilter", urlPatterns = {"*//*"})*/
 public class CacheFilter implements Filter {
 
     ServletContext servletContext;

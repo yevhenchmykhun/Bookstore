@@ -45,7 +45,7 @@ public class PurchaseController extends HttpServlet {
             request.setAttribute("city", city);
             url = "/leave";
         } else {
-            url = "/WEB-INF/view/error/errorpage.jsp";
+            url = "/WEB-INF/view/error/massagepage.jsp";
             request.setAttribute("message", check);
         }
 

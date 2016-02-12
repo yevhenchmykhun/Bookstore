@@ -1,4 +1,4 @@
-<section id="orders">
+<section id="books" class="admin-tables">
     <table>
         <thead>
         <tr>
@@ -13,6 +13,7 @@
             <th>price</th>
             <th>quantity</th>
             <th>category</th>
+            <th>actions</th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +30,16 @@
                 <td>${book.price}</td>
                 <td>${book.quantity}</td>
                 <td>${book.category.name}</td>
+                <td>
+                    <form action="editbook" method="post">
+                        <input type="hidden" name="bookId" value="${book.id}"/>
+                        <input type="submit" class="button" value="Edit"/>
+                    </form>
+                    <form action="deletebook" method="post">
+                        <input type="hidden" name="bookId" value="${book.id}"/>
+                        <input type="submit" class="button" value="Delete"/>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

@@ -1,43 +1,44 @@
-<section id="addbook" class="book-form">
-    <form action="addbook" method="post" class="basic-grey">
-        <h1>Add a new Book
+<section id="editbook" class="book-form">
+    <form action="updatebook" method="post" class="basic-grey">
+        <h1>Edit Book
             <span>Please fill all the texts in the fields.</span>
         </h1>
         <label>
             <span>Title :</span>
-            <input id="title" type="text" name="title" placeholder="Title"/>
+            <input type="hidden" name="id" value="${book.id}"/>
+            <input id="title" type="text" name="title" placeholder="Title" value="${book.name}"/>
         </label>
         <label>
             <span>Author :</span>
-            <input id="author" type="text" name="author" placeholder="Author"/>
+            <input id="author" type="text" name="author" placeholder="Author" value="${book.author}"/>
         </label>
         <label>
             <span>Language :</span>
-            <input id="language" type="text" name="language" placeholder="Language"/>
+            <input id="language" type="text" name="language" placeholder="Language" value="${book.language}"/>
         </label>
         <label>
             <span>Publisher :</span>
-            <input id="publisher" type="text" name="publisher" placeholder="Publisher"/>
+            <input id="publisher" type="text" name="publisher" placeholder="Publisher" value="${book.publisher}"/>
         </label>
         <label>
             <span>Format :</span>
-            <input id="format" type="text" name="format" placeholder="Format"/>
+            <input id="format" type="text" name="format" placeholder="Format" value="${book.format}"/>
         </label>
         <label>
             <span>ISBN :</span>
-            <input id="isbn" type="text" name="isbn" placeholder="ISBN"/>
+            <input id="isbn" type="text" name="isbn" placeholder="ISBN" value="${book.isbn}"/>
         </label>
         <label>
             <span>Pages :</span>
-            <input id="pages" type="text" name="pages" placeholder="Pages"/>
+            <input id="pages" type="text" name="pages" placeholder="Pages" value="${book.pages}"/>
         </label>
         <label>
             <span>Prise :</span>
-            <input id="price" type="text" name="price" placeholder="Price"/>
+            <input id="price" type="text" name="price" placeholder="Price" value="${book.price}"/>
         </label>
         <label>
             <span>Quantity :</span>
-            <input id="quantity" type="text" name="quantity" placeholder="Quantity"/>
+            <input id="quantity" type="text" name="quantity" placeholder="Quantity" value="${book.quantity}"/>
         </label>
         <label>
             <span>Category :</span>
@@ -53,11 +54,11 @@
         </label>
         <label>
             <span>Description :</span>
-            <textarea id="description" name="description" placeholder="Description"></textarea>
+            <textarea id="description" name="description" placeholder="Description">${book.description}</textarea>
         </label>
         <label>
             <span>&nbsp;</span>
-            <input type="submit" class="button" value="Add"/>
+            <input type="submit" class="button" value="Edit"/>
         </label>
     </form>
 </section>

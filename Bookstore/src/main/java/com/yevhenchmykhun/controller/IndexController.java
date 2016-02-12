@@ -27,7 +27,7 @@ public class IndexController extends HttpServlet {
         List<Book> pageOne = bookDao.getPage(2, 1, 6);
         List<Book> pageTwo = bookDao.getPage(2, 2, 6);
 
-        request.setAttribute("paeOne", pageOne);
+        request.setAttribute("pageOne", pageOne);
         request.setAttribute("pageTwo", pageTwo);
 
         request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);

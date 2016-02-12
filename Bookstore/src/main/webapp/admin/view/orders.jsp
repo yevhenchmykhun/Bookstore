@@ -1,4 +1,4 @@
-<section id="orders">
+<section id="orders" class="admin-tables">
     <table>
         <thead>
         <tr>
