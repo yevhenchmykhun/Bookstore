@@ -3,6 +3,7 @@ package com.yevhenchmykhun.controller.admin;
 import com.yevhenchmykhun.dao.BookDao;
 import com.yevhenchmykhun.dao.DaoFactory;
 import com.yevhenchmykhun.entity.Book;
+import com.yevhenchmykhun.util.DateConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 
 @WebServlet("/admin/updatebook")
 public class UpdateBookController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -31,7 +33,7 @@ public class UpdateBookController extends HttpServlet {
         String author = request.getParameter("author");
         String language = request.getParameter("language");
         String publisher = request.getParameter("publisher");
-        String format  = request.getParameter("format");
+        String format = request.getParameter("format");
         String isbn = request.getParameter("isbn");
         String pages = request.getParameter("pages");
         String price = request.getParameter("price");
@@ -53,13 +55,13 @@ public class UpdateBookController extends HttpServlet {
         book.setPrice(new BigDecimal(Double.parseDouble(price)));
         book.setQuantity(Integer.parseInt(quantity));
         book.setCategory(new DaoFactory().getCategoryDao().getEntityById(Integer.parseInt(categoryId)));
-        book.setReleaseDate(new Timestamp(System.currentTimeMillis()));
+        book.setReleaseDate(new Timestamp(new DateConverter().toDateInMillis(releasedate + "-01", "yyyy-MM-dd")));
         book.setDescription(description);
 
         BookDao bookDao = new DaoFactory().getBookDao();
         bookDao.updateEntity(book);
 
-        String url = "/admin/view/editbook.jsp";
+        String url = "/admin/viewbooks";
         request.getRequestDispatcher(url).forward(request, response);
 
     }

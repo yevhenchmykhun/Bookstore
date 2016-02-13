@@ -25,6 +25,10 @@ public class DaoFactory {
         return (OrderedBookDao) instantiateDao(OrderedBookDao.class);
     }
 
+    public VisitorDao getVisitorDao() {
+        return (VisitorDao) instantiateDao(VisitorDao.class);
+    }
+
     private AbstractDao instantiateDao(Class clazz) {
         try {
             AbstractDao dao = (AbstractDao) clazz.newInstance();

@@ -15,12 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/description")
 public class DescriptionController extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -29,9 +28,9 @@ public class DescriptionController extends HttpServlet {
 
         String bookId = request.getParameter("id");
 
-        if (request.getAttribute("bookIdFromAddToCart") != null) {
+/*        if (request.getAttribute("bookIdFromAddToCart") != null) {
             bookId = (String) request.getAttribute("bookIdFromAddToCart");
-        }
+        }*/
 
         BookDao bookDao = new DaoFactory().getBookDao();
         Book book = bookDao.getEntityById(Integer.parseInt(bookId));
@@ -39,7 +38,6 @@ public class DescriptionController extends HttpServlet {
         request.setAttribute("book", book);
 
         String url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
-
         request.getRequestDispatcher(url).forward(request, response);
 
     }

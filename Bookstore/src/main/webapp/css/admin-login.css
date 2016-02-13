@@ -62,9 +62,6 @@ section {
     padding: 5px 0px 5px 5px;
     width: 70%;
     border-radius: 2px;
-    /*    -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
     background: #DFDFDF;
 }
 
@@ -76,12 +73,8 @@ section {
     padding: 5px 20px;
     color: #3D3D3D;
     border-radius: 4px;
-    /*    -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;*/
     text-shadow: 1px 1px 1px #FFE477;
     box-shadow: 1px 1px 1px #3D3D3D;
-    /*    -webkit-box-shadow: 1px 1px 1px #3D3D3D;
-        -moz-box-shadow: 1px 1px 1px #3D3D3D;*/
 }
 
 #login-form input[type="submit"]:hover {

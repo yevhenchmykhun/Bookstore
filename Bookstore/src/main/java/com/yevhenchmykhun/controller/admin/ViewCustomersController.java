@@ -14,6 +14,7 @@ import java.util.List;
 
 @WebServlet("/admin/viewcustomers")
 public class ViewCustomersController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }

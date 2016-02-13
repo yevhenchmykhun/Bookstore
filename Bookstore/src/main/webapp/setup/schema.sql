@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS customer (
   email       VARCHAR(45)  NOT NULL,
   phone       VARCHAR(45)  NOT NULL,
   address     VARCHAR(45)  NOT NULL,
-  city_region VARCHAR(45)   NOT NULL,
+  city_region VARCHAR(45)  NOT NULL,
   cc_number   VARCHAR(16)  NOT NULL,
   PRIMARY KEY (id)
 )
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS ordered_book (
   FOREIGN KEY (customer_order_id)
   REFERENCES customer_order (id)
     ON DELETE CASCADE
-    ON UPDATE CASCADE ,
+    ON UPDATE CASCADE,
   CONSTRAINT fk_ordered_book_book
   FOREIGN KEY (book_id)
   REFERENCES book (id)
@@ -103,3 +103,15 @@ CREATE TABLE IF NOT EXISTS ordered_book (
 )
   ENGINE = InnoDB
   COMMENT = 'matches books with customer orders and records their quantity';
+
+
+DROP TABLE IF EXISTS visitor;
+
+CREATE TABLE IF NOT EXISTS visitor (
+  id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  count INT UNSIGNED NOT NULL,
+  date  DATE         NOT NULL,
+  PRIMARY KEY (id)
+)
+  ENGINE = InnoDB
+  COMMENT = 'contains visitors count';

@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/admin/deletecategory")
 public class DeleteCategoryController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -26,7 +27,7 @@ public class DeleteCategoryController extends HttpServlet {
 
         String categoryId = request.getParameter("categoryId");
 
-        CategoryDao categoryDao =  new DaoFactory().getCategoryDao();
+        CategoryDao categoryDao = new DaoFactory().getCategoryDao();
         categoryDao.deleteEntityById(Integer.parseInt(categoryId));
 
         getServletContext().setAttribute("categories", categoryDao.findAll());

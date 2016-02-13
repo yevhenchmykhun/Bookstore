@@ -19,6 +19,10 @@ public class CategoryController extends HttpServlet {
         processRequest(request, response);
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     protected void processRequest(HttpServletRequest request,
                                   HttpServletResponse response) throws ServletException, IOException {
 
@@ -33,7 +37,7 @@ public class CategoryController extends HttpServlet {
         BookDao bookDao = new DaoFactory().getBookDao();
         List<Book> books = bookDao.getPage(categoryId, page, booksPerPage);
 
-        String url = null;
+        String url;
         if (books.size() != 0) {
             int numberOfRows = bookDao.getNumberOfRows(categoryId);
             int numberOfPages = (int) Math.ceil(numberOfRows * 1.0 / booksPerPage);

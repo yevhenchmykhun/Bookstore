@@ -141,7 +141,7 @@ img {
     font-size: 20px;
 }
 
-/*================ index.html=================*/
+/*================ index.jsp=================*/
 
 header {
     width: 90%;
@@ -292,14 +292,14 @@ footer {
     align-items: center;
 }
 
-/*================ signin.html and register.html=================*/
+/*================ signin.jsp and register.jsp=================*/
 
 
-/*================ description.html=================*/
+/*================ description.jsp=================*/
 
 #book-exposition {
     width: 90%;
-    height: 700px;
+    height: 400px;
     margin: 30px auto;
     display: flex;
 }
@@ -310,11 +310,14 @@ footer {
 }
 
 #description {
+    padding-left: 5px;
     margin-right: -40px;
 }
 
 #details {
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 #details-header {
@@ -323,8 +326,10 @@ footer {
 }
 
 #overview {
+    text-align: justify;
     padding: 20px;
-    overflow: hidden;
+    overflow: auto;
+    margin-bottom: 77px;
 }
 
 #details form {
@@ -338,7 +343,7 @@ footer {
     margin-left: 30px;
 }
 
-/*================ category.html=================*/
+/*================ category.jsp=================*/
 
 .category-exposition {
     width: 90%;
@@ -369,7 +374,7 @@ footer {
     text-decoration: underline;
 }
 
-/*================ cart.html =================*/
+/*================ cart.jsp =================*/
 
 #cart-header {
     padding: 20px 0px;
@@ -442,7 +447,7 @@ footer {
     text-align: center;
 }
 
-/*================ leave.html======Final===========*/
+/*================ leave.jsp=================*/
 
 #leave-page {
     width: 90%;

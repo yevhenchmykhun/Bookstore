@@ -53,7 +53,7 @@
         </label>
         <label>
             <span>Release Date :</span>
-            <input id="releasedate" type="month" name="releasedate" placeholder="Release Date" value="2011-09"/>
+            <input id="releasedate" type="month" name="releasedate" placeholder="Release Date" value="${date}"/>
         </label>
         <label>
             <span>Description :</span>

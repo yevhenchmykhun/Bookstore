@@ -10,6 +10,10 @@ import java.io.IOException;
 @WebServlet("/checkout")
 public class CheckoutController extends HttpServlet {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -18,7 +22,6 @@ public class CheckoutController extends HttpServlet {
                                   HttpServletResponse response) throws ServletException, IOException {
 
         String url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
-
         request.getRequestDispatcher(url).forward(request, response);
 
     }

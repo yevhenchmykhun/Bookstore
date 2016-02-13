@@ -13,6 +13,7 @@ import java.util.List;
 
 @WebServlet("/admin/viewcategories")
 public class ViewCategoriesController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }

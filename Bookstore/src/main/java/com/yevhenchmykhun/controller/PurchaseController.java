@@ -15,6 +15,10 @@ import java.io.IOException;
 @WebServlet("/purchase")
 public class PurchaseController extends HttpServlet {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -31,7 +35,7 @@ public class PurchaseController extends HttpServlet {
 
         String check = new Validator().validatePurchase(name, email, phone, address, city, ccNumber);
 
-        String url = null;
+        String url;
         if (check == null) {
             HttpSession session = request.getSession();
             ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
@@ -43,6 +47,7 @@ public class PurchaseController extends HttpServlet {
             request.setAttribute("phone", phone);
             request.setAttribute("address", address);
             request.setAttribute("city", city);
+
             url = "/leave";
         } else {
             url = "/WEB-INF/view/error/massagepage.jsp";

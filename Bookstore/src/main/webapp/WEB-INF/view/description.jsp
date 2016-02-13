@@ -20,7 +20,7 @@
             ${book.description}
         </div>
         <div>
-            <form action="addtocart" method="post">
+            <form>
                 Price: ${book.price}$
                 <input type="hidden" value="${book.id}" name="id"/>
                 <input type="submit" value="Add to Cart"/>

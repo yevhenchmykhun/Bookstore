@@ -3,6 +3,7 @@ package com.yevhenchmykhun.controller.admin;
 import com.yevhenchmykhun.dao.DaoFactory;
 import com.yevhenchmykhun.entity.Book;
 import com.yevhenchmykhun.entity.Category;
+import com.yevhenchmykhun.util.DateConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @WebServlet("/admin/editbook")
 public class EditBookController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -22,9 +24,7 @@ public class EditBookController extends HttpServlet {
         processRequest(request, response);
     }
 
-    protected void processRequest(HttpServletRequest request,
-                                  HttpServletResponse response) throws ServletException, IOException {
-
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String bookId = request.getParameter("bookId");
 
@@ -36,6 +36,7 @@ public class EditBookController extends HttpServlet {
 
         request.setAttribute("book", book);
         request.setAttribute("categories", categories);
+        request.setAttribute("date", new DateConverter().toDateInString(book.getReleaseDate().getTime(), "yyyy-MM"));
 
         String url = "/admin/view/editbook.jsp";
         request.getRequestDispatcher(url).forward(request, response);

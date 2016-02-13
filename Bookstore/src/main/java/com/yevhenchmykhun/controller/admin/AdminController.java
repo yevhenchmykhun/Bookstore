@@ -9,6 +9,7 @@ import java.io.IOException;
 
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -20,7 +21,7 @@ public class AdminController extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
                                   HttpServletResponse response) throws ServletException, IOException {
 
-        String url = "/admin/view/statistics.jsp";
+        String url = "/admin/statistics";
         request.getRequestDispatcher(url).forward(request, response);
 
     }

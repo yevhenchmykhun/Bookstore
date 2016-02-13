@@ -18,7 +18,9 @@ public class GzipFilter implements Filter {
             if (ae != null && ae.indexOf("gzip") != -1) {
                 GzipResponseWrapper responseWrapper = new GzipResponseWrapper(response);
                 chain.doFilter(req, responseWrapper);
-                System.out.println("Compressing...");
+
+                System.out.println("Compressing " + request.getServletPath() + "... ");
+
                 responseWrapper.finishResponse();
                 return;
             }

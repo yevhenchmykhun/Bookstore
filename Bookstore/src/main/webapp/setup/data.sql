@@ -66,3 +66,10 @@ INSERT INTO ordered_book (customer_order_id, book_id, quantity) VALUES
   (1, 8, 5),
   (1, 7, 2),
   (1, 6, 2);
+
+INSERT INTO visitor (count, date) VALUES
+  (7, '2016-02-8'),
+  (3, '2016-02-9'),
+  (5, '2016-02-10'),
+  (12, '2016-02-11'),
+  (8, '2016-02-12');

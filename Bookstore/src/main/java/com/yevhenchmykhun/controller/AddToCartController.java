@@ -15,6 +15,10 @@ import java.io.IOException;
 @WebServlet("/addtocart")
 public class AddToCartController extends HttpServlet {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -34,8 +38,6 @@ public class AddToCartController extends HttpServlet {
         cart.addItem(book);
 
         session.setAttribute("cart", cart);
-
-        request.getRequestDispatcher("description?id=" + bookId).forward(request, response);
 
     }
 }

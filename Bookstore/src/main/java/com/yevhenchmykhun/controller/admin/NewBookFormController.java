@@ -13,6 +13,7 @@ import java.util.List;
 
 @WebServlet("/admin/newbookform")
 public class NewBookFormController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -25,7 +26,7 @@ public class NewBookFormController extends HttpServlet {
                                   HttpServletResponse response) throws ServletException, IOException {
 
         List<Category> categories = (List<Category>) getServletContext().getAttribute("categories");
-        if(categories == null) {
+        if (categories == null) {
             categories = new DaoFactory().getCategoryDao().findAll();
         }
 

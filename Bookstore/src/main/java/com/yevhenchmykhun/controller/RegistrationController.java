@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/registration")
 public class RegistrationController extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
@@ -20,7 +23,6 @@ public class RegistrationController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
-
 		request.getRequestDispatcher(url).forward(request, response);
 
 	}

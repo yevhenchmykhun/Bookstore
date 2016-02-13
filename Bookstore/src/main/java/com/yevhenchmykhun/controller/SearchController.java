@@ -19,6 +19,10 @@ public class SearchController extends HttpServlet {
         processRequest(request, response);
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     protected void processRequest(HttpServletRequest request,
                                   HttpServletResponse response) throws ServletException, IOException {
 
@@ -33,7 +37,7 @@ public class SearchController extends HttpServlet {
                 books = bookDao.findByIsbn(search);
         }
 
-        String url = null;
+        String url;
         if (books.size() != 0) {
             url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
             request.setAttribute("books", books);

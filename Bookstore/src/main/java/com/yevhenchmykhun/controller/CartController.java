@@ -17,13 +17,17 @@ public class CartController extends HttpServlet {
         processRequest(request, response);
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     protected void processRequest(HttpServletRequest request,
                                   HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
-        String url = null;
+        String url;
         if (cart != null) {
             url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
         } else {

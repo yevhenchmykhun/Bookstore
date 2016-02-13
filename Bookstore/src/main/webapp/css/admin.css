@@ -132,7 +132,6 @@ header h2 {
 
 .admin-tables {
     overflow: auto;
-    /*    padding: 5px;*/
     position: absolute;
     right: 0;
     width: 80%;
@@ -140,6 +139,7 @@ header h2 {
 }
 
 .admin-tables table {
+    text-align: center;
     width: 100%;
     border-collapse: separate;
     font-size: 12px;
@@ -188,7 +188,6 @@ header h2 {
     height: 100%;
     background: #F7F7F7;
     padding: 25px 15px 25px 10px;
-    /*    font: 12px Georgia, "Times New Roman", Times, serif;*/
     color: #888;
     text-shadow: 1px 1px 1px #FFF;
     border: 1px solid #E4E4E4;
@@ -235,8 +234,6 @@ header h2 {
     font-size: 12px;
     line-height: 15px;
     box-shadow: inset 0px 1px 4px #ECECEC;
-    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
-    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
 }
 
 .basic-grey textarea {
@@ -244,11 +241,7 @@ header h2 {
 }
 
 .basic-grey select {
-    /*   background: #FFF url('down-arrow.png') no-repeat right;
-       background: #FFF url('down-arrow.png') no-repeat right);*/
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
     width: 70%;
@@ -274,4 +267,29 @@ header h2 {
 
 .button:hover {
     background: #EBEBEB;
+}
+
+/* ================ statistics ================= */
+
+#chart-header {
+    position: absolute;
+    right: 0;
+    width: 80%;
+    padding: 10px;
+    font-size: 40px;
+    color: #d0d0d0;
+    text-align: center;
+}
+
+#data {
+    display: none;
+}
+
+#chart {
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    height: 100%;
 }

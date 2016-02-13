@@ -21,6 +21,7 @@
         <mapping class="com.yevhenchmykhun.entity.Customer"/>
         <mapping class="com.yevhenchmykhun.entity.CustomerOrder"/>
         <mapping class="com.yevhenchmykhun.entity.OrderedBook"/>
+        <mapping class="com.yevhenchmykhun.entity.Visitor"/>
         
     </session-factory>
 </hibernate-configuration>

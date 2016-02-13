@@ -19,6 +19,10 @@ public class IndexController extends HttpServlet {
         processRequest(request, response);
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         getServletContext().setAttribute("categories", new DaoFactory().getCategoryDao().findAll());
@@ -30,7 +34,8 @@ public class IndexController extends HttpServlet {
         request.setAttribute("pageOne", pageOne);
         request.setAttribute("pageTwo", pageTwo);
 
-        request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
+        String url = "/WEB-INF/view/index.jsp";
+        request.getRequestDispatcher(url).forward(request, response);
 
     }
 
