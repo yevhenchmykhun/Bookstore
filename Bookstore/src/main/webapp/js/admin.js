@@ -22,6 +22,8 @@
 })(jQuery);
 
 
-$(function () {
-    $('#orders').tablesorter();
-});
+(function ($) {
+    $(document).ready(function () {
+        $('.admin-tables table').tablesorter();
+    });
+})(jQuery);

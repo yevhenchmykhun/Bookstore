@@ -3,7 +3,6 @@ package com.yevhenchmykhun.controller.admin;
 import com.yevhenchmykhun.dao.BookDao;
 import com.yevhenchmykhun.dao.DaoFactory;
 import com.yevhenchmykhun.entity.Book;
-import com.yevhenchmykhun.entity.Category;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-@WebServlet("/addbook")
+@WebServlet("/admin/addbook")
 public class AddNewBookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -53,8 +54,16 @@ public class AddNewBookController extends HttpServlet {
         book.setPrice(new BigDecimal(Double.parseDouble(price)));
         book.setQuantity(Integer.parseInt(quantity));
         book.setCategory(new DaoFactory().getCategoryDao().getEntityById(Integer.parseInt(categoryId)));
-        book.setReleaseDate(new Timestamp(System.currentTimeMillis()));
         book.setDescription(description);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = dateFormat.parse(releasedate + "-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        book.setReleaseDate(new Timestamp(date.getTime()));
 
         BookDao bookDao = new DaoFactory().getBookDao();
         bookDao.saveEntity(book);

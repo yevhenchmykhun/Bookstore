@@ -1,5 +1,5 @@
 <section id="editbook" class="book-form">
-    <form action="updatebook" method="post" class="basic-grey">
+    <form action="/admin/updatebook" method="post" class="basic-grey">
         <h1>Edit Book
             <span>Please fill all the texts in the fields.</span>
         </h1>
@@ -44,13 +44,16 @@
             <span>Category :</span>
             <select name="selection">
                 <c:forEach var="category" items="${categories}">
+                    <c:if test="${category.id == book.category.id}">
+                        <option value="${category.id}" selected="selected">${category.name}</option>
+                    </c:if>
                     <option value="${category.id}">${category.name}</option>
                 </c:forEach>
             </select>
         </label>
         <label>
             <span>Release Date :</span>
-            <input id="releasedate" type="text" name="releasedate" placeholder="Release Date"/>
+            <input id="releasedate" type="month" name="releasedate" placeholder="Release Date" value="2011-09"/>
         </label>
         <label>
             <span>Description :</span>

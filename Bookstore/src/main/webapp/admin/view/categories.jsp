@@ -13,7 +13,7 @@
                 <td><strong>${category.id}</strong></td>
                 <td>${category.name}</td>
                 <td>
-                    <form action="deletecategory" method="post">
+                    <form action="/admin/deletecategory" method="post">
                         <input type="hidden" name="categoryId" value="${category.id}"/>
                         <input type="submit" class="button" value="Delete"/>
                     </form>

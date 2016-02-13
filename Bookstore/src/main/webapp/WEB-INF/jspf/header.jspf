@@ -8,6 +8,11 @@
     <meta charset="UTF-8"/>
     <title>Bookstore.com</title>
     <link rel="stylesheet" href="/css/main.css"/>
+
+    <script src="/js/jquery-2.2.0.js"></script>
+    <script src="/js/jquery-validate.js"></script>
+    <script src="/js/main.js"></script>
+
 </head>
 <body>
 <header>

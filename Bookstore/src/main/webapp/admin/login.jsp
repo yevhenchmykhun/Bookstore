@@ -15,14 +15,14 @@
     </div>
 </header>
 <section>
-    <form action="statistics" method="post" id="login-form">
+    <form action="j_security_check" method="post" id="login-form">
         <label>
             <span>Username</span>
-            <input type="text" placeholder="Username" name="username"/>
+            <input type="text" placeholder="Username" name="j_username"/>
         </label>
         <label>
             <span>Password</span>
-            <input type="password" placeholder="Password" name="password"/>
+            <input type="password" placeholder="Password" name="j_password"/>
         </label>
         <label>
             <input type="submit" value="Sign In"/>

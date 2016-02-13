@@ -35,7 +35,7 @@ public class CategoryController extends HttpServlet {
 
         String url = null;
         if (books.size() != 0) {
-            int numberOfRows = bookDao.getNumberOfRows();
+            int numberOfRows = bookDao.getNumberOfRows(categoryId);
             int numberOfPages = (int) Math.ceil(numberOfRows * 1.0 / booksPerPage);
 
             request.setAttribute("books", books);

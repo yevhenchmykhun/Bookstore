@@ -5,10 +5,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/*@WebServlet("/admin")*/
-public class LoginController extends HttpServlet {
+@WebServlet("/admin/signout")
+public class SignOutController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -17,11 +18,12 @@ public class LoginController extends HttpServlet {
         processRequest(request, response);
     }
 
-    protected void processRequest(HttpServletRequest request,
-                                  HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-        String url = "/admin/login.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("/admin");
 
     }
 }

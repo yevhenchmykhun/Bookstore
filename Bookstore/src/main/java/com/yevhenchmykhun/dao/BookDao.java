@@ -32,4 +32,9 @@ public class BookDao extends AbstractDao<Book, Integer> {
         return (List<Book>) criteria.list();
     }
 
+    public int getNumberOfRows(int categoryId) {
+        String sqlQuery = "select count(*) from " + getPersistentClass().getSimpleName() + " where category_id = " + categoryId;
+        return ((Long) getSession().createQuery(sqlQuery).iterate().next()).intValue();
+    }
+
 }

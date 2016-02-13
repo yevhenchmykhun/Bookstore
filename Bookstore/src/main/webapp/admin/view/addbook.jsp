@@ -1,5 +1,5 @@
 <section id="addbook" class="book-form">
-    <form action="addbook" method="post" class="basic-grey">
+    <form action="/admin/addbook" method="post" class="basic-grey">
         <h1>Add a new Book
             <span>Please fill all the texts in the fields.</span>
         </h1>
@@ -49,7 +49,7 @@
         </label>
         <label>
             <span>Release Date :</span>
-            <input id="releasedate" type="text" name="releasedate" placeholder="Release Date"/>
+            <input id="releasedate" type="month" name="releasedate" placeholder="Release Date"/>
         </label>
         <label>
             <span>Description :</span>

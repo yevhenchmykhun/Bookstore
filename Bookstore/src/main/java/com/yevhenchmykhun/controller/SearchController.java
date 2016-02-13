@@ -33,9 +33,14 @@ public class SearchController extends HttpServlet {
                 books = bookDao.findByIsbn(search);
         }
 
-        request.setAttribute("books", books);
-
-        String url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
+        String url = null;
+        if (books.size() != 0) {
+            url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
+            request.setAttribute("books", books);
+        } else {
+            url = "/WEB-INF/view/error/massagepage.jsp";
+            request.setAttribute("message", "No result for such request, bitch");
+        }
 
         request.getRequestDispatcher(url).forward(request, response);
 

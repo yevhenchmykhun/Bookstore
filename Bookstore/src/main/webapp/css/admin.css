@@ -10,7 +10,7 @@ body {
 
 header {
     position: absolute;
-    width: 25%;
+    width: 20%;
     height: 100%;
     background-image: url(../img/binding_dark.png);
     overflow: hidden;
@@ -131,10 +131,11 @@ header h2 {
 /*================= Admin-tables ======================*/
 
 .admin-tables {
-/*    padding: 5px;*/
+    overflow: auto;
+    /*    padding: 5px;*/
     position: absolute;
     right: 0;
-    width: 75%;
+    width: 80%;
     height: 100%;
 }
 
@@ -176,7 +177,7 @@ header h2 {
 .book-form {
     position: absolute;
     right: 0;
-    width: 75%;
+    width: 80%;
     height: 100%;
 }
 
@@ -221,7 +222,7 @@ header h2 {
     color: #888;
 }
 
-.basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
+.basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey input[type="month"], .basic-grey textarea, .basic-grey select {
     border: 1px solid #DADADA;
     color: #888;
     height: 30px;
@@ -259,11 +260,11 @@ header h2 {
     height: 100px;
 }
 
-/*.basic-grey*/
 .button {
+    width: 60px;
     background: #e94f31;
     border: none;
-    padding: 10px 25px 10px 25px;
+    padding: 10px;
     color: #FFF;
     box-shadow: 1px 1px 5px #B6B6B6;
     border-radius: 3px;
@@ -271,7 +272,6 @@ header h2 {
     cursor: pointer;
 }
 
-/*.basic-grey*/
 .button:hover {
-    background: #e94f31
+    background: #EBEBEB;
 }

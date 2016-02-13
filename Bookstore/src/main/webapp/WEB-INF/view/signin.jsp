@@ -3,7 +3,7 @@
         Sigh In
     </div>
     <div class="form-input">
-        <form>
+        <form action="#">
             <input type="text" placeholder="Email Address" name="email"/>
             <input type="password" placeholder="Password" name="password"/>
             <input type="submit" value="Sigh In"/>
