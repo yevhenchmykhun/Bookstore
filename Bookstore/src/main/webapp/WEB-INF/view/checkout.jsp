@@ -3,7 +3,7 @@
         Checkout
     </div>
     <div class="form-input">
-        <form action="purchase" method="post">
+        <form action="<c:url value='/purchase'/>" method="post">
             <input type="text" placeholder="Name" name="name"/>
             <input type="text" placeholder="Email Address" name="email"/>
             <input type="text" placeholder="Phone" name="phone"/>

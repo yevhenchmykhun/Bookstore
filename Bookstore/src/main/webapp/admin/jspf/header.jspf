@@ -7,42 +7,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Bookstore.com Admin Panel</title>
-    <link rel="stylesheet" href="/css/admin.css"/>
-    <link rel="stylesheet" href="/css/chartist.min.css"/>
+    <link rel="stylesheet" href="../../css/admin.css"/>
+    <link rel="stylesheet" href="../../css/chartist.min.css"/>
 
-    <script src="/js/jquery-2.2.0.js"></script>
-    <script src="/js/jquery.tablesorter.js"></script>
-    <script src="/js/chartist.js"></script>
-    <script src="/js/admin.js"></script>
+    <script src="../../js/jquery-2.2.0.js"></script>
+    <script src="../../js/jquery.tablesorter.js"></script>
+    <script src="../../js/chartist.js"></script>
+    <script src="../../js/admin.js"></script>
 
 </head>
 <body>
 <header>
     <h2>Admin Panel</h2>
     <div id="nav">
-        <a href="/index" target="_blank">View the Site</a>
-        <a href="/admin/signout">Sign Out</a>
+        <a href="<c:url value='/index'/>" target="_blank">View the Site</a>
+        <a href="<c:url value='/admin/signout'/>">Sign Out</a>
     </div>
     <div id="admin-menu">
         <ul>
             <li class="has-sub" class="active"><a href="#"><span>Books</span></a>
                 <ul>
-                    <li><a href="/admin/newbookform"><span>Add a new Book</span></a></li>
-                    <li><a href="/admin/viewbooks"><span>Manage Books</span></a></li>
-                    <li class="last"><a href="/admin/viewcategories"><span>Manage Categories</span></a></li>
+                    <li><a href="<c:url value='/admin/newbookform'/>"><span>Add a new Book</span></a></li>
+                    <li><a href="<c:url value='/admin/viewbooks'/>"><span>Manage Books</span></a></li>
+                    <li class="last"><a href="<c:url value='/admin/viewcategories'/>"><span>Manage Categories</span></a></li>
                 </ul>
             </li>
             <li class="has-sub"><a href="#"><span>Customers</span></a>
                 <ul>
-                    <li class="last"><a href="/admin/viewcustomers"><span>View Customers</span></a></li>
+                    <li class="last"><a href="<c:url value='/admin/viewcustomers'/>"><span>View Customers</span></a></li>
                 </ul>
             </li>
             <li class="has-sub"><a href="#"><span>Orders</span></a>
                 <ul>
-                    <li class="last"><a href="/admin/vieworders"><span>View Orders</span></a></li>
+                    <li class="last"><a href="<c:url value='/admin/vieworders'/>"><span>View Orders</span></a></li>
                 </ul>
             </li>
-            <li class="last"><a href="/admin/statistics"><span>Statistics</span></a></li>
+            <li class="last"><a href="<c:url value='/admin/statistics'/>"><span>Statistics</span></a></li>
         </ul>
     </div>
 </header>

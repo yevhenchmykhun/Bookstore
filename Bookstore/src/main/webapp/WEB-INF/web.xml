@@ -10,6 +10,18 @@
         <welcome-file>index</welcome-file>
     </welcome-file-list>
 
+<!--    <context-param>
+        <description>The relative path to scripts</description>
+        <param-name>scriptPath</param-name>
+        <param-value>js/</param-value>
+    </context-param>
+
+    <context-param>
+        <description>The relative path to css</description>
+        <param-name>cssPath</param-name>
+        <param-value>css/</param-value>
+    </context-param>-->
+
     <jsp-config>
         <jsp-property-group>
             <description>JSP configuration for the store front</description>

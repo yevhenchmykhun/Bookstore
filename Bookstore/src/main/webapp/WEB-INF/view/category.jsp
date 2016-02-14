@@ -1,6 +1,6 @@
 <c:forEach var="book" items="${books}">
     <div class="category-exposition">
-        <a href="description?id=${book.id}"/>
+        <a href="<c:url value='/description'/>?id=${book.id}"/>
         <div class="book-image">
             <img src="http://place-hold.it/160x240">
         </div>
@@ -24,7 +24,7 @@
     <ul>
         <%--For displaying Previous link except for the 1st page --%>
         <c:if test="${currentPage != 1}">
-            <li><a href="category?id=${categoryId}&page=${currentPage - 1}">Previous</a></li>
+            <li><a href="<c:url value='/category'/>?id=${categoryId}&page=${currentPage - 1}">Previous</a></li>
         </c:if>
 
         <%--For displaying Page numbers.
@@ -35,14 +35,14 @@
                             <li id="active"><a href="">${i}</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="category?id=${categoryId}&page=${i}">${i}</a></li>
+                            <li><a href="<c:url value='/category'/>?id=${categoryId}&page=${i}">${i}</a></li>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
 
         <%--For displaying Next link --%>
         <c:if test="${currentPage lt numberOfPages}">
-            <li><a href="category?id=${categoryId}&page=${currentPage + 1}">Next</a></li>
+            <li><a href="<c:url value='/category'/>?id=${categoryId}&page=${currentPage + 1}">Next</a></li>
         </c:if>
     </ul>
 </div>

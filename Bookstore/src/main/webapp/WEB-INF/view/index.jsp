@@ -5,7 +5,7 @@
 
 <section class="books">
     <c:forEach var="book" items="${pageOne}">
-        <a href="description?id=${book.id}">
+        <a href="<c:url value='/description'/>?id=${book.id}">
             <div class="book">
                 <div class="book-image">
                     <img src="http://place-hold.it/160x240">
@@ -23,7 +23,7 @@
 
 <section class="books">
     <c:forEach var="book" items="${pageTwo}">
-        <a href="description?id=${book.id}">
+        <a href="<c:url value='/description'/>?id=${book.id}">
             <div class="book">
                 <div class="book-image">
                     <img src="http://place-hold.it/160x240">

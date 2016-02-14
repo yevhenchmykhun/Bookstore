@@ -7,32 +7,32 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Bookstore.com</title>
-    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="../../css/main.css"/>
 
-    <script src="/js/jquery-2.2.0.js"></script>
-    <script src="/js/jquery-validate.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="../../js/jquery-2.2.0.js"></script>
+    <script src="../../js/jquery-validate.js"></script>
+    <script src="../../js/main.js"></script>
 
 </head>
 <body>
 <header>
     <div id="authorization">
-        <a href="signin">Sigh In</a>
-        <a href="registration">Create Account</a><br/>
+        <a href="<c:url value='/signin'/>">Sigh In</a>
+        <a href="<c:url value='/registration'/>">Create Account</a><br/>
     </div>
     <div id="search-line">
         <div id="logo">
-            <a href="index">Bookstore</a>
+            <a href="<c:url value='/index'/>">Bookstore</a>
         </div>
         <div id="search-input">
-            <form action="searchresult">
+            <form action="<c:url value='/searchresult'/>">
                 <input type="text" placeholder="Search books by Title, Author, or ISBN" name="search"/>
                 <input type="submit" value="Search"/>
             </form>
         </div>
         <div id="cart">
             <a href="cart">
-                <img src="img/cart-icon.png">
+                <img src="../../img/cart-icon.png">
             </a>
         </div>
     </div>
@@ -41,7 +41,7 @@
 <nav>
     <ul>
         <c:forEach var="category" items="${categories}">
-            <li><a href="category?id=${category.id}">${category.name}</a></li>
+            <li><a href="<c:url value='/category'/>?id=${category.id}">${category.name}</a></li>
         </c:forEach>
     </ul>
 </nav>

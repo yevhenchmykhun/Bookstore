@@ -31,11 +31,11 @@
                 <td>${book.quantity}</td>
                 <td>${book.category.name}</td>
                 <td>
-                    <form action="/admin/editbook" method="post">
+                    <form action="<c:url value='/admin/editbook'/>" method="post">
                         <input type="hidden" name="bookId" value="${book.id}"/>
                         <input type="submit" class="button" value="Edit"/>
                     </form>
-                    <form action="/admin/deletebook" method="post">
+                    <form action="<c:url value='/admin/deletebook'/>" method="post">
                         <input type="hidden" name="bookId" value="${book.id}"/>
                         <input type="submit" class="button" value="Delete"/>
                     </form>

@@ -6,7 +6,7 @@
         <div id="cart-items">
             <c:forEach var="item" items="${cart.items}">
                 <div class="cart-item">
-                    <a href="description?id=${item.book.id}"/>
+                    <a href="<c:url value='/description'/>?id=${item.book.id}"/>
                     <div class="book-image">
                         <img src="http://place-hold.it/120x180">
                     </div>
@@ -49,7 +49,7 @@
                     <tr>
                         <th></th>
                         <td>
-                            <form action="checkout" method="post">
+                            <form action="<c:url value='/checkout'/>" method="post">
                                 <input type="submit" value="Continue to Checkout"/>
                             </form>
                         </td>

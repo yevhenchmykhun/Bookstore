@@ -1,5 +1,5 @@
 <section id="editbook" class="book-form">
-    <form action="/admin/updatebook" method="post" class="basic-grey">
+    <form action="<c:url value='/admin/updatebook'/>" method="post" class="basic-grey">
         <h1>Edit Book
             <span>Please fill all the texts in the fields.</span>
         </h1>

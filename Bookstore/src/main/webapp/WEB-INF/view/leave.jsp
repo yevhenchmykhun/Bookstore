@@ -31,7 +31,7 @@
 
                     <tr id="date-processed">
                         <td>Date Processed</td>
-                        <td>2016 01 20</td>
+                        <td>${date}</td>
                         <td></td>
                     </tr>
                 </table>

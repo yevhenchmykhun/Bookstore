@@ -28,10 +28,6 @@ public class DescriptionController extends HttpServlet {
 
         String bookId = request.getParameter("id");
 
-/*        if (request.getAttribute("bookIdFromAddToCart") != null) {
-            bookId = (String) request.getAttribute("bookIdFromAddToCart");
-        }*/
-
         BookDao bookDao = new DaoFactory().getBookDao();
         Book book = bookDao.getEntityById(Integer.parseInt(bookId));
 

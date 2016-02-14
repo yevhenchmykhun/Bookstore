@@ -5,7 +5,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Bookstore.com Admin Panel</title>
-    <link rel="stylesheet" href="/css/admin-login.css"/>
+    <link rel="stylesheet" href="../css/admin-login.css"/>
 </head>
 <body>
 <header>

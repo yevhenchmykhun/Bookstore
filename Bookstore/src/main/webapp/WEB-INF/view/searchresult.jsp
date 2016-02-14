@@ -1,6 +1,6 @@
 <c:forEach var="book" items="${books}">
     <div class="category-exposition">
-        <a href="description?id=${book.id}"/>
+        <a href="<c:url value='/description'/>?id=${book.id}"/>
         <div class="book-image">
             <img src="http://place-hold.it/160x240">
         </div>

@@ -21,7 +21,7 @@ public class SessionTimeoutFilter implements Filter {
 		HttpSession session = req.getSession(false);
 		if (session == null) {
 			try {
-				req.getRequestDispatcher("/index").forward(request,
+				req.getRequestDispatcher("index").forward(request,
 						response);
 			} catch (Exception ex) {
 				ex.printStackTrace();
