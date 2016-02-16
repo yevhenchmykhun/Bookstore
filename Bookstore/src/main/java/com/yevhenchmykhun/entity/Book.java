@@ -1,9 +1,7 @@
 package com.yevhenchmykhun.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -12,188 +10,194 @@ import java.util.List;
 @Entity
 @Table(name = "book")
 public class Book implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	private String author;
+    private String author;
 
-	@Lob
-	private String description;
+    @Lob
+    private String description;
 
-	private String format;
+    private String format;
 
-	private String isbn;
+    private String isbn;
 
-	private String language;
+    private String language;
 
-	@Column(name = "last_update")
-	private Timestamp lastUpdate;
+    @Column(name = "last_update")
+    private Timestamp lastUpdate;
 
-	private int pages;
+    private int pages;
 
-	private String name;
+    private String name;
 
-	private BigDecimal price;
+    private BigDecimal price;
 
-	private String publisher;
+    private String publisher;
 
-	private int quantity;
+    private int quantity;
 
-	@Column(name = "releasedate")
-	private Date releaseDate;
+    @Column(name = "releasedate")
+    private Date releaseDate;
 
-	// bi-directional many-to-one association to Category
-	@ManyToOne
-	private Category category;
+    private String cover;
 
-	// bi-directional many-to-one association to OrderedBook
-	@OneToMany(mappedBy = "book")
-	private List<OrderedBook> orderedBooks;
+    // bi-directional many-to-one association to Category
+    @ManyToOne
+    private Category category;
 
-	public int getId() {
-		return this.id;
-	}
+    // bi-directional many-to-one association to OrderedBook
+    @OneToMany(mappedBy = "book")
+    private List<OrderedBook> orderedBooks;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public String getAuthor() {
-		return this.author;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public String getAuthor() {
+        return this.author;
+    }
 
-	public String getDescription() {
-		return this.description;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getDescription() {
+        return this.description;
+    }
 
-	public String getFormat() {
-		return this.format;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setFormat(String format) {
-		this.format = format;
-	}
+    public String getFormat() {
+        return this.format;
+    }
 
-	public String getIsbn() {
-		return this.isbn;
-	}
+    public void setFormat(String format) {
+        this.format = format;
+    }
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
+    public String getIsbn() {
+        return this.isbn;
+    }
 
-	public String getLanguage() {
-		return this.language;
-	}
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
-	public void setLanguage(String language) {
-		this.language = language;
-	}
+    public String getLanguage() {
+        return this.language;
+    }
 
-	public Timestamp getLastUpdate() {
-		return this.lastUpdate;
-	}
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
-	public void setLastUpdate(Timestamp lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
+    public Timestamp getLastUpdate() {
+        return this.lastUpdate;
+    }
 
-	public int getPages() {
-		return this.pages;
-	}
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
 
-	public void setPages(int pages) {
-		this.pages = pages;
-	}
+    public int getPages() {
+        return this.pages;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public BigDecimal getPrice() {
-		return this.price;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public BigDecimal getPrice() {
+        return this.price;
+    }
 
-	public String getPublisher() {
-		return this.publisher;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
+    public String getPublisher() {
+        return this.publisher;
+    }
 
-	public int getQuantity() {
-		return this.quantity;
-	}
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public int getQuantity() {
+        return this.quantity;
+    }
 
-	public Date getReleaseDate() {
-		return this.releaseDate;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public void setReleaseDate(Timestamp releasedate) {
-		this.releaseDate = releasedate;
-	}
+    public Date getReleaseDate() {
+        return this.releaseDate;
+    }
 
-	public Category getCategory() {
-		return this.category;
-	}
+    public void setReleaseDate(Date releasedate) {
+        this.releaseDate = releasedate;
+    }
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+    public String getCover() { return cover; }
 
-	public List<OrderedBook> getOrderedBooks() {
-		return this.orderedBooks;
-	}
+    public void setCover(String cover) { this.cover = cover; }
 
-	public void setOrderedBooks(List<OrderedBook> orderedBooks) {
-		this.orderedBooks = orderedBooks;
-	}
+    public Category getCategory() {
+        return this.category;
+    }
 
-	public OrderedBook addOrderedBook(OrderedBook orderedBook) {
-		getOrderedBooks().add(orderedBook);
-		orderedBook.setBook(this);
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-		return orderedBook;
-	}
+    public List<OrderedBook> getOrderedBooks() {
+        return this.orderedBooks;
+    }
 
-	public OrderedBook removeOrderedBook(OrderedBook orderedBook) {
-		getOrderedBooks().remove(orderedBook);
-		orderedBook.setBook(null);
+    public void setOrderedBooks(List<OrderedBook> orderedBooks) {
+        this.orderedBooks = orderedBooks;
+    }
 
-		return orderedBook;
-	}
+    public OrderedBook addOrderedBook(OrderedBook orderedBook) {
+        getOrderedBooks().add(orderedBook);
+        orderedBook.setBook(this);
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Book [id=").append(id).append(", author=")
-				.append(author).append(", name=").append(name)
-				.append(", quantity=").append(quantity).append("]");
-		return builder.toString();
-	}
+        return orderedBook;
+    }
+
+    public OrderedBook removeOrderedBook(OrderedBook orderedBook) {
+        getOrderedBooks().remove(orderedBook);
+        orderedBook.setBook(null);
+
+        return orderedBook;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Book [id=").append(id).append(", author=")
+                .append(author).append(", name=").append(name)
+                .append(", quantity=").append(quantity).append("]");
+        return builder.toString();
+    }
 
 }

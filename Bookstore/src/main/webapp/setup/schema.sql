@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS book (
   publisher   VARCHAR(45)       NOT NULL,
   pages       SMALLINT UNSIGNED NOT NULL,
   quantity    SMALLINT UNSIGNED NOT NULL,
+  cover       VARCHAR(255)      NOT NULL,
   description TEXT              NOT NULL,
   last_update TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   category_id TINYINT UNSIGNED  NOT NULL,

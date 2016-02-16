@@ -10,17 +10,17 @@
         <welcome-file>index</welcome-file>
     </welcome-file-list>
 
-<!--    <context-param>
-        <description>The relative path to scripts</description>
-        <param-name>scriptPath</param-name>
-        <param-value>js/</param-value>
+    <context-param>
+        <description>The relative path to book covers</description>
+        <param-name>relativeCoversPath</param-name>
+        <param-value>/book-covers/</param-value>
     </context-param>
 
     <context-param>
-        <description>The relative path to css</description>
-        <param-name>cssPath</param-name>
-        <param-value>css/</param-value>
-    </context-param>-->
+        <description>The absolute path to book covers</description>
+        <param-name>absoluteCoversPath</param-name>
+        <param-value>/home/evgenii/eclipse_luna/servers/apache-tomcat-8.0.28/webapps/book-covers/</param-value>
+    </context-param>
 
     <jsp-config>
         <jsp-property-group>

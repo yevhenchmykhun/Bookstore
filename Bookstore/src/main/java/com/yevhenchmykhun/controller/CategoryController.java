@@ -50,7 +50,7 @@ public class CategoryController extends HttpServlet {
             url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
         } else {
             url = "/WEB-INF/view/error/massagepage.jsp";
-            request.setAttribute("message", "Category is empty, bitch");
+            request.setAttribute("message", "Category is empty");
         }
 
         request.getRequestDispatcher(url).forward(request, response);

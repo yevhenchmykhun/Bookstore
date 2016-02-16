@@ -8,7 +8,7 @@
         <a href="<c:url value='/description'/>?id=${book.id}">
             <div class="book">
                 <div class="book-image">
-                    <img src="http://place-hold.it/160x240">
+                        <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">
                 </div>
                 <div class="book-title">
                         ${book.name}
@@ -26,7 +26,7 @@
         <a href="<c:url value='/description'/>?id=${book.id}">
             <div class="book">
                 <div class="book-image">
-                    <img src="http://place-hold.it/160x240">
+                    <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">
                 </div>
                 <div class="book-title">
                         ${book.name}

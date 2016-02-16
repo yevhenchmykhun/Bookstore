@@ -2,7 +2,7 @@
     <div class="category-exposition">
         <a href="<c:url value='/description'/>?id=${book.id}"/>
         <div class="book-image">
-            <img src="http://place-hold.it/160x240">
+            <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">
         </div>
         <div class="category-info-block">
             <div class="category-info-header">

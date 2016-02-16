@@ -8,7 +8,7 @@
                 <div class="cart-item">
                     <a href="<c:url value='/description'/>?id=${item.book.id}"/>
                     <div class="book-image">
-                        <img src="http://place-hold.it/120x180">
+                        <img src="<c:url value='${initParam.relativeCoversPath}${item.book.cover}'/>">
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-header">
@@ -23,9 +23,14 @@
                     </div>
                     </a>
                     <div class="cart-item-quantity">
-                        <form action="" method="post">
+                        <form action="<c:url value='/updatequantity'/>" method="post">
+                            <input type="hidden" name="bookId" value="${item.book.id}"/>
                             <input type="text" name="quantity" value="${item.quantity}"/>
                             <input type="submit" value="Update"/>
+                        </form>
+                        <form action="<c:url value='/deletefromcart'/>" method="post">
+                            <input type="hidden" name="bookId" value="${item.book.id}"/>
+                            <input type="submit" value="Delete"/>
                         </form>
                     </div>
                     <div class="cart-item-subtotal">

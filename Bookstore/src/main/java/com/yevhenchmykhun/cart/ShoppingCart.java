@@ -9,7 +9,6 @@ import com.yevhenchmykhun.entity.Book;
 public class ShoppingCart {
 
 	private List<ShoppingCartItem> items;
-	private double total;
 
 	public ShoppingCart() {
 		items = new ArrayList<ShoppingCartItem>();
@@ -25,6 +24,15 @@ public class ShoppingCart {
 		}
 		if (newItem) {
 			items.add(new ShoppingCartItem(book));
+		}
+	}
+
+	public synchronized void deleteItem(Book book) {
+		for (ShoppingCartItem item : items) {
+			if (item.getBook().getId() == book.getId()) {
+				items.remove(item);
+				return;
+			}
 		}
 	}
 

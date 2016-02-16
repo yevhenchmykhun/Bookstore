@@ -1,5 +1,5 @@
 <section id="addbook" class="book-form">
-    <form action="<c:url value='/admin/addbook'/>" method="post" class="basic-grey">
+    <form action="<c:url value='/admin/addbook'/>" method="post" class="basic-grey" enctype="multipart/form-data">
         <h1>Add a new Book
             <span>Please fill all the texts in the fields.</span>
         </h1>
@@ -50,6 +50,10 @@
         <label>
             <span>Release Date :</span>
             <input id="releasedate" type="month" name="releasedate" placeholder="Release Date"/>
+        </label>
+        <label>
+            <span>Cover :</span>
+            <input id="cover" type="file" name="file"/>
         </label>
         <label>
             <span>Description :</span>

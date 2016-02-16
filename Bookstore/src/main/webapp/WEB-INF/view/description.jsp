@@ -1,7 +1,7 @@
 <div id="book-exposition">
     <div id="book-description">
         <div class="book-image">
-            <img src="http://place-hold.it/160x240">
+            <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">
         </div>
         <div id="description">
             Format: ${book.format}<br/>
