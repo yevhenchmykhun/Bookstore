@@ -37,7 +37,10 @@ public class UpdateQuantityController extends HttpServlet {
         int parsedQuantity = Integer.parseInt(quantity);
 
         String url;
-        if (book.getQuantity() < parsedQuantity) {
+        if (parsedQuantity < 0) {
+            url = "/WEB-INF/view/error/massagepage.jsp";
+            request.setAttribute("message", "Quantity must not be less then 0");
+        } else if (book.getQuantity() < parsedQuantity) {
             url = "/WEB-INF/view/error/massagepage.jsp";
             request.setAttribute("message", "Not enough books in store for update");
         } else {

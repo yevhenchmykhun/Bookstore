@@ -26,7 +26,12 @@ public class GetCoverController extends HttpServlet {
         String filename = request.getPathInfo().substring(1);
         String absoluetPath = getServletContext().getInitParameter("absoluteCoversPath");
         File file = new File(absoluetPath, filename);
-/*        response.setHeader("Content-Type", getServletContext().getMimetype(filename));*/
+
+        if (!file.exists()) {
+            file = new File(absoluetPath, "404.jpg");
+        }
+
+        response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         Files.copy(file.toPath(), response.getOutputStream());
 

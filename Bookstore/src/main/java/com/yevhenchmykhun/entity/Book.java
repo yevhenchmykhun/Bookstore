@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "book")
 public class Book implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -157,9 +156,13 @@ public class Book implements Serializable {
         this.releaseDate = releasedate;
     }
 
-    public String getCover() { return cover; }
+    public String getCover() {
+        return cover;
+    }
 
-    public void setCover(String cover) { this.cover = cover; }
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
     public Category getCategory() {
         return this.category;

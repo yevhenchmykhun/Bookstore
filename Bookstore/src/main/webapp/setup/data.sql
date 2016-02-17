@@ -1,4 +1,4 @@
-USE bookstore ;
+USE bookstore;
 
 INSERT INTO category (name) VALUES
   ('Children\'s'),

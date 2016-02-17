@@ -47,7 +47,7 @@ public class CategoryController extends HttpServlet {
             request.setAttribute("categoryId", categoryId);
             request.setAttribute("numberOfPages", numberOfPages);
 
-            url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
+            url = "/WEB-INF/view/category.jsp";
         } else {
             url = "/WEB-INF/view/error/massagepage.jsp";
             request.setAttribute("message", "Category is empty");

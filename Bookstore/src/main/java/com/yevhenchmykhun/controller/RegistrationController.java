@@ -22,7 +22,7 @@ public class RegistrationController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
+		String url = "/WEB-INF/view/registration.jsp";
 		request.getRequestDispatcher(url).forward(request, response);
 
 	}

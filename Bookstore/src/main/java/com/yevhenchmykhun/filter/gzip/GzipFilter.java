@@ -29,11 +29,9 @@ public class GzipFilter implements Filter {
     }
 
     public void init(FilterConfig config) throws ServletException {
-        //NOOP
     }
 
     public void destroy() {
-        //NOOP
     }
 
 }

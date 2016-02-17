@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../css/main.css"/>
 
     <script src="../../js/jquery-2.2.0.js"></script>
-    <script src="../../js/jquery-validate.js"></script>
     <script src="../../js/main.js"></script>
 
 </head>
@@ -31,7 +30,7 @@
             </form>
         </div>
         <div id="cart">
-            <a href="cart">
+            <a href="<c:url value='/cart'/>">
                 <img src="../../img/cart-icon.png">
             </a>
         </div>

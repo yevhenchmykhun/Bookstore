@@ -2,7 +2,6 @@ package com.yevhenchmykhun.controller.admin;
 
 import com.yevhenchmykhun.dao.DaoFactory;
 import com.yevhenchmykhun.entity.Visitor;
-import com.yevhenchmykhun.listener.SessionListener;
 import com.yevhenchmykhun.util.DateConverter;
 
 import javax.servlet.ServletException;

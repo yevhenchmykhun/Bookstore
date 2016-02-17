@@ -10,6 +10,7 @@ import java.io.IOException;
 
 @WebServlet("/admin/signout")
 public class SignOutController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }

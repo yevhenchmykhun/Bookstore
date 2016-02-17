@@ -28,11 +28,11 @@ public class CartController extends HttpServlet {
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
         String url;
-        if (cart != null) {
-            url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
+        if (cart != null && cart.getNumberOfItems() != 0) {
+            url = "/WEB-INF/view/cart.jsp";
         } else {
             url = "/WEB-INF/view/error/massagepage.jsp";
-            request.setAttribute("message", "Shopping Cart is empty, bitch");
+            request.setAttribute("message", "Shopping Cart is empty");
         }
 
         request.getRequestDispatcher(url).forward(request, response);

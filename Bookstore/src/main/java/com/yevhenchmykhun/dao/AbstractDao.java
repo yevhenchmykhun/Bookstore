@@ -35,6 +35,7 @@ public class AbstractDao<T, ID extends Serializable> {
         return persistentClass;
     }
 
+    @SuppressWarnings("unchecked")
     public T getEntityById(ID id) {
         return (T) getSession().get(persistentClass, id);
     }

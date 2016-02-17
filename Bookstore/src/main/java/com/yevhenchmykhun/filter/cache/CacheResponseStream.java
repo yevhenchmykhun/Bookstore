@@ -10,7 +10,6 @@ public class CacheResponseStream extends ServletOutputStream {
 
     protected boolean closed;
     protected HttpServletResponse response;
-/*    protected ServletOutputStream outputStream;*/
     protected OutputStream cache;
 
     public CacheResponseStream(HttpServletResponse response, OutputStream cache) throws IOException {

@@ -39,11 +39,11 @@ public class SearchController extends HttpServlet {
 
         String url;
         if (books.size() != 0) {
-            url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
+            url = "/WEB-INF/view/searchresult.jsp";
             request.setAttribute("books", books);
         } else {
             url = "/WEB-INF/view/error/massagepage.jsp";
-            request.setAttribute("message", "No result for such request, bitch");
+            request.setAttribute("message", "No result for such request");
         }
 
         request.getRequestDispatcher(url).forward(request, response);

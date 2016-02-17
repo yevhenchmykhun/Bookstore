@@ -2,7 +2,6 @@
     <p id="leave-message">
         Your order has been successfully processed and will be delivered within short time.<br/>
         Thank you for shopping at the Bookstore.com<br/>
-        Bitch.
     </p>
     <div id="extraction-block">
         <div id="order-summary" class="extraction">

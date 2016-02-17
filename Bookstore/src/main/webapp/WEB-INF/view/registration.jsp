@@ -3,7 +3,7 @@
         Create New Account
     </div>
     <div class="form-input">
-        <form>
+        <form action="#" method="post">
             <input type="text" placeholder="First Name" name="fname"/>
             <input type="text" placeholder="Last Name" name="lname"/>
             <input type="text" placeholder="Email Address" name="email"/>

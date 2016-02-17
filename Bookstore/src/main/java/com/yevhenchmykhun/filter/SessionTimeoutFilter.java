@@ -14,28 +14,28 @@ import javax.servlet.http.HttpSession;
 @WebFilter(filterName = "SessionTimeoutFilter", urlPatterns = {"/*"})
 public class SessionTimeoutFilter implements Filter {
 
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
 
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpSession session = req.getSession(false);
-		if (session == null) {
-			try {
-				req.getRequestDispatcher("index").forward(request,
-						response);
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-			return;
-		}
-		chain.doFilter(request, response);
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpSession session = req.getSession(false);
+        if (session == null) {
+            try {
+                req.getRequestDispatcher("/index").forward(request,
+                        response);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return;
+        }
+        chain.doFilter(request, response);
 
-	}
+    }
 
-	public void init(FilterConfig filterConfig) throws ServletException {
-	}
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
-	public void destroy() {
-	}
+    public void destroy() {
+    }
 
 }

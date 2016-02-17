@@ -1,8 +1,9 @@
 DROP SCHEMA IF EXISTS bookstore;
+
 CREATE SCHEMA IF NOT EXISTS bookstore
   DEFAULT CHARACTER SET 'utf8';
-USE bookstore;
 
+USE bookstore;
 
 DROP TABLE IF EXISTS customer;
 

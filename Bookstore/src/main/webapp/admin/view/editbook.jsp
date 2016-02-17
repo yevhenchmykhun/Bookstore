@@ -1,5 +1,5 @@
 <section id="editbook" class="book-form">
-    <form action="<c:url value='/admin/updatebook'/>" method="post" class="basic-grey" enctype="multipart/form-data">
+    <form action="<c:url value='/admin/addbook'/>" method="post" class="basic-grey" enctype="multipart/form-data">
         <h1>Edit Book
             <span>Please fill all the texts in the fields.</span>
         </h1>

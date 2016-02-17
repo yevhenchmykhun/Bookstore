@@ -8,6 +8,7 @@ import com.yevhenchmykhun.util.DateConverter;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -22,17 +23,22 @@ public class SessionListener implements HttpSessionListener {
         String d = dateConverter.toDateInString(new Date().getTime(), format);
 
         VisitorDao visitorDao = new DaoFactory().getVisitorDao();
-        List<Visitor> visitors = visitorDao.getByDate(new Date(dateConverter.toDateInMillis(d, format)));
 
-        if (visitors.size() == 0) {
-            Visitor visitor = new Visitor();
-            visitor.setCount(1);
-            visitor.setDate(new Date(dateConverter.toDateInMillis(d, format)));
-            visitorDao.saveEntity(visitor);
-        } else {
-            Visitor visitor = visitors.get(0);
-            visitor.setCount(visitor.getCount() + 1);
-            visitorDao.updateEntity(visitor);
+        try {
+            List<Visitor> visitors = visitorDao.getByDate(new Date(dateConverter.toDateInMillis(d, format)));
+
+            if (visitors.size() == 0) {
+                Visitor visitor = new Visitor();
+                visitor.setCount(1);
+                visitor.setDate(new Date(dateConverter.toDateInMillis(d, format)));
+                visitorDao.saveEntity(visitor);
+            } else {
+                Visitor visitor = visitors.get(0);
+                visitor.setCount(visitor.getCount() + 1);
+                visitorDao.updateEntity(visitor);
+            }
+        } catch (IOException e) {
+            //NOOP
         }
 
     }

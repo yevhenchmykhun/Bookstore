@@ -29,7 +29,7 @@ public class LeaveController extends HttpServlet {
 
         request.setAttribute("date", date);
 
-        String url = "/WEB-INF/view/" + request.getServletPath() + ".jsp";
+        String url = "/WEB-INF/view/leave.jsp";
         request.getRequestDispatcher(url).forward(request, response);
 
     }

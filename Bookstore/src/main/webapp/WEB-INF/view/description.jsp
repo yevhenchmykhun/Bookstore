@@ -7,14 +7,14 @@
             Format: ${book.format}<br/>
             Language: ${book.language}<br/>
             ISBN: ${book.isbn}<br/>
-            Release Date: ${book.releaseDate}<br/>
+            Release Date: ${releaseDate}<br/>
             Publisher: ${book.publisher}<br/>
             Length: ${book.pages}<br/>
         </div>
     </div>
     <div id="details">
         <div id="details-header">
-            ${book.name} by ${book.author}.
+            ${book.name} by ${book.author}
         </div>
         <div id="overview">
             ${book.description}

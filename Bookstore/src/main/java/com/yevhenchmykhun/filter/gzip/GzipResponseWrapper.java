@@ -18,7 +18,7 @@ public class GzipResponseWrapper extends HttpServletResponseWrapper {
         originResponse = response;
     }
 
-    public ServletOutputStream createOutputStream() throws IOException{
+    public ServletOutputStream createOutputStream() throws IOException {
         return (new GzipResponseStream(originResponse));
     }
 
@@ -36,7 +36,7 @@ public class GzipResponseWrapper extends HttpServletResponseWrapper {
         }
     }
 
-    public void flushBuffer() throws IOException{
+    public void flushBuffer() throws IOException {
         outputStream.flush();
     }
 
@@ -65,7 +65,7 @@ public class GzipResponseWrapper extends HttpServletResponseWrapper {
         return writer;
     }
 
-    public void setContentLength (int length) {
+    public void setContentLength(int length) {
     }
 
 }

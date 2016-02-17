@@ -1,64 +1,63 @@
 package com.yevhenchmykhun.entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name="ordered_book")
+@Table(name = "ordered_book")
 public class OrderedBook implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
-	private int orderedBookId;
 
-	//bi-directional many-to-one association to Book
-	@ManyToOne
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int orderedBookId;
+
+    //bi-directional many-to-one association to Book
+    @ManyToOne
     @JoinColumn(name = "book_id")
-	private Book book;
+    private Book book;
 
-	//bi-directional many-to-one association to CustomerOrder
-	@ManyToOne
-	@JoinColumn(name="customer_order_id")
-	private CustomerOrder customerOrder;
-	
-	@Column(name="quantity")
-	private int quantity;
+    //bi-directional many-to-one association to CustomerOrder
+    @ManyToOne
+    @JoinColumn(name = "customer_order_id")
+    private CustomerOrder customerOrder;
 
-	public OrderedBook() {
-	}
+    @Column(name = "quantity")
+    private int quantity;
 
-	public int getQuantity() {
-		return this.quantity;
-	}
+    public OrderedBook() {
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public int getQuantity() {
+        return this.quantity;
+    }
 
-	public Book getBook() {
-		return this.book;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
+    public Book getBook() {
+        return this.book;
+    }
 
-	public CustomerOrder getCustomerOrder() {
-		return this.customerOrder;
-	}
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
-	public void setCustomerOrder(CustomerOrder customerOrder) {
-		this.customerOrder = customerOrder;
-	}
+    public CustomerOrder getCustomerOrder() {
+        return this.customerOrder;
+    }
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("OrderedBook{");
-		sb.append("quantity=").append(quantity);
-		sb.append(", book=").append(book);
-		sb.append('}');
-		return sb.toString();
-	}
+    public void setCustomerOrder(CustomerOrder customerOrder) {
+        this.customerOrder = customerOrder;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("OrderedBook{");
+        sb.append("quantity=").append(quantity);
+        sb.append(", book=").append(book);
+        sb.append('}');
+        return sb.toString();
+    }
 }

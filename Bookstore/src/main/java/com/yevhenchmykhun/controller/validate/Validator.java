@@ -1,19 +1,6 @@
 package com.yevhenchmykhun.controller.validate;
 
-
-import com.yevhenchmykhun.dao.DaoFactory;
-import com.yevhenchmykhun.entity.Book;
-
 public class Validator {
-
-    public String validateBookQuantity(int bookId, int quantity) {
-        Book book = new DaoFactory().getBookDao().getEntityById(bookId);
-        if (quantity > book.getQuantity()) {
-            return "The required number of books is greater than real";
-        }
-
-        return null;
-    }
 
     public String validatePurchase(String name, String email, String phone, String address, String city, String ccNumber) {
 

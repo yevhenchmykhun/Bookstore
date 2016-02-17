@@ -6,7 +6,7 @@
         <div id="cart-items">
             <c:forEach var="item" items="${cart.items}">
                 <div class="cart-item">
-                    <a href="<c:url value='/description'/>?id=${item.book.id}"/>
+                    <a href="<c:url value='/description'/>?id=${item.book.id}">
                     <div class="book-image">
                         <img src="<c:url value='${initParam.relativeCoversPath}${item.book.cover}'/>">
                     </div>
@@ -34,7 +34,7 @@
                         </form>
                     </div>
                     <div class="cart-item-subtotal">
-                        ${item.total}$
+                            ${item.total}$
                     </div>
                 </div>
             </c:forEach>

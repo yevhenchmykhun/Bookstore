@@ -1,127 +1,124 @@
 package com.yevhenchmykhun.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "customer")
 public class Customer implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	private String address;
+    private String address;
 
-	@Column(name = "cc_number")
-	private String ccNumber;
+    @Column(name = "cc_number")
+    private String ccNumber;
 
-	@Column(name = "city_region")
-	private String cityRegion;
+    @Column(name = "city_region")
+    private String cityRegion;
 
-	private String email;
+    private String email;
 
-	private String name;
+    private String name;
 
-	private String phone;
+    private String phone;
 
-	// bi-directional many-to-one association to CustomerOrder
-	@OneToMany(mappedBy = "customer")
-	private List<CustomerOrder> customerOrders;
+    // bi-directional many-to-one association to CustomerOrder
+    @OneToMany(mappedBy = "customer")
+    private List<CustomerOrder> customerOrders;
 
-	public Customer() {
-		this.customerOrders = new ArrayList<CustomerOrder>();
-	}
+    public Customer() {
+        this.customerOrders = new ArrayList<CustomerOrder>();
+    }
 
-	public int getId() {
-		return this.id;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getAddress() {
-		return this.address;
-	}
+    public String getAddress() {
+        return this.address;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public String getCcNumber() {
-		return this.ccNumber;
-	}
+    public String getCcNumber() {
+        return this.ccNumber;
+    }
 
-	public void setCcNumber(String ccNumber) {
-		this.ccNumber = ccNumber;
-	}
+    public void setCcNumber(String ccNumber) {
+        this.ccNumber = ccNumber;
+    }
 
-	public String getCityRegion() {
-		return this.cityRegion;
-	}
+    public String getCityRegion() {
+        return this.cityRegion;
+    }
 
-	public void setCityRegion(String cityRegion) {
-		this.cityRegion = cityRegion;
-	}
+    public void setCityRegion(String cityRegion) {
+        this.cityRegion = cityRegion;
+    }
 
-	public String getEmail() {
-		return this.email;
-	}
+    public String getEmail() {
+        return this.email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getPhone() {
-		return this.phone;
-	}
+    public String getPhone() {
+        return this.phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public List<CustomerOrder> getCustomerOrders() {
-		return this.customerOrders;
-	}
+    public List<CustomerOrder> getCustomerOrders() {
+        return this.customerOrders;
+    }
 
-	public void setCustomerOrders(List<CustomerOrder> customerOrders) {
-		this.customerOrders = customerOrders;
-	}
+    public void setCustomerOrders(List<CustomerOrder> customerOrders) {
+        this.customerOrders = customerOrders;
+    }
 
-	public CustomerOrder addCustomerOrder(CustomerOrder customerOrder) {
-		getCustomerOrders().add(customerOrder);
-		customerOrder.setCustomer(this);
+    public CustomerOrder addCustomerOrder(CustomerOrder customerOrder) {
+        getCustomerOrders().add(customerOrder);
+        customerOrder.setCustomer(this);
 
-		return customerOrder;
-	}
+        return customerOrder;
+    }
 
-	public CustomerOrder removeCustomerOrder(CustomerOrder customerOrder) {
-		getCustomerOrders().remove(customerOrder);
-		customerOrder.setCustomer(null);
+    public CustomerOrder removeCustomerOrder(CustomerOrder customerOrder) {
+        getCustomerOrders().remove(customerOrder);
+        customerOrder.setCustomer(null);
 
-		return customerOrder;
-	}
+        return customerOrder;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Customer [id=").append(id).append(", email=")
-				.append(email).append(", name=").append(name).append("]");
-		return builder.toString();
-	}
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Customer [id=").append(id).append(", email=")
+                .append(email).append(", name=").append(name).append("]");
+        return builder.toString();
+    }
 
 }

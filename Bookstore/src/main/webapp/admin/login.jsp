@@ -18,7 +18,7 @@
     <form action="j_security_check" method="post" id="login-form">
         <label>
             <span>Username</span>
-            <input type="text" placeholder="Username" autofocus name="j_username"/>
+            <input type="text" placeholder="Username" name="j_username" autofocus/>
         </label>
         <label>
             <span>Password</span>

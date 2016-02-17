@@ -2,10 +2,10 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Login Error</title>
 </head>
 <body>
-    <h2>Invalid username or password.</h2>
-    <p>Return to <strong><a href="admin">admin login</a></strong>.</p>
+<h2>Invalid username or password</h2>
+<p>Return to <strong><a href="admin">admin login</a></strong></p>
 </body>
 </html>

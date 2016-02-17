@@ -21,6 +21,7 @@ public class BookDao extends AbstractDao<Book, Integer> {
         return findByCriteria(Restrictions.like("isbn", "%" + isbn + "%"));
     }
 
+    @SuppressWarnings("unchecked")
     public List<Book> getPage(int categoryId, int pageNumber, int pageSize) {
         Criteria criteria = getSession().createCriteria(getPersistentClass());
         Category category = new Category();
