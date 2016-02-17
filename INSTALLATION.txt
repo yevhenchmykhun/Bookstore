@@ -1,19 +1,25 @@
-Yevhen Chmykhun 
+Yevhen Chmykhun
 17 Feb 2016
 
 The Bookstore application requires access to a MySQL database.
 
 Before running the application,
 
-1. Download MySQL from: http://dev.mysql.com/downloads/
+ 1. Download MySQL from: http://dev.mysql.com/downloads/
 
     Change properties username and password in src/main/resources/hibernate.cfg.xml
-    
-2. Run the SQL scripts found in src/main/webapp/setup directory. The schema script creates tables necessary for the     application. The data script adds sample data to the tables. Run the schema creation script first, then run the sample data script.
 
-3. Download Tomcat server from http://tomcat.apache.org/
+ 2. Run the SQL scripts found in src/main/webapp/setup directory. The schema script creates tables
+    necessary for the application. The data script adds sample data to the
+    tables. Run the schema creation script first, then run the sample data script.
 
+ 3. Download Tomcat server from http://tomcat.apache.org/
+ 
     In $TOMCAT_HOME/conf/tomcat-users.xml add following rows:
+    
+    <role rolename="admin"/>
+    <group groupname="admin" roles="admin"/>
+    <user username="" password="" groups="admin" roles="admin"/>
     
     and set up attributes username and password. This attributes is required at the login page.
     
@@ -30,20 +36,21 @@ Before running the application,
     <Context docBase="/home/servers/apache-tomcat-8.0.28/webapps/book-covers" path="/book-covers" />
     
     In src/main/webapp/WEB-INF/web.xml set up 
-    docBase value in <param-value> of <context-param> with <param-name>absoluteCoversPath</param-name>
-    and 
+    docBase value in <param-value> of <context-param> with <param-name>absoluteCoversPath</param-name> and
     path value in <param-value> of <context-param> with <param-name>relativeCoversPath</param-name>
     
     For example:
     
-        <context-param>
-            <description>The relative path to book covers</description>
-            <param-name>relativeCoversPath</param-name>
-            <param-value>/book-covers/</param-value>
-        </context-param>
+    <context-param>
+        <description>The relative path to book covers</description>
+        <param-name>relativeCoversPath</param-name>
+        <param-value>/book-covers/</param-value>
+    </context-param>
+
+    <context-param>
+        <description>The absolute path to book covers</description>
+        <param-name>absoluteCoversPath</param-name>
+        <param-value>/home/servers/apache-tomcat-8.0.28/webapps/book-covers/</param-value>
+    </context-param>
     
-        <context-param>
-            <description>The absolute path to book covers</description>
-            <param-name>absoluteCoversPath</param-name>
-            <param-value>/home/servers/apache-tomcat-8.0.28/webapps/book-covers/</param-value>
-        </context-param>
+
