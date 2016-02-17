@@ -13,7 +13,7 @@ Before running the application,
     necessary for the application. The data script adds sample data to the
     tables. Run the schema creation script first, then run the sample data script.
 
- 3. Download Tomcat server from http://tomcat.apache.org/
+ 3. Download Tomcat server version 7 or higher from http://tomcat.apache.org/
  
     In $TOMCAT_HOME/conf/tomcat-users.xml add following rows:
     
