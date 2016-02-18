@@ -24,6 +24,7 @@ Before running the application,
     and set up attributes username and password. This attributes is required at the login page.
     
     Create folder for book covers, for example $TOMCAT_HOME/webapps/book-covers.
+    Copy content of src/main/webapp/setup/book-covers into created folder.
     
     In $TOMCAT_HOME/conf/server.xml in host tag add following row:
     
