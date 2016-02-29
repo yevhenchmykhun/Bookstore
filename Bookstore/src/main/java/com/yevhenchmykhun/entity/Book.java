@@ -1,6 +1,8 @@
 package com.yevhenchmykhun.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -9,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "book")
+@XmlRootElement
 public class Book implements Serializable {
 
     @Id
@@ -164,6 +167,7 @@ public class Book implements Serializable {
         this.cover = cover;
     }
 
+    @XmlTransient
     public Category getCategory() {
         return this.category;
     }
@@ -172,6 +176,7 @@ public class Book implements Serializable {
         this.category = category;
     }
 
+    @XmlTransient
     public List<OrderedBook> getOrderedBooks() {
         return this.orderedBooks;
     }

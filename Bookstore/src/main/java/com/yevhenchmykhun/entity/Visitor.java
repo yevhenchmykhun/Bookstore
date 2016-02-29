@@ -1,11 +1,13 @@
 package com.yevhenchmykhun.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "visitor")
+@XmlRootElement
 public class Visitor implements Serializable {
 
     @Id

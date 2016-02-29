@@ -10,16 +10,26 @@
         <welcome-file>index</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>RESTful API</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RESTful API</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
     <context-param>
         <description>The relative path to book covers</description>
         <param-name>relativeCoversPath</param-name>
-        <param-value></param-value>
+        <param-value>/book-covers/</param-value>
     </context-param>
 
     <context-param>
         <description>The absolute path to book covers</description>
         <param-name>absoluteCoversPath</param-name>
-        <param-value></param-value>
+        <param-value>/home/evgenii/eclipse_luna/servers/apache-tomcat-8.0.28/webapps/book-covers/</param-value>
     </context-param>
 
     <jsp-config>

@@ -1,11 +1,15 @@
 package com.yevhenchmykhun.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.List;
 
+
 @Entity
 @Table(name = "category")
+@XmlRootElement
 public class Category implements Serializable {
 
     @Id
@@ -34,6 +38,7 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     public List<Book> getBooks() {
         return this.books;
     }
