@@ -1,8 +1,11 @@
 package com.yevhenchmykhun.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Data
 @Entity
 @Table(name = "ordered_book")
 public class OrderedBook implements Serializable {
@@ -25,39 +28,4 @@ public class OrderedBook implements Serializable {
     @Column(name = "quantity")
     private int quantity;
 
-    public OrderedBook() {
-    }
-
-    public int getQuantity() {
-        return this.quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Book getBook() {
-        return this.book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public CustomerOrder getCustomerOrder() {
-        return this.customerOrder;
-    }
-
-    public void setCustomerOrder(CustomerOrder customerOrder) {
-        this.customerOrder = customerOrder;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("OrderedBook{");
-        sb.append("quantity=").append(quantity);
-        sb.append(", book=").append(book);
-        sb.append('}');
-        return sb.toString();
-    }
 }

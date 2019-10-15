@@ -1,13 +1,15 @@
 package com.yevhenchmykhun.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "visitor")
-@XmlRootElement
 public class Visitor implements Serializable {
 
     @Id
@@ -17,39 +19,5 @@ public class Visitor implements Serializable {
     private int count;
 
     private Date date;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Visitor{");
-        sb.append("id=").append(id);
-        sb.append(", count=").append(count);
-        sb.append(", date=").append(date);
-        sb.append('}');
-        return sb.toString();
-    }
 
 }
