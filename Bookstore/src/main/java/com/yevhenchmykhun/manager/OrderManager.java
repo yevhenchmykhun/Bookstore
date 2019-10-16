@@ -2,7 +2,7 @@ package com.yevhenchmykhun.manager;
 
 import com.yevhenchmykhun.cart.ShoppingCart;
 import com.yevhenchmykhun.cart.ShoppingCartItem;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Customer;
 import com.yevhenchmykhun.entity.CustomerOrder;
 import com.yevhenchmykhun.entity.OrderedBook;
@@ -28,7 +28,7 @@ public class OrderManager {
         customer.setCityRegion(cityRegion);
         customer.setCcNumber(ccNUmber);
 
-        new DaoFactory().getCustomerDao().saveEntity(customer);
+        new RepositoryFactory().getCustomerRepository().saveAndFlush(customer);
 
         return customer;
     }
@@ -44,7 +44,7 @@ public class OrderManager {
 
         customer.addCustomerOrder(order);
 
-        new DaoFactory().getCustomerOrderDao().saveEntity(order);
+        new RepositoryFactory().getCustomerOrderRepository().saveAndFlush(order);
 
         return order;
     }
@@ -59,7 +59,7 @@ public class OrderManager {
 
             order.addOrderedBook(orderedBook);
 
-            new DaoFactory().getOrderedBookDao().saveEntity(orderedBook);
+            new RepositoryFactory().getOrderedBookRepository().saveAndFlush(orderedBook);
         }
 
     }

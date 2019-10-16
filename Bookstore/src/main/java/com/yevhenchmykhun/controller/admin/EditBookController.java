@@ -1,6 +1,6 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
 import com.yevhenchmykhun.entity.Category;
 import com.yevhenchmykhun.util.DateConverter;
@@ -28,10 +28,10 @@ public class EditBookController extends HttpServlet {
 
         String bookId = request.getParameter("bookId");
 
-        Book book = new DaoFactory().getBookDao().getEntityById(Integer.parseInt(bookId));
+        Book book = new RepositoryFactory().getBookRepository().getOne(Long.parseLong(bookId));
         List<Category> categories = (List<Category>) getServletContext().getAttribute("categories");
         if (categories == null) {
-            categories = new DaoFactory().getCategoryDao().findAll();
+            categories = new RepositoryFactory().getCategoryRepository().findAll();
         }
 
         request.setAttribute("book", book);

@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.BookDao;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.BookRepository;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
 import com.yevhenchmykhun.util.DateConverter;
 import com.yevhenchmykhun.util.ImageUploader;
@@ -56,7 +56,7 @@ public class AddNewBookController extends HttpServlet {
         book.setPages(Integer.parseInt(pages));
         book.setPrice(new BigDecimal(Double.parseDouble(price)));
         book.setQuantity(Integer.parseInt(quantity));
-        book.setCategory(new DaoFactory().getCategoryDao().getEntityById(Integer.parseInt(categoryId)));
+        book.setCategory(new RepositoryFactory().getCategoryRepository().getOne(Long.parseLong(categoryId)));
         book.setReleaseDate(new Timestamp(new DateConverter().toDateInMillis(releasedate + "-01", "yyyy-MM-dd")));
         book.setDescription(description);
 
@@ -65,8 +65,8 @@ public class AddNewBookController extends HttpServlet {
         String cover = new ImageUploader().upload(part, title, coversPath);
         book.setCover(cover);
 
-        BookDao bookDao = new DaoFactory().getBookDao();
-        bookDao.saveEntity(book);
+        BookRepository bookRepository = new RepositoryFactory().getBookRepository();
+        bookRepository.saveAndFlush(book);
 
         String url = "/admin/viewbooks";
         request.getRequestDispatcher(url).forward(request, response);

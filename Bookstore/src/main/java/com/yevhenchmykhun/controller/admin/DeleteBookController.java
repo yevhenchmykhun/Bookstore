@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.BookDao;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.BookRepository;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,10 +27,10 @@ public class DeleteBookController extends HttpServlet {
 
         String bookId = request.getParameter("bookId");
 
-        BookDao bookDao = new DaoFactory().getBookDao();
-        bookDao.deleteEntityById(Integer.parseInt(bookId));
+        BookRepository bookRepository = new RepositoryFactory().getBookRepository();
+        bookRepository.deleteById(Long.parseLong(bookId));
 
-        request.setAttribute("books", bookDao.findAll());
+        request.setAttribute("books", bookRepository.findAll());
 
         String url = "/admin/view/books.jsp";
         request.getRequestDispatcher(url).forward(request, response);

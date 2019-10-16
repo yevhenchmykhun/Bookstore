@@ -31,7 +31,7 @@ public class DeleteFromCartController extends HttpServlet {
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
         Book book = new Book();
-        book.setId(Integer.parseInt(bookId));
+        book.setId(Long.parseLong(bookId));
         cart.deleteItem(book);
 
         String url = "/cart";

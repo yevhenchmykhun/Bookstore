@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.listener;
 
-import com.yevhenchmykhun.dao.DaoFactory;
-import com.yevhenchmykhun.dao.VisitorDao;
+import com.yevhenchmykhun.repository.RepositoryFactory;
+import com.yevhenchmykhun.repository.VisitorRepository;
 import com.yevhenchmykhun.entity.Visitor;
 import com.yevhenchmykhun.util.DateConverter;
 
@@ -22,20 +22,20 @@ public class SessionListener implements HttpSessionListener {
         DateConverter dateConverter = new DateConverter();
         String d = dateConverter.toDateInString(new Date().getTime(), format);
 
-        VisitorDao visitorDao = new DaoFactory().getVisitorDao();
+        VisitorRepository visitorRepository = new RepositoryFactory().getVisitorRepository();
 
         try {
-            List<Visitor> visitors = visitorDao.getByDate(new Date(dateConverter.toDateInMillis(d, format)));
+            List<Visitor> visitors = visitorRepository.findByDate(new Date(dateConverter.toDateInMillis(d, format)));
 
             if (visitors.size() == 0) {
                 Visitor visitor = new Visitor();
                 visitor.setCount(1);
                 visitor.setDate(new Date(dateConverter.toDateInMillis(d, format)));
-                visitorDao.saveEntity(visitor);
+                visitorRepository.saveAndFlush(visitor);
             } else {
                 Visitor visitor = visitors.get(0);
                 visitor.setCount(visitor.getCount() + 1);
-                visitorDao.updateEntity(visitor);
+                visitorRepository.saveAndFlush(visitor);
             }
         } catch (IOException e) {
             //NOOP

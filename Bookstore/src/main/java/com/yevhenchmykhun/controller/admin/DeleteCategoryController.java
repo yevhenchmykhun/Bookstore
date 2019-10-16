@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.CategoryDao;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.CategoryRepository;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,10 +27,10 @@ public class DeleteCategoryController extends HttpServlet {
 
         String categoryId = request.getParameter("categoryId");
 
-        CategoryDao categoryDao = new DaoFactory().getCategoryDao();
-        categoryDao.deleteEntityById(Integer.parseInt(categoryId));
+        CategoryRepository categoryRepository = new RepositoryFactory().getCategoryRepository();
+        categoryRepository.deleteById(Long.parseLong(categoryId));
 
-        getServletContext().setAttribute("categories", categoryDao.findAll());
+        getServletContext().setAttribute("categories", categoryRepository.findAll());
 
         String url = "/admin/view/categories.jsp";
         request.getRequestDispatcher(url).forward(request, response);

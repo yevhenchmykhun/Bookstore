@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller;
 
-import com.yevhenchmykhun.dao.BookDao;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.BookRepository;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
 
 import javax.servlet.ServletException;
@@ -28,13 +28,13 @@ public class SearchController extends HttpServlet {
 
         String search = request.getParameter("search");
 
-        BookDao bookDao = new DaoFactory().getBookDao();
+        BookRepository bookRepository = new RepositoryFactory().getBookRepository();
 
-        List<Book> books = bookDao.findByTitle(search);
+        List<Book> books = bookRepository.findByNameContaining(search);
         if (books.size() == 0) {
-            books = bookDao.findByAuthor(search);
+            books = bookRepository.findByAuthorContaining(search);
             if (books.size() == 0)
-                books = bookDao.findByIsbn(search);
+                books = bookRepository.findByIsbnContaining(search);
         }
 
         String url;

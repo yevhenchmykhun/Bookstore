@@ -1,6 +1,6 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Visitor;
 import com.yevhenchmykhun.util.DateConverter;
 
@@ -28,7 +28,7 @@ public class StatisticsController extends HttpServlet {
                                   HttpServletResponse response) throws ServletException, IOException {
 
 
-        List<Visitor> visitors = new DaoFactory().getVisitorDao().findAll();
+        List<Visitor> visitors = new RepositoryFactory().getVisitorRepository().findAll();
 
         DateConverter dateConverter = new DateConverter();
         List<String> dates = new ArrayList<String>();

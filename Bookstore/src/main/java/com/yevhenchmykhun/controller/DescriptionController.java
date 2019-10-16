@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller;
 
-import com.yevhenchmykhun.dao.BookDao;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.BookRepository;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
 import com.yevhenchmykhun.util.DateConverter;
 
@@ -28,8 +28,8 @@ public class DescriptionController extends HttpServlet {
 
         String bookId = request.getParameter("id");
 
-        BookDao bookDao = new DaoFactory().getBookDao();
-        Book book = bookDao.getEntityById(Integer.parseInt(bookId));
+        BookRepository bookRepository = new RepositoryFactory().getBookRepository();
+        Book book = bookRepository.getOne(Long.parseLong(bookId));
 
         request.setAttribute("book", book);
         request.setAttribute("releaseDate", new DateConverter().toDateInString(book.getReleaseDate().getTime(), "yyyy-MM-dd"));

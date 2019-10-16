@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,8 +14,8 @@ import java.util.List;
 public class CustomerOrder implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue
+    private Long id;
 
     private BigDecimal amount;
 
@@ -34,11 +33,9 @@ public class CustomerOrder implements Serializable {
     @OneToMany(mappedBy = "customerOrder")
     private List<OrderedBook> orderedBooks;
 
-    public OrderedBook addOrderedBook(OrderedBook orderedBook) {
-        getOrderedBooks().add(orderedBook);
+    public void addOrderedBook(OrderedBook orderedBook) {
         orderedBook.setCustomerOrder(this);
-
-        return orderedBook;
+        getOrderedBooks().add(orderedBook);
     }
 
 }

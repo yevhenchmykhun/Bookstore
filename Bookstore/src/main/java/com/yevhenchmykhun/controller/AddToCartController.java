@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller;
 
 import com.yevhenchmykhun.cart.ShoppingCart;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
 
 import javax.servlet.ServletException;
@@ -34,7 +34,7 @@ public class AddToCartController extends HttpServlet {
             cart = new ShoppingCart();
         }
 
-        Book book = new DaoFactory().getBookDao().getEntityById(Integer.parseInt(bookId));
+        Book book = new RepositoryFactory().getBookRepository().getOne(Long.parseLong(bookId));
         cart.addItem(book);
 
         session.setAttribute("cart", cart);

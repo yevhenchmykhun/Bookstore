@@ -1,6 +1,6 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
 
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class ViewBooksController extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
                                   HttpServletResponse response) throws ServletException, IOException {
 
-        List<Book> books = new DaoFactory().getBookDao().findAll();
+        List<Book> books = new RepositoryFactory().getBookRepository().findAll();
 
         request.setAttribute("books", books);
 

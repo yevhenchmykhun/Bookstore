@@ -3,8 +3,6 @@ package com.yevhenchmykhun.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -13,16 +11,14 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "book")
 public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue
+    private Long id;
 
     private String author;
 
-    @Lob
     private String description;
 
     private String format;

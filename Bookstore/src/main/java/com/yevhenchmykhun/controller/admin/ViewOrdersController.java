@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.CustomerOrderDao;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.CustomerOrderRepository;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.CustomerOrder;
 
 import javax.servlet.ServletException;
@@ -27,8 +27,8 @@ public class ViewOrdersController extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
                                   HttpServletResponse response) throws ServletException, IOException {
 
-        CustomerOrderDao customerOrderDao = new DaoFactory().getCustomerOrderDao();
-        List<CustomerOrder> orders = customerOrderDao.findAll();
+        CustomerOrderRepository customerOrderRepository = new RepositoryFactory().getCustomerOrderRepository();
+        List<CustomerOrder> orders = customerOrderRepository.findAll();
 
         request.setAttribute("orders", orders);
 

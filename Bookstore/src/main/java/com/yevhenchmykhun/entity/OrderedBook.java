@@ -11,9 +11,8 @@ import java.io.Serializable;
 public class OrderedBook implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int orderedBookId;
+    @GeneratedValue
+    private Long id;
 
     //bi-directional many-to-one association to Book
     @ManyToOne
@@ -25,7 +24,6 @@ public class OrderedBook implements Serializable {
     @JoinColumn(name = "customer_order_id")
     private CustomerOrder customerOrder;
 
-    @Column(name = "quantity")
     private int quantity;
 
 }

@@ -2,19 +2,19 @@ package com.yevhenchmykhun.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "visitor")
 public class Visitor implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue
+    private Long id;
 
     private int count;
 

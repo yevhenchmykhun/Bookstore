@@ -1,8 +1,9 @@
 package com.yevhenchmykhun.controller;
 
-import com.yevhenchmykhun.dao.BookDao;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.BookRepository;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
+import org.springframework.data.domain.PageRequest;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +27,7 @@ public class CategoryController extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
                                   HttpServletResponse response) throws ServletException, IOException {
 
-        int page = 1;
+        int page = 0;
         int booksPerPage = 5;
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
@@ -34,16 +35,18 @@ public class CategoryController extends HttpServlet {
 
         int categoryId = Integer.parseInt(request.getParameter("id"));
 
-        BookDao bookDao = new DaoFactory().getBookDao();
-        List<Book> books = bookDao.getPage(categoryId, page, booksPerPage);
+        BookRepository bookRepository = new RepositoryFactory().getBookRepository();
+//        List<Book> books = bookDao.getPage(categoryId, page, booksPerPage);
+        List<Book> books = bookRepository.findAllByCategoryId((long) categoryId, PageRequest.of(page, booksPerPage));
 
         String url;
         if (books.size() != 0) {
-            int numberOfRows = bookDao.getNumberOfRows(categoryId);
+//            int numberOfRows = bookDao.getNumberOfRows(categoryId);
+            int numberOfRows = bookRepository.countByCategoryId((long) categoryId);
             int numberOfPages = (int) Math.ceil(numberOfRows * 1.0 / booksPerPage);
 
             request.setAttribute("books", books);
-            request.setAttribute("currentPage", page);
+            request.setAttribute("currentPage", page + 1);
             request.setAttribute("categoryId", categoryId);
             request.setAttribute("numberOfPages", numberOfPages);
 

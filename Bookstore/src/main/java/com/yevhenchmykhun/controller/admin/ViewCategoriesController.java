@@ -1,6 +1,6 @@
 package com.yevhenchmykhun.controller.admin;
 
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Category;
 
 import javax.servlet.ServletException;
@@ -27,7 +27,7 @@ public class ViewCategoriesController extends HttpServlet {
 
         List<Category> categories = (List<Category>) getServletContext().getAttribute("categories");
         if (categories == null) {
-            categories = new DaoFactory().getCategoryDao().findAll();
+            categories = new RepositoryFactory().getCategoryRepository().findAll();
         }
 
         request.setAttribute("categories", categories);

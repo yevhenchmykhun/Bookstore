@@ -4,17 +4,15 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "customer")
 public class Customer implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue
+    private Long id;
 
     private String address;
 
@@ -34,11 +32,9 @@ public class Customer implements Serializable {
     @OneToMany(mappedBy = "customer")
     private List<CustomerOrder> customerOrders;
 
-    public CustomerOrder addCustomerOrder(CustomerOrder customerOrder) {
-        getCustomerOrders().add(customerOrder);
+    public void addCustomerOrder(CustomerOrder customerOrder) {
         customerOrder.setCustomer(this);
-
-        return customerOrder;
+        getCustomerOrders().add(customerOrder);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.yevhenchmykhun.controller;
 
 import com.yevhenchmykhun.cart.ShoppingCart;
-import com.yevhenchmykhun.dao.DaoFactory;
+import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
 
 import javax.servlet.ServletException;
@@ -32,7 +32,7 @@ public class UpdateQuantityController extends HttpServlet {
         HttpSession session = request.getSession();
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
-        Book book = new DaoFactory().getBookDao().getEntityById(Integer.parseInt(bookId));
+        Book book = new RepositoryFactory().getBookRepository().getOne(Long.parseLong(bookId));
 
         int parsedQuantity = Integer.parseInt(quantity);
 
