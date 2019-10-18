@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Sign In</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="../../resources/css/main.css" media="screen" rel="stylesheet" th:href="@{/css/main.css}"/>
+    <script src="../../resources/js/jquery-2.2.0.js" th:src="@{/js/jquery-2.2.0.js}"></script>
+    <script src="../../resources/js/main.js" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+
+<div th:insert="fragments/header :: header">Header</div>
+
+<section id="quotes">
+    <div class="quote">
+    </div>
+</section>
+
+<section class="books">
+    <a href="#" th:each="book : ${pageOne}" th:href="@{'/description?id=' + ${book.id}}">
+        <div class="book">
+            <div class="book-image">
+                <!--                    <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">-->
+            </div>
+            <div class="book-title" th:text="${book.name}">
+                Book name
+            </div>
+            <div class="book-author" th:text="${book.author}">
+                Book author
+            </div>
+        </div>
+    </a>
+</section>
+
+<section class="books">
+    <a href="#" th:each="book : ${pageTwo}" th:href="@{'/description?id=' + ${book.id}}">
+        <div class="book">
+            <div class="book-image">
+                <!--                    <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">-->
+            </div>
+            <div class="book-title" th:text="${book.name}">
+                Book name
+            </div>
+            <div class="book-author" th:text="${book.author}">
+                Book author
+            </div>
+        </div>
+    </a>
+</section>
+
+<div th:insert="fragments/footer :: footer">Header</div>
+
+</body>
+</html>

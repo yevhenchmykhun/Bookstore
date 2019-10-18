@@ -1,13 +1,22 @@
-<footer>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+
+    <link href="../../resources/css/main.css" media="screen" rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<footer th:fragment="footer">
     <div id="footer-lists">
         <div class="footer-list">
             <div class="list-header">
                 Popular Categories
             </div>
             <ul>
-                <c:forEach var="category" items="${categories}">
-                    <li><a href="<c:url value='/category'/>?id=${category.id}">${category.name}</a></li>
-                </c:forEach>
+                <li th:each="category : ${categories}">
+                    <a href="#" th:href="@{'/category?id=' + ${category.id}}" th:text="${category.name}">Category
+                        title</a>
+                </li>
             </ul>
         </div>
         <div class="footer-list">
@@ -16,7 +25,7 @@
             </div>
             <ul>
                 <li><a href="#">Settings</a></li>
-                <li><a href="<c:url value='/cart'/>">Shopping Cart</a></li>
+                <li><a href="#" th:href="@{/cart}">Shopping Cart</a></li>
                 <li><a href="#">Order History</a></li>
             </ul>
         </div>
@@ -31,7 +40,7 @@
         </div>
     </div>
     <div id="copyright">
-        Copyright &copy; 2016 Bookstore.com
+        Copyright &copy; 2019 Bookstore.com
     </div>
 </footer>
 </body>
