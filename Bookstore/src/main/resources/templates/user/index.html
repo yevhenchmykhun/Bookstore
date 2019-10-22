@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Sign In</title>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <link href="../../resources/css/main.css" media="screen" rel="stylesheet" th:href="@{/css/main.css}"/>
-    <script src="../../resources/js/jquery-2.2.0.js" th:src="@{/js/jquery-2.2.0.js}"></script>
-    <script src="../../resources/js/main.js" th:src="@{/js/main.js}"></script>
+<head th:replace="user/fragments/head :: common_head(~{::title}, ~{})">
+    <title>Index</title>
 </head>
 <body>
 
-<div th:insert="fragments/header :: header">Header</div>
+<div th:replace="user/fragments/header :: header">Header</div>
 
 <section id="quotes">
     <div class="quote">
@@ -49,7 +45,7 @@
     </a>
 </section>
 
-<div th:insert="fragments/footer :: footer">Header</div>
+<footer th:replace="user/fragments/footer :: footer">Header</footer>
 
 </body>
 </html>

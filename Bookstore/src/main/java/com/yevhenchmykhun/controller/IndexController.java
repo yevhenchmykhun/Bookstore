@@ -25,7 +25,7 @@ public class IndexController {
         model.addAttribute("pageOne", pageOne);
         model.addAttribute("pageTwo", pageTwo);
 
-        return "index";
+        return "user/index";
     }
 
 }
