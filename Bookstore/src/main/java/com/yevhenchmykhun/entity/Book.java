@@ -1,6 +1,7 @@
 package com.yevhenchmykhun.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@ToString(of = "name")
 @Entity
 public class Book implements Serializable {
 

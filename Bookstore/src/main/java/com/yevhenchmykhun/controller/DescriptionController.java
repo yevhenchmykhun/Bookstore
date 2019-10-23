@@ -1,42 +1,42 @@
 package com.yevhenchmykhun.controller;
 
-import com.yevhenchmykhun.repository.BookRepository;
-import com.yevhenchmykhun.repository.RepositoryFactory;
+import com.yevhenchmykhun.cart.ShoppingCart;
 import com.yevhenchmykhun.entity.Book;
-import com.yevhenchmykhun.util.DateConverter;
+import com.yevhenchmykhun.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.util.Map;
 
-@WebServlet("/description")
-public class DescriptionController extends HttpServlet {
+@Controller
+public class DescriptionController {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private ShoppingCart shoppingCart;
+
+    @GetMapping("/description")
+    public String get(@RequestParam Long id, Model model) {
+
+        Book book = bookRepository.getOne(id);
+        model.addAttribute("book", book);
+
+        return "user/description";
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    protected void processRequest(HttpServletRequest request,
-                                  HttpServletResponse response) throws ServletException, IOException {
-
-        String bookId = request.getParameter("id");
-
-        BookRepository bookRepository = new RepositoryFactory().getBookRepository();
-        Book book = bookRepository.getOne(Long.parseLong(bookId));
-
-        request.setAttribute("book", book);
-        request.setAttribute("releaseDate", new DateConverter().toDateInString(book.getReleaseDate().getTime(), "yyyy-MM-dd"));
-
-        String url = "/WEB-INF/view/description.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
-
+    @PostMapping(value = "/addToCart", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public @ResponseBody
+    void addToCart(@RequestParam Map<String, String> parametersMap) {
+        Book book = bookRepository.getOne(Long.parseLong((parametersMap.get("id"))));
+        shoppingCart.addItem(book);
     }
 
 }

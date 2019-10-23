@@ -36,7 +36,7 @@ public class OrderManager {
     private CustomerOrder createOrder(Customer customer, ShoppingCart cart) {
         CustomerOrder order = new CustomerOrder();
         order.setDateCreated(new Timestamp(System.currentTimeMillis()));
-        order.setAmount(cart.getTotal());
+        order.setAmount(cart.getTotalPrice());
 
         Random random = new Random();
         int i = random.nextInt(99999999);

@@ -3,79 +3,22 @@ package com.yevhenchmykhun.cart;
 import com.yevhenchmykhun.entity.Book;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCart {
+public interface ShoppingCart {
 
-    private List<ShoppingCartItem> items;
+    void addItem(Book book);
 
-    public ShoppingCart() {
-        items = new ArrayList<ShoppingCartItem>();
-    }
+    void deleteItem(Book book);
 
-    public synchronized void addItem(Book book) {
-        boolean newItem = true;
-        for (ShoppingCartItem item : items) {
-            if (item.getBook().getId() == book.getId()) {
-                newItem = false;
-                item.incrementQuantity();
-            }
-        }
-        if (newItem) {
-            items.add(new ShoppingCartItem(book));
-        }
-    }
+    void update(Book book, int quantity);
 
-    public synchronized void deleteItem(Book book) {
-        for (ShoppingCartItem item : items) {
-            if (item.getBook().getId() == book.getId()) {
-                items.remove(item);
-                return;
-            }
-        }
-    }
+    void clear();
 
-    public synchronized void update(Book book, int quantity) {
-        if (quantity >= 0) {
-            ShoppingCartItem item = null;
-            for (ShoppingCartItem cartItem : items) {
-                if (cartItem.getBook().getId() == book.getId()) {
-                    if (quantity != 0) {
-                        cartItem.setQuantity(quantity);
-                    } else {
-                        item = cartItem;
-                    }
-                }
-            }
-            if (item != null) {
-                items.remove(item);
-            }
-        }
-    }
+    int getNumberOfItems();
 
-    public synchronized List<ShoppingCartItem> getItems() {
-        return items;
-    }
+    List<ShoppingCartItem> getItems();
 
-    public synchronized int getNumberOfItems() {
-        int numberOfItems = 0;
-        for (ShoppingCartItem item : items) {
-            numberOfItems += item.getQuantity();
-        }
-        return numberOfItems;
-    }
-
-    public synchronized BigDecimal getTotal() {
-        BigDecimal amount = new BigDecimal(0);
-        for (ShoppingCartItem item : items) {
-            amount = amount.add(item.getTotal());
-        }
-        return amount;
-    }
-
-    public synchronized void clear() {
-        items.clear();
-    }
+    BigDecimal getTotalPrice();
 
 }
