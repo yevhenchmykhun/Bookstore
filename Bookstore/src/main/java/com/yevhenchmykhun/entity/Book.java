@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @ToString(of = "name")
@@ -47,12 +46,7 @@ public class Book implements Serializable {
 
     private String cover;
 
-    // bi-directional many-to-one association to Category
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
-
-    // bi-directional many-to-one association to OrderedBook
-    @OneToMany(mappedBy = "book")
-    private List<OrderedBook> orderedBooks;
 
 }
