@@ -17,7 +17,7 @@
     <a href="#" th:each="book : ${pageOne}" th:href="@{'/description?id=' + ${book.id}}">
         <div class="book">
             <div class="book-image">
-                <!--                    <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">-->
+                <img src="">
             </div>
             <div class="book-title" th:text="${book.name}">
                 Book name
@@ -30,10 +30,10 @@
 </section>
 
 <section class="books">
-    <a href="#" th:each="book : ${pageTwo}" th:href="@{'/description?id=' + ${book.id}}">
+    <a href="#" th:href="@{'/description?id=' + ${book.id}}" th:each="book : ${pageTwo}">
         <div class="book">
             <div class="book-image">
-                <!--                    <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">-->
+                <img src="">
             </div>
             <div class="book-title" th:text="${book.name}">
                 Book name
