@@ -2,7 +2,7 @@
 $(document).ready(() => {
     $("#book-exposition input[type='submit']").click(() => {
         $.ajax({
-          url: "/addToCart",
+          url: "/cart/addToCart",
           type: "POST",
           data: $('#book-exposition form').serialize(),
           success: () => {
