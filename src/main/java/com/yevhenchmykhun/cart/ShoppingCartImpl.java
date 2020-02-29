@@ -5,6 +5,7 @@ import com.yevhenchmykhun.entity.Book;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ShoppingCartImpl implements ShoppingCart {
 
@@ -12,10 +13,15 @@ public class ShoppingCartImpl implements ShoppingCart {
 
     @Override
     public void addItem(Book book) {
-        items.stream()
+        Optional<ShoppingCartItem> shoppingCartItem = items.stream()
                 .filter(item -> item.getBook().getId().equals(book.getId()))
-                .findFirst()
-                .ifPresentOrElse(ShoppingCartItem::incrementQuantity, () -> items.add(new ShoppingCartItem(book)));
+                .findFirst();
+
+        if (shoppingCartItem.isPresent()) {
+            shoppingCartItem.get().incrementQuantity();
+        } else {
+            items.add(new ShoppingCartItem(book));
+        }
     }
 
     @Override

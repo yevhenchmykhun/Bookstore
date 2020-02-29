@@ -41,7 +41,7 @@ public class Book implements Serializable {
 
     private int quantity;
 
-    @Column(name = "releasedate")
+    @Column(name = "release_date")
     private Date releaseDate;
 
     private String cover;
