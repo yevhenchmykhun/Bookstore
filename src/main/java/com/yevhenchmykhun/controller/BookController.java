@@ -10,21 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-public class DescriptionController {
+public class BookController {
 
     private BookService bookService;
 
-    public DescriptionController(BookService bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
-    @GetMapping("/description")
+    @GetMapping("/book")
     public String get(@RequestParam Long id, Model model) {
-
         Optional<Book> book = bookService.findById(id);
         book.ifPresent(value -> model.addAttribute("book", value));
 
-        return "user/description";
+        return "user/book";
     }
 
 }
