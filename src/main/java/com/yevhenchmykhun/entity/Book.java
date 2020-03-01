@@ -20,6 +20,7 @@ public class Book implements Serializable {
 
     private String author;
 
+    @Column(length = 4096)
     private String description;
 
     private String format;

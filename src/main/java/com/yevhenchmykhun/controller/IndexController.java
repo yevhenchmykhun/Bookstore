@@ -20,12 +20,8 @@ public class IndexController {
 
     @GetMapping("/index")
     public String get(Model model) {
-
-        List<Book> pageOne = bookService.findAllByCategoryId(2L, PageRequest.of(0, 6));
-        List<Book> pageTwo = bookService.findAllByCategoryId(2L, PageRequest.of(1, 6));
-
-        model.addAttribute("pageOne", pageOne);
-        model.addAttribute("pageTwo", pageTwo);
+        List<Book> books = bookService.findAllByCategoryId(2L, PageRequest.of(0, 12));
+        model.addAttribute("books", books);
 
         return "user/index";
     }
