@@ -16,6 +16,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findAllByCategoryId(Long categoryId, Pageable pageable);
 
-    int countByCategoryId(Long categoryId);
+    Long countByCategoryId(Long categoryId);
 
 }

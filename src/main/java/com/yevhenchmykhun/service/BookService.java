@@ -12,4 +12,6 @@ public interface BookService {
 
     List<Book> findAllByCategoryId(Long categoryId, Pageable pageable);
 
+    Long countByCategoryId(Long categoryId);
+
 }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/common.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/common.js}"></script>
 
     <th:block th:replace="${links}" />
 
@@ -33,7 +34,7 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a th:each="category : ${categories}" class="dropdown-item" href="#" th:href="@{'/category?id=' + ${category.id}}" th:text="${category.name}">Category Name</a>
+                        <a th:each="category : ${categories}" class="dropdown-item" href="#" th:href="@{/category(id=${category.id}, page=1)}" th:text="${category.name}">Category Name</a>
                     </div>
                 </li>
             </ul>

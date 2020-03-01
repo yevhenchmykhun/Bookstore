@@ -30,4 +30,9 @@ public class BookServiceImpl implements BookService {
         return repository.findAllByCategoryId(categoryId, pageable);
     }
 
+    @Override
+    public Long countByCategoryId(Long categoryId) {
+        return repository.countByCategoryId(categoryId);
+    }
+
 }

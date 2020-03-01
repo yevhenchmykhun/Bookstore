@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div th:replace="user/fragments/common :: header(${categories})"></div>
     <div class="card-columns my-3" style="column-count: 6">
-        <div class="card p-1" th:each="book : ${books}">
+        <div class="card p-1 clickable-card" th:each="book : ${books}">
             <a href="#" th:href="@{'/book?id=' + ${book.id}}">
                 <img class="card-img-top" th:src="@{/img/diagonal_fabric.png}" alt="Book cover">
                 <div class="card-body">
@@ -18,17 +18,5 @@
     </div>
     <footer th:replace="user/fragments/common :: footer"></footer>
 </div>
-<script>
-    $(document).ready(function () {
-        $(".card").hover(
-            function () {
-                $(this).addClass('shadow bg-white rounded');
-            },
-            function () {
-                $(this).removeClass('shadow bg-white rounded');
-            }
-        )
-    });
-</script>
 </body>
 </html>

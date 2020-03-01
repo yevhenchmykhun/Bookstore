@@ -1,0 +1,77 @@
+<!--<%&#45;&#45;<c:forEach var="book" items="${books}">&#45;&#45;%>-->
+<!--<%&#45;&#45;    <div class="category-exposition">&#45;&#45;%>-->
+<!--<%&#45;&#45;        <a href="<c:url value='/description'/>?id=${book.id}">&#45;&#45;%>-->
+<!--<%&#45;&#45;            <div class="book-image">&#45;&#45;%>-->
+<!--<%&#45;&#45;                <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">&#45;&#45;%>-->
+<!--<%&#45;&#45;            </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;            <div class="category-info-block">&#45;&#45;%>-->
+<!--<%&#45;&#45;                <div class="category-info-header">&#45;&#45;%>-->
+<!--<%&#45;&#45;                        ${book.name}<br/>&#45;&#45;%>-->
+<!--<%&#45;&#45;                    by ${book.author}&#45;&#45;%>-->
+<!--<%&#45;&#45;                </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;                <div class="category-info">&#45;&#45;%>-->
+<!--<%&#45;&#45;                    ISBN: ${book.isbn}<br/>&#45;&#45;%>-->
+<!--<%&#45;&#45;                    Release Date: ${book.releaseDate}<br/>&#45;&#45;%>-->
+<!--<%&#45;&#45;                    Publisher: ${book.publisher}<br/>&#45;&#45;%>-->
+<!--<%&#45;&#45;                </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;            </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;        </a>&#45;&#45;%>-->
+<!--<%&#45;&#45;    </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;</c:forEach>&#45;&#45;%>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="user/fragments/common :: head(~{::title}, ~{})">
+    <title>Index</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="user/fragments/common :: header(${categories})"></div>
+    <div class="row my-3" th:each="book : ${books}">
+        <div class="col-2">
+            <div class="card p-1 clickable-card">
+                <a href="#" th:href="@{'/book?id=' + ${book.id}}">
+                    <img class="card-img-top" th:src="@{/img/diagonal_fabric.png}" alt="Book cover">
+                    <div class="card-body">
+                        <p class="card-text" th:text="${book.name + ' by ' + book.author}"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-10" style="text-overflow: ellipsis; overflow: hidden;">
+            <p th:text="${book.description}">Description</p>
+        </div>
+    </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-end">
+            <li class="page-item" th:classappend="${currentPage <= 1} ? 'disabled' : ''">
+                <a class="page-link" href="#" th:href="@{/category(id=${categoryId}, page=${currentPage - 1})}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage <= 1} ? 'd-none' : ''">
+                <a class="page-link" href="#" th:href="@{/category(id=${categoryId}, page=${currentPage - 1})}"
+                   th:text="${currentPage - 1}">1</a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="#" th:href="@{/category(id=${categoryId}, page=${currentPage})}"
+                   th:text="${currentPage}">2</a></li>
+            <li class="page-item" th:classappend="${currentPage >= pagesNumber} ? 'd-none' : ''">
+                <a class="page-link" href="#" th:href="@{/category(id=${categoryId}, page=${currentPage + 1})}"
+                   th:text="${currentPage + 1}">3</a></li>
+            <li class="page-item" th:classappend="${currentPage >= pagesNumber} ? 'disabled' : ''">
+                <a class="page-link" href="#" th:href="@{/category(id=${categoryId}, page=${currentPage + 1})}"
+                   aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <footer th:replace="user/fragments/common :: footer"></footer>
+</div>
+</body>
+</html>
+
