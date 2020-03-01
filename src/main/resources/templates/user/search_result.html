@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="user/fragments/common :: head(~{::title}, ~{})">
+    <title>Search Result</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="user/fragments/common :: header(${categories})"></div>
+    <div class="row my-3" th:each="book : ${books}">
+        <div class="col-2">
+            <div class="card p-1 clickable-card">
+                <a href="#" th:href="@{/book(id=${book.id})}">
+                    <img class="card-img-top" th:src="@{/img/diagonal_fabric.png}" alt="Book cover">
+                    <div class="card-body">
+                        <p class="card-text" th:text="${book.name + ' by ' + book.author}"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-10" style="text-overflow: ellipsis; overflow: hidden;">
+            <p th:text="${book.description}">Description</p>
+        </div>
+    </div>
+    <footer th:replace="user/fragments/common :: footer"></footer>
+</div>
+</body>
+</html>

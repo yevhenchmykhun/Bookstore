@@ -1,53 +1,36 @@
 package com.yevhenchmykhun.controller;
 
-import com.yevhenchmykhun.repository.BookRepository;
-import com.yevhenchmykhun.repository.RepositoryFactory;
 import com.yevhenchmykhun.entity.Book;
+import com.yevhenchmykhun.service.BookService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/searchresult")
-public class SearchController extends HttpServlet {
+@Controller
+public class SearchController {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+    private BookService bookService;
+
+    public SearchController(BookService bookService) {
+        this.bookService = bookService;
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    protected void processRequest(HttpServletRequest request,
-                                  HttpServletResponse response) throws ServletException, IOException {
-
-        String search = request.getParameter("search");
-
-        BookRepository bookRepository = new RepositoryFactory().getBookRepository();
-
-        List<Book> books = bookRepository.findByNameContaining(search);
-        if (books.size() == 0) {
-            books = bookRepository.findByAuthorContaining(search);
-            if (books.size() == 0)
-                books = bookRepository.findByIsbnContaining(search);
+    @GetMapping("/search")
+    public String get(@RequestParam String q, Model model) {
+        List<Book> books = bookService.findByNameContaining(q);
+        if (books.isEmpty()) {
+            books = bookService.findByAuthorContaining(q);
+            if (books.isEmpty()) {
+                books = bookService.findByIsbnContaining(q);
+            }
         }
 
-        String url;
-        if (books.size() != 0) {
-            url = "/WEB-INF/view/searchresult.jsp";
-            request.setAttribute("books", books);
-        } else {
-            url = "/WEB-INF/view/error/massagepage.jsp";
-            request.setAttribute("message", "No result for such request");
-        }
+        model.addAttribute("books", books);
 
-        request.getRequestDispatcher(url).forward(request, response);
-
+        return "user/search_result";
     }
 
 }

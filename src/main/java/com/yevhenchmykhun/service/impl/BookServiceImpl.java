@@ -26,6 +26,22 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Book> findByNameContaining(String title) {
+        return repository.findByNameContaining(title);
+    }
+
+    @Override
+    public List<Book> findByAuthorContaining(String author) {
+        return repository.findByAuthorContaining(author);
+    }
+
+    @Override
+    public List<Book> findByIsbnContaining(String isbn) {
+        return repository.findByIsbnContaining(isbn);
+    }
+
+
+    @Override
     public List<Book> findAllByCategoryId(Long categoryId, Pageable pageable) {
         return repository.findAllByCategoryId(categoryId, pageable);
     }
