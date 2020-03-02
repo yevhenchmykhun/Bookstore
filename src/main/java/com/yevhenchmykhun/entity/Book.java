@@ -50,4 +50,8 @@ public class Book implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
+    public boolean isInStock() {
+        return quantity > 0;
+    }
+
 }

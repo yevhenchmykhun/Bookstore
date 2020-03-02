@@ -9,15 +9,15 @@ public interface ShoppingCart {
 
     void addItem(Book book);
 
-    void deleteItem(Book book);
-
-    void update(Book book, int quantity);
+    void deleteItem(Long book);
 
     void clear();
 
-    int getNumberOfItems();
+    boolean isEmpty();
 
     List<ShoppingCartItem> getItems();
+
+    int getItemsNumber();
 
     BigDecimal getTotalPrice();
 

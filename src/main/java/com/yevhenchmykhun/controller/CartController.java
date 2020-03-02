@@ -8,49 +8,38 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServlet;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/cart")
 public class CartController extends HttpServlet {
 
-    private final BookService bookService;
+    private BookService bookService;
 
-    private final ShoppingCart shoppingCart;
+    private ShoppingCart cart;
 
-    public CartController(BookService bookService, ShoppingCart shoppingCart) {
+    public CartController(BookService bookService, ShoppingCart cart) {
         this.bookService = bookService;
-        this.shoppingCart = shoppingCart;
+        this.cart = cart;
     }
 
     @GetMapping()
     public String get(Model model) {
-        model.addAttribute("cart", shoppingCart);
+        model.addAttribute("cart", cart);
         return "user/cart";
     }
 
-    @PostMapping(value = "/addToCart", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public @ResponseBody
-    void addToCart(@RequestParam Map<String, String> parametersMap) {
-        bookService.findById(Long.parseLong((parametersMap.get("id")))).ifPresent(shoppingCart::addItem);
+    int add(@RequestParam Long id) {
+        bookService.findById(id).ifPresent(cart::addItem);
+        return cart.getItemsNumber();
     }
 
-    @PostMapping(value = "/updateQuantity", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String updateQuantity(@RequestParam Map<String, String> parametersMap) {
-
+    @PostMapping(value = "/delete", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String delete(@RequestParam Long id, Model model) {
+        cart.deleteItem(id);
+        model.addAttribute("cart", cart);
         return "user/cart";
-    }
-
-    @PostMapping(value = "/deleteFromCart", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String deleteFromCart(@RequestParam Map<String, String> parametersMap) {
-
-        return "user/cart";
-    }
-
-    @PostMapping(value = "/checkout", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String checkout(@RequestParam Map<String, String> parametersMap) {
-
-        return "user/checkout";
     }
 
 }

@@ -22,7 +22,7 @@
                 <p th:text="${book.description}">Description</p>
             </div>
             <div>
-                <form class="form-inline float-right">
+                <form id="addToCartForm" class="form-inline float-right">
                     <input type="hidden" value="-1" th:value="${book.id}" name="id"/>
                     <div class="form-group mb-2">
                         <label for="price" class="sr-only">Price</label>
@@ -36,6 +36,8 @@
     </div>
 
     <footer th:replace="user/fragments/common :: footer"></footer>
+
+    <script th:src="@{/js/cart.js}"></script>
 </div>
 </body>
 </html>

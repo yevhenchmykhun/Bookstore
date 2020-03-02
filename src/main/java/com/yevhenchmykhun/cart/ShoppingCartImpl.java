@@ -25,24 +25,8 @@ public class ShoppingCartImpl implements ShoppingCart {
     }
 
     @Override
-    public void deleteItem(Book book) {
-        items.removeIf(item -> item.getBook().getId().equals(book.getId()));
-    }
-
-    @Override
-    public void update(Book book, int quantity) {
-        if (quantity < 0) {
-            return;
-        }
-
-        if (quantity == 0) {
-            deleteItem(book);
-        } else {
-            items.stream()
-                    .filter(item -> item.getBook().getId().equals(book.getId()))
-                    .findFirst()
-                    .ifPresent(item -> item.setQuantity(quantity));
-        }
+    public void deleteItem(Long id) {
+        items.removeIf(item -> item.getBook().getId().equals(id));
     }
 
     @Override
@@ -51,7 +35,7 @@ public class ShoppingCartImpl implements ShoppingCart {
     }
 
     @Override
-    public int getNumberOfItems() {
+    public int getItemsNumber() {
         return items.size();
     }
 
@@ -63,6 +47,11 @@ public class ShoppingCartImpl implements ShoppingCart {
     @Override
     public void clear() {
         items.clear();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return items.isEmpty();
     }
 
 }

@@ -1,78 +1,72 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="user/fragments/head :: common_head(~{::title}, ~{})">
-    <title>Shopping cart</title>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="user/fragments/common :: head(~{::title}, ~{})">
+    <title>Shopping Cart</title>
 </head>
 <body>
+<div class="container-fluid">
+    <div th:replace="user/fragments/common :: header(${categories})"></div>
 
-<div th:replace="user/fragments/header :: header">Header</div>
-
-<div id="cart-exposition">
-    <div id="cart-header">
-        Shopping Cart
-    </div>
-    <div id="cart-items-and-checkout">
-        <div id="cart-items">
-            <div class="cart-item" th:each="item : ${cart.items}">
-                <a href="#" th:href="@{'/description?id=' + ${item.book.id}}">
-                    <div class="book-image">
-                        <img src="">
-                    </div>
-                    <div class="cart-item-details">
-                        <div class="cart-item-header">
-                            <span th:text="${item.book.name}">Name</span><br/>
-                            <span th:text="${item.book.author}">Author</span>
-                        </div>
-                        <div class="cart-item-info">
-                            <span th:text="|Language: ${item.book.language}|">Language</span><br/>
-                            <span th:text="|Format: ${item.book.format}|">Format</span><br/>
-                            <span th:text="|Publisher: ${item.book.publisher}|">Publisher</span><br/>
-                        </div>
-                    </div>
-                </a>
-                <div class="cart-item-quantity">
-                    <form action="#" method="post" th:attr="action=@{/cart/updateQuantity}">
-                        <input type="hidden" name="bookId" value="-1" th:value="${item.book.id}"/>
-                        <input type="text" name="quantity" value="1" th:value="${item.quantity}"/>
-                        <input type="submit" value="Update"/>
-                    </form>
-                    <form action="#" method="post" th:attr="action=@{/cart/deleteFromCart}">
-                        <input type="hidden" name="bookId" value="${item.book.id}"/>
-                        <input type="submit" value="Delete"/>
-                    </form>
-                </div>
-                <div class="cart-item-subtotal">
-                    <span th:text="|${item.totalPrice}$|">19.99$</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="checkout-confirmation" class="extraction">
-            <div class="extraction-header">
-                Confirmation
-            </div>
-            <div class="extraction-details">
-                <table>
+    <div class="row" th:classappend="${cart.empty ? 'd-none' : ''}">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <th>Order Total:</th>
-                        <td th:text="|${cart.totalPrice}$|">99.99$</td>
+                        <th scope="col"> </th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col" class="text-center">Quantity</th>
+                        <th scope="col" class="text-right">Price</th>
+                        <th> </th>
                     </tr>
-                    <tr>
-                        <th></th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${cart.items}">
                         <td>
-                            <form action="#" method="post" th:attr="action=@{/cart/checkout}">
-                                <input type="submit" value="Continue to Checkout"/>
-                            </form>
+                            <img src="https://dummyimage.com/150x200/55595c/fff" />
+                        </td>
+                        <td th:text="${item.book.name + ' by ' + item.book.author}">Product Name</td>
+                        <td th:text="${item.book.inStock ? 'In Stock' : 'Out of Stock'}">In stock</td>
+                        <td>
+                            <input class="form-control" type="text" value="1" th:value="${item.quantity}" />
+                        </td>
+                        <td class="text-right" th:text="${'$' + item.totalPrice}">$124,90</td>
+                        <td class="text-right">
+                            <button class="btn btn-sm btn-danger">Remove</button>
                         </td>
                     </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><strong>Total</strong></td>
+                        <td class="text-right"><strong th:text="${'$' + cart.totalPrice}">$346,90</strong></td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <button class="btn btn-lg btn-block btn-light">Continue Shopping</button>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="row" th:classappend="${!cart.empty ? 'd-none' : ''}">
+        <div class="col-12" style="height: 100px; line-height: 100px">
+            <p class="text-center">Shopping cart is empty</p>
+        </div>
+    </div>
+
+    <footer th:replace="user/fragments/common :: footer"></footer>
 </div>
-
-<footer th:replace="user/fragments/footer :: footer">Header</footer>
-
 </body>
 </html>

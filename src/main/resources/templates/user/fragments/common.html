@@ -47,13 +47,12 @@
             <form class="form-inline my-2 my-lg-0 ml-auto" action="/search" method="get">
                 <input class="form-control mr-sm-2" style="width: 400px;" type="search" name="q"
                        placeholder="Search books by title, author, or ISBN" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <!--                <div id="cart">-->
-            <!--                    <a href="#" th:href="@{/cart}">-->
-            <!--                        <img src="../../../static/img/cart-icon.png" th:src="@{/img/cart-icon.png}">-->
-            <!--                    </a>-->
-            <!--                </div>-->
+            <a class="btn btn-success ml-2" href="#" th:href="@{/cart}">
+                <i class="fa fa-shopping-cart"></i> Cart
+                <span id="cartItemsNumber" class="badge badge-light" th:text="${cart.itemsNumber}">3</span>
+            </a>
         </div>
     </nav>
 </header>
