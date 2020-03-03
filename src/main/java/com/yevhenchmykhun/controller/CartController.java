@@ -36,10 +36,9 @@ public class CartController extends HttpServlet {
     }
 
     @PostMapping(value = "/delete", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String delete(@RequestParam Long id, Model model) {
+    public @ResponseBody
+    void delete(@RequestParam Long id) {
         cart.deleteItem(id);
-        model.addAttribute("cart", cart);
-        return "user/cart";
     }
 
 }

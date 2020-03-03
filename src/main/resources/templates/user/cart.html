@@ -7,33 +7,36 @@
 <div class="container-fluid">
     <div th:replace="user/fragments/common :: header(${categories})"></div>
 
-    <div class="row" th:classappend="${cart.empty ? 'd-none' : ''}">
+    <div id="checkout-items" class="row" th:classappend="${cart.empty ? 'd-none' : ''}">
         <div class="col-12">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col"> </th>
+                        <th scope="col"></th>
                         <th scope="col">Product</th>
                         <th scope="col">Stock</th>
                         <th scope="col" class="text-center">Quantity</th>
                         <th scope="col" class="text-right">Price</th>
-                        <th> </th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="item : ${cart.items}">
                         <td>
-                            <img src="https://dummyimage.com/150x200/55595c/fff" />
+                            <img src="https://dummyimage.com/150x200/55595c/fff"/>
                         </td>
                         <td th:text="${item.book.name + ' by ' + item.book.author}">Product Name</td>
                         <td th:text="${item.book.inStock ? 'In Stock' : 'Out of Stock'}">In stock</td>
                         <td>
-                            <input class="form-control" type="text" value="1" th:value="${item.quantity}" />
+                            <input class="form-control" type="text" value="1" th:value="${item.quantity}"/>
                         </td>
                         <td class="text-right" th:text="${'$' + item.totalPrice}">$124,90</td>
                         <td class="text-right">
-                            <button class="btn btn-sm btn-danger">Remove</button>
+                            <form id="deleteFromCartForm" class="form-inline float-right">
+                                <input type="hidden" value="-1" th:value="${item.book.id}" name="id"/>
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     <tr>
@@ -51,22 +54,23 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <button class="btn btn-lg btn-block btn-light">Continue Shopping</button>
+                    <a class="btn btn-lg btn-block btn-light" href="#" th:href="@{/index}">Continue Shopping</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                    <a class="btn btn-lg btn-block btn-success text-uppercase" href="#" th:href="@{/checkout}">Checkout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row" th:classappend="${!cart.empty ? 'd-none' : ''}">
+    <div id="checkout-empty" class="row" th:classappend="${!cart.empty ? 'd-none' : ''}">
         <div class="col-12" style="height: 100px; line-height: 100px">
             <p class="text-center">Shopping cart is empty</p>
         </div>
     </div>
 
     <footer th:replace="user/fragments/common :: footer"></footer>
+    <script th:src="@{/js/cart.js}"></script>
 </div>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.yevhenchmykhun.controller.advice;
 
 import com.yevhenchmykhun.cart.ShoppingCart;
-import com.yevhenchmykhun.repository.CategoryRepository;
 import com.yevhenchmykhun.service.CategoryService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
