@@ -19,7 +19,7 @@ public class NavigationAttributesControllerAdvice {
     }
 
     @ModelAttribute
-    public void addCategories(Model model) {
+    public void addAttributes(Model model) {
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("cart", cart);
     }
