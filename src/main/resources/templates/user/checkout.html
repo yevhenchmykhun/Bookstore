@@ -127,21 +127,21 @@
                         <div class="custom-control custom-radio">
                             <input class="custom-control-input" required
                                    th:field="*{paymentType}"
-                                   th:value="${T(com.bookstore.model.PaymentType).CREDIT}"
+                                   th:value="${T(com.bookstore.web.ui.form.PaymentType).CREDIT}"
                                    type="radio" value="credit">
                             <label class="custom-control-label" th:for="${#ids.prev('paymentType')}">Credit card</label>
                         </div>
                         <div class="custom-control custom-radio">
                             <input class="custom-control-input" required
                                    th:field="*{paymentType}"
-                                   th:value="${T(com.bookstore.model.PaymentType).DEBIT}"
+                                   th:value="${T(com.bookstore.web.ui.form.PaymentType).DEBIT}"
                                    type="radio" value="debit">
                             <label class="custom-control-label" th:for="${#ids.prev('paymentType')}">Debit card</label>
                         </div>
                         <div class="custom-control custom-radio">
                             <input class="custom-control-input" required
                                    th:field="*{paymentType}"
-                                   th:value="${T(com.bookstore.model.PaymentType).PAYPAL}"
+                                   th:value="${T(com.bookstore.web.ui.form.PaymentType).PAYPAL}"
                                    type="radio" value="paypal">
                             <label class="custom-control-label" th:for="${#ids.prev('paymentType')}">PayPal</label>
                         </div>

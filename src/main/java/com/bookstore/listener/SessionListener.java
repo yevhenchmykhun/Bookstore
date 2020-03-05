@@ -2,7 +2,7 @@ package com.bookstore.listener;
 
 import com.bookstore.repository.RepositoryFactory;
 import com.bookstore.repository.VisitorRepository;
-import com.bookstore.entity.Visitor;
+import com.bookstore.model.entity.Visitor;
 import com.bookstore.util.DateConverter;
 
 import javax.servlet.annotation.WebListener;

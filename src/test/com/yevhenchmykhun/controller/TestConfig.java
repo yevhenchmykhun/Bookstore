@@ -1,4 +1,4 @@
-package com.bookstore.controller;
+package com.bookstore.web.ui.controller;
 
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,6 @@
 package com.bookstore.repository;
 
-import com.bookstore.entity.Visitor;
+import com.bookstore.model.entity.Visitor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;

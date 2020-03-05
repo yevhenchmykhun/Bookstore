@@ -1,6 +1,6 @@
 package com.bookstore.repository;
 
-import com.bookstore.entity.Book;
+import com.bookstore.model.entity.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.bookstore.restapi;
 
-import com.bookstore.entity.Book;
+import com.bookstore.model.entity.Book;
 import com.bookstore.repository.BookRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

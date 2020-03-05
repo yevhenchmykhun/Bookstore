@@ -1,7 +1,7 @@
 package com.bookstore.config;
 
-import com.bookstore.cart.ShoppingCart;
-import com.bookstore.cart.ShoppingCartImpl;
+import com.bookstore.model.cart.ShoppingCart;
+import com.bookstore.model.cart.ShoppingCartImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;

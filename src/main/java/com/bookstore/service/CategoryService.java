@@ -1,6 +1,6 @@
 package com.bookstore.service;
 
-import com.bookstore.entity.Category;
+import com.bookstore.model.entity.Category;
 
 import java.util.List;
 

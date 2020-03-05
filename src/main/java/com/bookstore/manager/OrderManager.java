@@ -1,11 +1,11 @@
 package com.bookstore.manager;
 
-import com.bookstore.cart.ShoppingCart;
-import com.bookstore.cart.ShoppingCartItem;
+import com.bookstore.model.cart.ShoppingCart;
+import com.bookstore.model.cart.ShoppingCartItem;
 import com.bookstore.repository.RepositoryFactory;
-import com.bookstore.entity.Customer;
-import com.bookstore.entity.CustomerOrder;
-import com.bookstore.entity.OrderedBook;
+import com.bookstore.model.entity.Customer;
+import com.bookstore.model.entity.CustomerOrder;
+import com.bookstore.model.entity.OrderedBook;
 
 import java.sql.Timestamp;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.bookstore.service;
 
-import com.bookstore.entity.Book;
+import com.bookstore.model.entity.Book;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;

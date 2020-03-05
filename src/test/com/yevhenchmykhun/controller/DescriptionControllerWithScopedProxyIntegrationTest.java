@@ -1,7 +1,7 @@
-package com.bookstore.controller;
+package com.bookstore.web.ui.controller;
 
 
-import com.bookstore.cart.ShoppingCart;
+import com.bookstore.model.cart.ShoppingCart;
 import com.bookstore.repository.BookRepository;
 import com.bookstore.repository.CategoryRepository;
 import org.junit.Test;

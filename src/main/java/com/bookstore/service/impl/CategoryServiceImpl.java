@@ -1,6 +1,6 @@
 package com.bookstore.service.impl;
 
-import com.bookstore.entity.Category;
+import com.bookstore.model.entity.Category;
 import com.bookstore.repository.CategoryRepository;
 import com.bookstore.service.CategoryService;
 import org.springframework.stereotype.Service;
