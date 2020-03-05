@@ -1,9 +1,9 @@
-package com.yevhenchmykhun.controller;
+package com.bookstore.controller;
 
 
-import com.yevhenchmykhun.cart.ShoppingCart;
-import com.yevhenchmykhun.repository.BookRepository;
-import com.yevhenchmykhun.repository.CategoryRepository;
+import com.bookstore.cart.ShoppingCart;
+import com.bookstore.repository.BookRepository;
+import com.bookstore.repository.CategoryRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.yevhenchmykhun.repository;
+package com.bookstore.repository;
 
-import com.yevhenchmykhun.entity.Book;
+import com.bookstore.entity.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

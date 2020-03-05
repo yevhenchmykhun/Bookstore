@@ -1,7 +1,7 @@
-package com.yevhenchmykhun.restapi;
+package com.bookstore.restapi;
 
-import com.yevhenchmykhun.entity.Book;
-import com.yevhenchmykhun.repository.BookRepository;
+import com.bookstore.entity.Book;
+import com.bookstore.repository.BookRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
