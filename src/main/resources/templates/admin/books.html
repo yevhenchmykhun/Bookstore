@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/common :: head(~{::title}, ~{})">
+    <title>Books</title>
+</head>
+<body>
+<th:block th:replace="admin/fragments/common :: main(~{::main})">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-0" role="main">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1,001</td>
+                    <td>Lorem</td>
+                    <td>ipsum</td>
+                    <td>dolor</td>
+                    <td>sit</td>
+                    <td>sit</td>
+                    <td>sit</td>
+                    <td>sit</td>
+                </tr>
+<!--                <form action="" method="post">-->
+<!--                    <input type="hidden" name="bookId" value="${book.id}"/>-->
+<!--                    <input type="submit" class="button" value="Edit"/>-->
+<!--                </form>-->
+<!--                <form action="" method="post">-->
+<!--                    <input type="hidden" name="bookId" value="${book.id}"/>-->
+<!--                    <input type="submit" class="button" value="Delete"/>-->
+<!--                </form>-->
+                </tbody>
+            </table>
+        </div>
+    </main>
+</th:block>
+<th:block th:replace="admin/fragments/common :: scripts"/>
+</body>
+</html>

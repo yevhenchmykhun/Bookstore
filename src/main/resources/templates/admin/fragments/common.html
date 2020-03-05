@@ -2,14 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="head(title, links)">
-
     <title th:replace="${title}">Title</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/static/css/user/common.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/common.css}">
 
     <th:block th:replace="${links}"/>
-
 </head>
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" th:fragment="navbar">
