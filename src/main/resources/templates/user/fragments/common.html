@@ -5,7 +5,7 @@
     <title th:replace="${title}">Title</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/user/common.css}">
 
     <th:block th:replace="${links}"/>
 </head>
@@ -57,7 +57,7 @@
 <th:block th:fragment="scripts">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/user/common.js}"></script>
 </th:block>
 
 </html>

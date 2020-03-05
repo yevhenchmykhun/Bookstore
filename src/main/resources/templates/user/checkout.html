@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="user/fragments/common :: head(~{::title}, ~{::link})">
     <title>Checkout</title>
-    <link rel="stylesheet" th:href="@{/css/checkout.css}">
+    <link rel="stylesheet" th:href="@{/css/user/checkout.css}">
 </head>
 <body>
 <div class="container-fluid">
@@ -207,6 +207,6 @@
 </div>
 <th:block th:replace="user/fragments/common :: scripts"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js"></script>
-<script th:src="@{/js/checkout.js}"></script>
+<script th:src="@{/js/user/checkout.js}"></script>
 </body>
 </html>
