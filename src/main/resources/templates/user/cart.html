@@ -6,7 +6,6 @@
 <body>
 <div class="container-fluid">
     <div th:replace="user/fragments/common :: header(${categories})"></div>
-
     <div id="checkout-items" class="row" th:classappend="${cart.empty ? 'd-none' : ''}">
         <div class="col-12">
             <div class="table-responsive">
@@ -62,15 +61,14 @@
             </div>
         </div>
     </div>
-
     <div id="checkout-empty" class="row" th:classappend="${!cart.empty ? 'd-none' : ''}">
         <div class="col-12" style="height: 100px; line-height: 100px">
             <p class="text-center">Shopping cart is empty</p>
         </div>
     </div>
-
     <footer th:replace="user/fragments/common :: footer"></footer>
-    <script th:src="@{/js/cart.js}"></script>
 </div>
+<th:block th:replace="user/fragments/common :: scripts"/>
+<script th:src="@{/js/cart.js}"></script>
 </body>
 </html>

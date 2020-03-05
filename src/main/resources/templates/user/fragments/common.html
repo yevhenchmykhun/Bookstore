@@ -2,19 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head th:fragment="head(title, links)">
-
     <title th:replace="${title}">Title</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/common.css}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
-            crossorigin="anonymous"></script>
-    <script th:src="@{/js/common.js}"></script>
 
     <th:block th:replace="${links}"/>
-
 </head>
 
 <header th:fragment="header(categories)">
@@ -60,5 +53,11 @@
 <footer th:fragment="footer" class="footer">
     <p class="text-muted text-center">Copyright &copy; 2020 Bookstore.com</p>
 </footer>
+
+<th:block th:fragment="scripts">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/common.js}"></script>
+</th:block>
 
 </html>

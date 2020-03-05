@@ -1,24 +1,3 @@
-<!--<%&#45;&#45;<c:forEach var="book" items="${books}">&#45;&#45;%>-->
-<!--<%&#45;&#45;    <div class="category-exposition">&#45;&#45;%>-->
-<!--<%&#45;&#45;        <a href="<c:url value='/description'/>?id=${book.id}">&#45;&#45;%>-->
-<!--<%&#45;&#45;            <div class="book-image">&#45;&#45;%>-->
-<!--<%&#45;&#45;                <img src="<c:url value='${initParam.relativeCoversPath}${book.cover}'/>">&#45;&#45;%>-->
-<!--<%&#45;&#45;            </div>&#45;&#45;%>-->
-<!--<%&#45;&#45;            <div class="category-info-block">&#45;&#45;%>-->
-<!--<%&#45;&#45;                <div class="category-info-header">&#45;&#45;%>-->
-<!--<%&#45;&#45;                        ${book.name}<br/>&#45;&#45;%>-->
-<!--<%&#45;&#45;                    by ${book.author}&#45;&#45;%>-->
-<!--<%&#45;&#45;                </div>&#45;&#45;%>-->
-<!--<%&#45;&#45;                <div class="category-info">&#45;&#45;%>-->
-<!--<%&#45;&#45;                    ISBN: ${book.isbn}<br/>&#45;&#45;%>-->
-<!--<%&#45;&#45;                    Release Date: ${book.releaseDate}<br/>&#45;&#45;%>-->
-<!--<%&#45;&#45;                    Publisher: ${book.publisher}<br/>&#45;&#45;%>-->
-<!--<%&#45;&#45;                </div>&#45;&#45;%>-->
-<!--<%&#45;&#45;            </div>&#45;&#45;%>-->
-<!--<%&#45;&#45;        </a>&#45;&#45;%>-->
-<!--<%&#45;&#45;    </div>&#45;&#45;%>-->
-<!--<%&#45;&#45;</c:forEach>&#45;&#45;%>-->
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="user/fragments/common :: head(~{::title}, ~{})">
@@ -72,6 +51,7 @@
     </nav>
     <footer th:replace="user/fragments/common :: footer"></footer>
 </div>
+<th:block th:replace="user/fragments/common :: scripts"/>
 </body>
 </html>
 
