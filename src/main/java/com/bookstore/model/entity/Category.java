@@ -2,10 +2,7 @@ package com.bookstore.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class Category implements Serializable {
     private String name;
 
     // bi-directional many-to-one association to Book
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Book> books;
 
 }

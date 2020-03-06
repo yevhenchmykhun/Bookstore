@@ -13,9 +13,4 @@ public class IndexController {
         return "admin/dashboard";
     }
 
-    @GetMapping("/books")
-    public String getBooks() {
-        return "admin/books";
-    }
-
 }

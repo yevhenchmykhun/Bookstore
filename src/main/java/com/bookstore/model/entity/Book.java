@@ -47,7 +47,7 @@ public class Book implements Serializable {
 
     private String cover;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
     public boolean isInStock() {

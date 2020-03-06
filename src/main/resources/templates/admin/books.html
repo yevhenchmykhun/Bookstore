@@ -21,24 +21,27 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                    <td>sit</td>
-                    <td>sit</td>
-                    <td>sit</td>
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.id}"></td>
+                    <td th:text="${book.name}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.isbn}"></td>
+                    <td th:text="${book.price}"></td>
+                    <td th:text="${book.quantity}"></td>
+                    <td th:text="${book.category.name}"></td>
+                    <td style="width: auto">
+                        <form action="#" class="d-inline" method="post"
+                              th:action="@{/admin/books/edit}">
+                            <input name="id" type="hidden" value="${book.id}"/>
+                            <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Edit</button>
+                        </form>
+                        <form action="#" class="d-inline" method="post"
+                              th:action="@{/admin/books/delete}">
+                            <input name="id" type="hidden" value="${book.id}"/>
+                            <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
-<!--                <form action="" method="post">-->
-<!--                    <input type="hidden" name="bookId" value="${book.id}"/>-->
-<!--                    <input type="submit" class="button" value="Edit"/>-->
-<!--                </form>-->
-<!--                <form action="" method="post">-->
-<!--                    <input type="hidden" name="bookId" value="${book.id}"/>-->
-<!--                    <input type="submit" class="button" value="Delete"/>-->
-<!--                </form>-->
                 </tbody>
             </table>
         </div>

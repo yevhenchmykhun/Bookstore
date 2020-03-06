@@ -47,6 +47,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Book> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public Long countByCategoryId(Long categoryId) {
         return repository.countByCategoryId(categoryId);
     }
