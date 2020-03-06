@@ -29,15 +29,15 @@
                     <td th:text="${book.price}"></td>
                     <td th:text="${book.quantity}"></td>
                     <td th:text="${book.category.name}"></td>
-                    <td style="width: auto">
+                    <td>
                         <form action="#" class="d-inline" method="post"
                               th:action="@{/admin/books/edit}">
-                            <input name="id" type="hidden" value="${book.id}"/>
+                            <input name="id" type="hidden" th:value="${book.id}"/>
                             <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Edit</button>
                         </form>
                         <form action="#" class="d-inline" method="post"
                               th:action="@{/admin/books/delete}">
-                            <input name="id" type="hidden" value="${book.id}"/>
+                            <input name="id" type="hidden" th:value="${book.id}"/>
                             <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Delete</button>
                         </form>
                     </td>
