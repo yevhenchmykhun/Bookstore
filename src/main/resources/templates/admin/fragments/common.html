@@ -19,29 +19,33 @@
     </ul>
 </nav>
 
-<nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="sidebar">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="sidebar(${currentPage})">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="#" th:classappend="${currentPage == 'dashboard'} ? 'active' : ''"
+                   th:href="@{/admin/dashboard}">
                     <span data-feather="home"></span>
-                    Dashboard <span class="sr-only">(current)</span>
+                    Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#" th:classappend="${currentPage == 'books'}  ? 'active' : ''"
+                   th:href="@{/admin/books}">
                     <span data-feather="book"></span>
                     Books
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#" th:classappend="${currentPage == 'categories'}  ? 'active' : ''"
+                   th:href="@{/admin/categories}">
                     <span data-feather="menu"></span>
                     Categories
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#" th:classappend="${currentPage == 'orders'} ? 'active' : ''"
+                   th:href="@{/admin/orders}">
                     <span data-feather="file"></span>
                     Orders
                 </a>
@@ -62,11 +66,11 @@
     </div>
 </nav>
 
-<th:block th:fragment="main(main)">
+<th:block th:fragment="main(currentPage, main)">
     <nav th:replace="admin/fragments/common :: navbar"></nav>
     <div class="container-fluid">
         <div class="row">
-            <nav th:replace="admin/fragments/common :: sidebar"></nav>
+            <nav th:replace="admin/fragments/common :: sidebar(currentPage)"></nav>
             <th:block th:replace="${main}"/>
         </div>
     </div>
