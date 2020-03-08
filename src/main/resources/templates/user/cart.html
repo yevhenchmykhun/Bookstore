@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="user/fragments/common :: head(~{::title}, ~{})">
     <title>Shopping Cart</title>
 </head>
 <body>
 <div class="container-fluid">
     <div th:replace="user/fragments/common :: header(${categories})"></div>
-    <div id="checkout-items" class="row" th:classappend="${cart.empty ? 'd-none' : ''}">
+    <div class="row" id="checkout-items" th:classappend="${cart.empty ? 'd-none' : ''}">
         <div class="col-12">
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -15,8 +15,8 @@
                         <th scope="col"></th>
                         <th scope="col">Product</th>
                         <th scope="col">Stock</th>
-                        <th scope="col" class="text-center">Quantity</th>
-                        <th scope="col" class="text-right">Price</th>
+                        <th class="text-center" scope="col">Quantity</th>
+                        <th class="text-right" scope="col">Price</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -28,13 +28,13 @@
                         <td th:text="${item.book.name + ' by ' + item.book.author}">Product Name</td>
                         <td th:text="${item.book.inStock ? 'In Stock' : 'Out of Stock'}">In stock</td>
                         <td>
-                            <input class="form-control" type="text" value="1" th:value="${item.quantity}"/>
+                            <input class="form-control" th:value="${item.quantity}" type="text" value="1"/>
                         </td>
                         <td class="text-right" th:text="${'$' + item.totalPrice}">$124,90</td>
                         <td class="text-right">
-                            <form id="deleteFromCartForm" class="form-inline float-right">
-                                <input type="hidden" value="-1" th:value="${item.book.id}" name="id"/>
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            <form class="form-inline float-right" id="deleteFromCartForm">
+                                <input name="id" th:value="${item.book.id}" type="hidden" value="-1"/>
+                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -56,12 +56,13 @@
                     <a class="btn btn-lg btn-block btn-light" href="#" th:href="@{/index}">Continue Shopping</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <a class="btn btn-lg btn-block btn-success text-uppercase" href="#" th:href="@{/checkout}">Checkout</a>
+                    <a class="btn btn-lg btn-block btn-success text-uppercase" href="#"
+                       th:href="@{/checkout}">Checkout</a>
                 </div>
             </div>
         </div>
     </div>
-    <div id="checkout-empty" class="row" th:classappend="${!cart.empty ? 'd-none' : ''}">
+    <div class="row" id="checkout-empty" th:classappend="${!cart.empty ? 'd-none' : ''}">
         <div class="col-12" style="height: 100px; line-height: 100px">
             <p class="text-center">Shopping cart is empty</p>
         </div>
@@ -69,6 +70,6 @@
     <footer th:replace="user/fragments/common :: footer"></footer>
 </div>
 <th:block th:replace="user/fragments/common :: scripts"/>
-<script th:src="@{/js/user/cart.js}"></script>
+<script th:src="@{/js/user/cart.js}" type="text/javascript"></script>
 </body>
 </html>

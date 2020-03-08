@@ -34,9 +34,11 @@ public class BooksController {
     }
 
     @PostMapping("/new-book/add")
-    public String createNewBook(@RequestParam("cover") MultipartFile cover, @ModelAttribute @Valid Book book, BindingResult bindingResult) {
-        System.out.println(book);
-        System.out.println(cover.getOriginalFilename());
+    public String createNewBook(@ModelAttribute @Valid Book book, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin/new_book";
+        }
+
         return "redirect:/admin/books";
     }
 

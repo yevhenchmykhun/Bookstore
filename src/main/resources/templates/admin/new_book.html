@@ -17,12 +17,18 @@
                         <div class="invalid-feedback">
                             Title is required
                         </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{title}" th:if="${#fields.hasErrors('title')}">
+                        </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">
                         <label th:for="${#ids.next('author')}">Author</label>
                         <input class="form-control" placeholder="" required th:field="*{author}" type="text">
                         <div class="invalid-feedback">
                             Author is required
+                        </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{author}" th:if="${#fields.hasErrors('author')}">
                         </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">
@@ -31,6 +37,9 @@
                         <div class="invalid-feedback">
                             ISBN is required
                         </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{isbn}" th:if="${#fields.hasErrors('isbn')}">
+                        </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">
                         <label th:for="${#ids.next('price')}">Price</label>
@@ -38,12 +47,18 @@
                         <div class="invalid-feedback">
                             Price is required
                         </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{price}" th:if="${#fields.hasErrors('price')}">
+                        </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">
                         <label th:for="${#ids.next('quantity')}">Quantity</label>
                         <input class="form-control" placeholder="" required th:field="*{quantity}" type="text">
                         <div class="invalid-feedback">
                             Quantity is required
+                        </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{quantity}" th:if="${#fields.hasErrors('quantity')}">
                         </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">
@@ -55,12 +70,18 @@
                         <div class="invalid-feedback">
                             Category is required
                         </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{category}" th:if="${#fields.hasErrors('category')}">
+                        </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">
-                        <label for="cover">Book cover</label>
-                        <input class="form-control-file" id="cover" name="cover" required type="file">
+                        <label th:for="${#ids.next('cover')}">Book cover</label>
+                        <input class="form-control-file" required th:field="*{cover}" type="file">
                         <div class="invalid-feedback">
                             Cover is required
+                        </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{cover}" th:if="${#fields.hasErrors('cover')}">
                         </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">
@@ -72,7 +93,5 @@
     </main>
 </th:block>
 <th:block th:replace="admin/fragments/common :: scripts"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js"></script>
-<script th:src="@{/js/admin/newbook.js}"></script>
 </body>
 </html>

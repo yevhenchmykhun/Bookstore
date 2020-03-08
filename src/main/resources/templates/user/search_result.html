@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="user/fragments/common :: head(~{::title}, ~{})">
     <title>Search Result</title>
 </head>
@@ -10,7 +10,7 @@
         <div class="col-2">
             <div class="card p-1 clickable-card">
                 <a href="#" th:href="@{/book(id=${book.id})}">
-                    <img class="card-img-top" th:src="@{/img/diagonal_fabric.png}" alt="Book cover">
+                    <img alt="Book cover" class="card-img-top" th:src="@{/img/diagonal_fabric.png}">
                     <div class="card-body">
                         <p class="card-text" th:text="${book.name + ' by ' + book.author}"></p>
                     </div>

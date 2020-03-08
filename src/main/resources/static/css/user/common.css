@@ -3,3 +3,14 @@
     line-height: 60px; /* Vertically center the text there */
     background-color: #f8f9fa;
 }
+
+/*
+ * Server validation
+ */
+
+.server-invalid-feedback {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545
+}
