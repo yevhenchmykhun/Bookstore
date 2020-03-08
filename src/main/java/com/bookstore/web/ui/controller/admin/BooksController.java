@@ -1,10 +1,15 @@
 package com.bookstore.web.ui.controller.admin;
 
 import com.bookstore.service.BookService;
+import com.bookstore.web.ui.form.Billing;
+import com.bookstore.web.ui.form.Book;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("${admin-console.base-path}")
@@ -20,6 +25,19 @@ public class BooksController {
     public String getBooks(Model model) {
         model.addAttribute("books", bookService.findAll());
         return "admin/books";
+    }
+
+    @GetMapping("/new-book")
+    public String getNewBook(Model model) {
+        model.addAttribute("book", new Book());
+        return "admin/new_book";
+    }
+
+    @PostMapping("/new-book/add")
+    public String createNewBook(@RequestParam("cover") MultipartFile cover, @ModelAttribute @Valid Book book, BindingResult bindingResult) {
+        System.out.println(book);
+        System.out.println(cover.getOriginalFilename());
+        return "redirect:/admin/books";
     }
 
 }

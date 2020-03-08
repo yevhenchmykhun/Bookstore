@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/common :: head(~{::title}, ~{})">
+    <title>New Book</title>
+</head>
+<body>
+<th:block th:replace="admin/fragments/common :: main('', ~{::main})">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-0" role="main">
+        <div class="container my-3">
+            <form action="#" class="needs-validation" enctype="multipart/form-data" method="post" novalidate
+                  th:action="@{/admin/new-book/add}"
+                  th:object="${book}">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label th:for="${#ids.next('title')}">Title</label>
+                        <input class="form-control" placeholder="" required th:field="*{title}" type="text">
+                        <div class="invalid-feedback">
+                            Title is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label th:for="${#ids.next('author')}">Author</label>
+                        <input class="form-control" placeholder="" required th:field="*{author}" type="text">
+                        <div class="invalid-feedback">
+                            Author is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label th:for="${#ids.next('isbn')}">ISBN</label>
+                        <input class="form-control" placeholder="" required th:field="*{isbn}" type="text">
+                        <div class="invalid-feedback">
+                            ISBN is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label th:for="${#ids.next('price')}">Price</label>
+                        <input class="form-control" placeholder="" required th:field="*{price}" type="text">
+                        <div class="invalid-feedback">
+                            Price is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label th:for="${#ids.next('quantity')}">Quantity</label>
+                        <input class="form-control" placeholder="" required th:field="*{quantity}" type="text">
+                        <div class="invalid-feedback">
+                            Quantity is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label th:for="${#ids.next('category')}">Category</label>
+                        <select class="form-control" required th:field="*{category}">
+                            <option selected value="">Choose...</option>
+                            <option value="">...</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Category is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label for="cover">Book cover</label>
+                        <input class="form-control-file" id="cover" name="cover" required type="file">
+                        <div class="invalid-feedback">
+                            Cover is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <button class="btn btn-primary float-right" type="submit">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</th:block>
+<th:block th:replace="admin/fragments/common :: scripts"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js"></script>
+<script th:src="@{/js/admin/newbook.js}"></script>
+</body>
+</html>
