@@ -1,11 +1,11 @@
 package com.bookstore.service;
 
-import com.bookstore.model.entity.BookCoverEntity;
+import com.bookstore.model.dto.BookCover;
 
 import java.util.Optional;
 
 public interface BookCoverService {
 
-    Optional<BookCoverEntity> findById(Long id);
+    Optional<BookCover> findById(Long id);
 
 }
