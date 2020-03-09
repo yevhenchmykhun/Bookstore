@@ -21,12 +21,8 @@ public class SearchController {
     @GetMapping("/search")
     public String get(@RequestParam String q, Model model) {
         List<Book> books = bookService.findByNameContaining(q);
-        if (books.isEmpty()) {
-            books = bookService.findByAuthorContaining(q);
-            if (books.isEmpty()) {
-                books = bookService.findByIsbnContaining(q);
-            }
-        }
+        books.addAll(bookService.findByAuthorContaining(q));
+        books.addAll(bookService.findByIsbnContaining(q));
 
         model.addAttribute("books", books);
 
