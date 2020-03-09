@@ -1,6 +1,7 @@
 package com.bookstore.model.cart;
 
-import com.bookstore.model.entity.Book;
+import com.bookstore.model.dto.Book;
+import com.bookstore.model.entity.BookEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,7 +10,7 @@ public interface ShoppingCart {
 
     void addItem(Book book);
 
-    void deleteItem(Long book);
+    void deleteItem(Long bookId);
 
     void clear();
 

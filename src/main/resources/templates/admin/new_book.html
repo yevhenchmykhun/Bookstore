@@ -9,7 +9,7 @@
         <div class="container my-3">
             <form action="#" class="needs-validation" enctype="multipart/form-data" method="post" novalidate
                   th:action="@{/admin/new-book/add}"
-                  th:object="${book}">
+                  th:object="${bookForm}">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 mb-3">
                         <label th:for="${#ids.next('title')}">Title</label>
@@ -65,13 +65,25 @@
                         <label th:for="${#ids.next('category')}">Category</label>
                         <select class="form-control" required th:field="*{category}">
                             <option selected value="">Choose...</option>
-                            <option value="">...</option>
+                            <option th:each="category : ${categories}"
+                                    th:text="${category.name}"
+                                    th:value="${category.name}"></option>
                         </select>
                         <div class="invalid-feedback">
                             Category is required
                         </div>
                         <div class="server-invalid-feedback"
                              th:errors="*{category}" th:if="${#fields.hasErrors('category')}">
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 mb-3">
+                        <label th:for="${#ids.next('description')}">Description</label>
+                        <textarea class="form-control" required rows="3" th:field="*{description}"></textarea>
+                        <div class="invalid-feedback">
+                            Description is required
+                        </div>
+                        <div class="server-invalid-feedback"
+                             th:errors="*{description}" th:if="${#fields.hasErrors('description')}">
                         </div>
                     </div>
                     <div class="col-md-6 offset-md-3 mb-3">

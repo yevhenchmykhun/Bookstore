@@ -25,8 +25,8 @@
                         <td>
                             <img src="https://dummyimage.com/150x200/55595c/fff"/>
                         </td>
-                        <td th:text="${item.book.name + ' by ' + item.book.author}">Product Name</td>
-                        <td th:text="${item.book.inStock ? 'In Stock' : 'Out of Stock'}">In stock</td>
+                        <td th:text="${item.book.title + ' by ' + item.book.author}">Product Name</td>
+                        <td th:text="${item.book.quantity > 0 ? 'In Stock' : 'Out of Stock'}">In stock</td>
                         <td>
                             <input class="form-control" th:value="${item.quantity}" type="text" value="1"/>
                         </td>

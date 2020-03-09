@@ -9,9 +9,9 @@
     <div class="row my-3">
         <div class="col-2">
             <div class="card p-1">
-                <img alt="Book cover" class="card-img-top" th:src="@{/img/diagonal_fabric.png}">
+                <img alt="Book cover" class="card-img-top" th:src="*{'/book-cover/' + book.coverId}">
                 <div class="card-body">
-                    <p class="card-text" th:text="${book.name + ' by ' + book.author}"></p>
+                    <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
                 </div>
             </div>
         </div>

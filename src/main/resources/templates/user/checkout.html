@@ -18,7 +18,7 @@
                     <li class="list-group-item d-flex justify-content-between lh-condensed"
                         th:each="item : ${cart.items}">
                         <div>
-                            <h6 class="my-0" th:text="${item.book.name}">Product name</h6>
+                            <h6 class="my-0" th:text="${item.book.title}">Product name</h6>
                             <small class="text-muted" th:text="${'by ' + item.book.author}">Brief description</small>
                         </div>
                         <span class="text-muted" th:text="${'$' + item.totalPrice}">$12</span>
@@ -32,7 +32,7 @@
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Billing address</h4>
                 <form action="#" class="needs-validation" method="post" novalidate th:action="@{/pay}"
-                      th:object="${billing}">
+                      th:object="${billingForm}">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label th:for="${#ids.next('firstName')}">First name</label>

@@ -8,7 +8,8 @@ import java.util.List;
 
 @Data
 @Entity
-public class Category implements Serializable {
+@Table(name = "category")
+public class CategoryEntity implements Serializable {
 
     @Id
     @GeneratedValue
@@ -18,6 +19,6 @@ public class Category implements Serializable {
 
     // bi-directional many-to-one association to Book
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    private List<Book> books;
+    private List<BookEntity> books;
 
 }

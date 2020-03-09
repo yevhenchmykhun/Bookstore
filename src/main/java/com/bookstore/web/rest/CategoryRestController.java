@@ -1,7 +1,7 @@
 package com.bookstore.web.rest;
 
-import com.bookstore.model.entity.Book;
-import com.bookstore.model.entity.Category;
+import com.bookstore.model.entity.BookEntity;
+import com.bookstore.model.entity.CategoryEntity;
 import com.bookstore.repository.BookRepository;
 import com.bookstore.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,29 +21,29 @@ public class CategoryRestController {
     private BookRepository bookRepository;
 
     @GetMapping
-    public List<Category> getAll() {
+    public List<CategoryEntity> getAll() {
         return categoryRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public Category get(@PathVariable Long id) {
+    public CategoryEntity get(@PathVariable Long id) {
         return categoryRepository.getOne(id);
     }
 
     @GetMapping(path = "/{id}/books")
-    public List<Book> getAllCategoryBooks(@PathVariable Long id) {
+    public List<BookEntity> getAllCategoryBooks(@PathVariable Long id) {
         return bookRepository.findAllByCategoryId(id, Pageable.unpaged());
     }
 
     @PostMapping
-    public Category post(@RequestBody Category category) {
-        return categoryRepository.saveAndFlush(category);
+    public CategoryEntity post(@RequestBody CategoryEntity categoryEntity) {
+        return categoryRepository.saveAndFlush(categoryEntity);
     }
 
     @PutMapping(path = "/{id}")
-    public Category put(@PathVariable Long id, @RequestBody Category category) {
-        category.setId(id);
-        return categoryRepository.saveAndFlush(category);
+    public CategoryEntity put(@PathVariable Long id, @RequestBody CategoryEntity categoryEntity) {
+        categoryEntity.setId(id);
+        return categoryRepository.saveAndFlush(categoryEntity);
     }
 
     @DeleteMapping(path = "/{id}")

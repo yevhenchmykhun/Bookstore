@@ -1,6 +1,6 @@
 package com.bookstore.web.rest;
 
-import com.bookstore.model.entity.Book;
+import com.bookstore.model.entity.BookEntity;
 import com.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,24 +15,24 @@ public class BookRestController {
     private BookRepository bookRepository;
 
     @GetMapping
-    public List<Book> getAll() {
+    public List<BookEntity> getAll() {
         return bookRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public Book get(@PathVariable Long id) {
+    public BookEntity get(@PathVariable Long id) {
         return bookRepository.getOne(id);
     }
 
     @PostMapping
-    public Book post(@RequestBody Book book) {
-        return bookRepository.saveAndFlush(book);
+    public BookEntity post(@RequestBody BookEntity bookEntity) {
+        return bookRepository.saveAndFlush(bookEntity);
     }
 
     @PutMapping(path = "/{id}")
-    public Book put(@PathVariable Long id, @RequestBody Book book) {
-        book.setId(id);
-        return bookRepository.saveAndFlush(book);
+    public BookEntity put(@PathVariable Long id, @RequestBody BookEntity bookEntity) {
+        bookEntity.setId(id);
+        return bookRepository.saveAndFlush(bookEntity);
     }
 
     @DeleteMapping(path = "/{id}")

@@ -1,6 +1,6 @@
 package com.bookstore.web.ui.controller.user;
 
-import com.bookstore.web.ui.form.Billing;
+import com.bookstore.web.ui.form.BillingForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +15,12 @@ public class CheckoutController {
 
     @GetMapping("/checkout")
     public String checkout(Model model) {
-        model.addAttribute(new Billing());
+        model.addAttribute(new BillingForm());
         return "user/checkout";
     }
 
     @PostMapping("/pay")
-    public String pay(@ModelAttribute @Valid Billing billing, BindingResult bindingResult) {
+    public String pay(@ModelAttribute @Valid BillingForm billingForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "user/checkout";
         }

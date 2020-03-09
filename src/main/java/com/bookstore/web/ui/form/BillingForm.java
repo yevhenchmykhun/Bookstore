@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class Billing {
+public class BillingForm {
 
     @NotNull
     private String firstName;

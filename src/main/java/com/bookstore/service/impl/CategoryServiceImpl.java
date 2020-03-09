@@ -1,6 +1,6 @@
 package com.bookstore.service.impl;
 
-import com.bookstore.model.entity.Category;
+import com.bookstore.model.entity.CategoryEntity;
 import com.bookstore.repository.CategoryRepository;
 import com.bookstore.service.CategoryService;
 import org.springframework.stereotype.Service;
@@ -19,8 +19,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> findAll() {
+    public List<CategoryEntity> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public CategoryEntity findByName(String category) {
+        return repository.findByName(category);
     }
 
 }

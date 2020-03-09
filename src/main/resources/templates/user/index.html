@@ -11,7 +11,7 @@
             <a href="#" th:href="@{'/book?id=' + ${book.id}}">
                 <img alt="Book cover" class="card-img-top" th:src="@{/img/diagonal_fabric.png}">
                 <div class="card-body">
-                    <p class="card-text" th:text="${book.name + ' by ' + book.author}"></p>
+                    <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
                 </div>
             </a>
         </div>

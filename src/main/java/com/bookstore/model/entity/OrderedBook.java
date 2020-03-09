@@ -17,7 +17,7 @@ public class OrderedBook implements Serializable {
     //bi-directional many-to-one association to Book
     @ManyToOne
     @JoinColumn(name = "book_id")
-    private Book book;
+    private BookEntity bookEntity;
 
     //bi-directional many-to-one association to CustomerOrder
     @ManyToOne

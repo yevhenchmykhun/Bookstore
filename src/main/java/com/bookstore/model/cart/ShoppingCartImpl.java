@@ -1,6 +1,6 @@
 package com.bookstore.model.cart;
 
-import com.bookstore.model.entity.Book;
+import com.bookstore.model.dto.Book;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ public class ShoppingCartImpl implements ShoppingCart {
     }
 
     @Override
-    public void deleteItem(Long id) {
-        items.removeIf(item -> item.getBook().getId().equals(id));
+    public void deleteItem(Long bookId) {
+        items.removeIf(item -> item.getBook().getId().equals(bookId));
     }
 
     @Override

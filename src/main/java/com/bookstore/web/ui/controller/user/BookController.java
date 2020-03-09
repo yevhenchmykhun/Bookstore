@@ -1,6 +1,7 @@
 package com.bookstore.web.ui.controller.user;
 
-import com.bookstore.model.entity.Book;
+import com.bookstore.model.dto.Book;
+import com.bookstore.model.entity.BookEntity;
 import com.bookstore.service.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

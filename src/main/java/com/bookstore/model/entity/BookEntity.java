@@ -7,15 +7,15 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Data
-@ToString(of = "name")
+@ToString(of = "title")
 @Entity
-public class Book implements Serializable {
+@Table(name = "book")
+public class BookEntity implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String author;
@@ -23,32 +23,27 @@ public class Book implements Serializable {
     @Column(length = 4096)
     private String description;
 
-    private String format;
-
     private String isbn;
-
-    private String language;
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    private int pages;
-
-    private String name;
+    private String title;
 
     private BigDecimal price;
 
-    private String publisher;
+    private Integer quantity;
 
-    private int quantity;
-
-    @Column(name = "release_date")
-    private Date releaseDate;
-
-    private String cover;
+    @OneToOne(cascade = CascadeType.ALL)
+    private BookCoverEntity cover;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Category category;
+    private CategoryEntity category;
+
+    @PreUpdate
+    private void postUpdate() {
+        lastUpdate = new Timestamp(System.currentTimeMillis());
+    }
 
     public boolean isInStock() {
         return quantity > 0;

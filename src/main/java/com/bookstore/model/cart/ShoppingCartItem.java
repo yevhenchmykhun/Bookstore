@@ -1,6 +1,6 @@
 package com.bookstore.model.cart;
 
-import com.bookstore.model.entity.Book;
+import com.bookstore.model.dto.Book;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

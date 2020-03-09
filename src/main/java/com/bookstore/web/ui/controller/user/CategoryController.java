@@ -1,6 +1,6 @@
 package com.bookstore.web.ui.controller.user;
 
-import com.bookstore.model.entity.Book;
+import com.bookstore.model.entity.BookEntity;
 import com.bookstore.service.BookService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -23,13 +23,13 @@ public class CategoryController {
 
     @GetMapping("/category")
     public String get(@RequestParam Long id, @RequestParam Integer page, Model model) {
-        List<Book> books = bookService.findAllByCategoryId(id, PageRequest.of(page - 1, PAGE_SIZE));
+        List<BookEntity> bookEntities = bookService.findAllByCategoryId(id, PageRequest.of(page - 1, PAGE_SIZE));
 
         long booksTotalNumber = bookService.countByCategoryId(id);
         long pagesNumber = (int) Math.ceil(booksTotalNumber * 1.0 / PAGE_SIZE);
 
         model.addAttribute("categoryId", id);
-        model.addAttribute("books", books);
+        model.addAttribute("books", bookEntities);
         model.addAttribute("currentPage", page);
         model.addAttribute("pagesNumber", pagesNumber);
 
