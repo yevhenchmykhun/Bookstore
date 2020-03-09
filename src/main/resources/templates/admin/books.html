@@ -28,7 +28,7 @@
                     <td th:text="${book.isbn}"></td>
                     <td th:text="${book.price}"></td>
                     <td th:text="${book.quantity}"></td>
-                    <td th:text="${book.category.name}"></td>
+                    <td th:text="${book.category}"></td>
                     <td>
                         <form action="#" class="d-inline" method="post"
                               th:action="@{/admin/books/edit}">
