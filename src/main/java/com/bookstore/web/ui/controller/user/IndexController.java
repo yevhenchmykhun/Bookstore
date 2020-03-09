@@ -1,6 +1,6 @@
 package com.bookstore.web.ui.controller.user;
 
-import com.bookstore.model.entity.BookEntity;
+import com.bookstore.model.dto.Book;
 import com.bookstore.service.BookService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -20,8 +20,8 @@ public class IndexController {
 
     @GetMapping("/index")
     public String get(Model model) {
-        List<BookEntity> bookEntities = bookService.findAllByCategoryId(2L, PageRequest.of(0, 12));
-        model.addAttribute("books", bookEntities);
+        List<Book> books = bookService.findAllByCategoryId(2L, PageRequest.of(0, 12));
+        model.addAttribute("books", books);
 
         return "user/index";
     }
