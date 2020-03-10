@@ -45,7 +45,7 @@ public class BookForm {
     private String description;
 
     @NotNull
-    @File(mediaType = MediaType.IMAGE_JPEG_VALUE, size = 131_072)
+    @File(mediaType = MediaType.IMAGE_JPEG_VALUE, size = 1024 * 128, message = "Only JPEG with size up to 128KB is accepted")
     private MultipartFile cover;
 
 }
