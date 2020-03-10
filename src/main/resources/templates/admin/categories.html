@@ -6,7 +6,23 @@
 <body>
 <th:block th:replace="admin/fragments/common :: main('categories', ~{::main})">
     <main class="col-md-9 ml-sm-auto col-lg-10 px-0" role="main">
-        <div class="table-responsive">
+        <div sec:authorize="hasRole('ADMIN')" class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div sec:authorize="hasRole('SUPER_ADMIN')" class="table-responsive">
             <table class="table table-striped table-sm">
                 <thead>
                 <tr>
