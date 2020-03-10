@@ -4,11 +4,12 @@ import com.bookstore.model.dto.Book;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-public class ShoppingCartItem {
+public class ShoppingCartItem implements Serializable {
 
     private Book book;
     private int quantity;

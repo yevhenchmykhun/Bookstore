@@ -2,11 +2,12 @@ package com.bookstore.model.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Data
-public class Book {
+public class Book implements Serializable {
 
     private Long id;
 

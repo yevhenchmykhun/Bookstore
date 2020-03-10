@@ -1,12 +1,12 @@
 package com.bookstore.model.cart;
 
 import com.bookstore.model.dto.Book;
-import com.bookstore.model.entity.BookEntity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ShoppingCart {
+public interface ShoppingCart extends Serializable {
 
     void addItem(Book book);
 
