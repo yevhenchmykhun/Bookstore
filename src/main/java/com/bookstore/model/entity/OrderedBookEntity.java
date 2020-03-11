@@ -16,11 +16,11 @@ public class OrderedBookEntity implements Serializable {
 
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private BookEntity book;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_order_id")
     private OrderEntity order;
 

@@ -34,10 +34,10 @@ public class BookEntity implements Serializable {
 
     private Integer quantity;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     private BookCoverEntity cover;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private CategoryEntity category;
 
     @PreUpdate
