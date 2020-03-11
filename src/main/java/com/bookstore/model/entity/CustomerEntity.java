@@ -8,7 +8,8 @@ import java.util.List;
 
 @Data
 @Entity
-public class Customer implements Serializable {
+@Table(name = "customer")
+public class CustomerEntity implements Serializable {
 
     @Id
     @GeneratedValue
@@ -28,13 +29,7 @@ public class Customer implements Serializable {
 
     private String phone;
 
-    // bi-directional many-to-one association to CustomerOrder
     @OneToMany(mappedBy = "customer")
-    private List<CustomerOrder> customerOrders;
-
-    public void addCustomerOrder(CustomerOrder customerOrder) {
-        customerOrder.setCustomer(this);
-        getCustomerOrders().add(customerOrder);
-    }
+    private List<OrderEntity> orders;
 
 }

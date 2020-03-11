@@ -45,8 +45,4 @@ public class BookEntity implements Serializable {
         lastUpdate = new Timestamp(System.currentTimeMillis());
     }
 
-    public boolean isInStock() {
-        return quantity > 0;
-    }
-
 }

@@ -17,7 +17,6 @@ public class CategoryEntity implements Serializable {
 
     private String name;
 
-    // bi-directional many-to-one association to Book
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<BookEntity> books;
 
