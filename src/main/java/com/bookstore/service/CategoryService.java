@@ -1,12 +1,11 @@
 package com.bookstore.service;
 
-import com.bookstore.model.entity.CategoryEntity;
+import com.bookstore.model.dto.Category;
 
 import java.util.List;
 
 public interface CategoryService {
 
-    List<CategoryEntity> findAll();
+    List<Category> findAll();
 
-    CategoryEntity findByName(String category);
 }

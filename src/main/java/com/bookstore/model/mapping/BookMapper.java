@@ -3,7 +3,7 @@ package com.bookstore.model.mapping;
 import com.bookstore.model.dto.Book;
 import com.bookstore.model.entity.BookEntity;
 import com.bookstore.model.entity.CategoryEntity;
-import com.bookstore.service.CategoryService;
+import com.bookstore.repository.CategoryRepository;
 import com.bookstore.web.ui.form.BookForm;
 import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 public abstract class BookMapper {
 
     @Autowired
-    protected CategoryService categoryService;
+    protected CategoryRepository categoryRepository;
 
     @Mapping(source = "category.name", target = "category")
     @Mapping(source = "cover.id", target = "coverId")
@@ -33,7 +33,7 @@ public abstract class BookMapper {
 
     @Named("category")
     protected CategoryEntity categoryToCategoryEntity(String category) {
-        return categoryService.findByName(category);
+        return categoryRepository.findByName(category).orElseThrow(IllegalArgumentException::new);
     }
 
     protected byte[] multipartFileToByteArray(MultipartFile file) {

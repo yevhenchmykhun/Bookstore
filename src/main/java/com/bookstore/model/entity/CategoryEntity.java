@@ -17,7 +17,7 @@ public class CategoryEntity implements Serializable {
 
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<BookEntity> books;
 
 }
