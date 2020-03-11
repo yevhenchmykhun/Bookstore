@@ -23,10 +23,10 @@ public class OrderEntity implements Serializable {
     @Column(name = "creation_date")
     private Timestamp creationDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private CustomerEntity customer;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<OrderedBookEntity> orderedBooks;
 
 }
