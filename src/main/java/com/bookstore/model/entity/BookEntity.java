@@ -34,7 +34,7 @@ public class BookEntity implements Serializable {
 
     private Integer quantity;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private BookCoverEntity cover;
 
     @ManyToOne(fetch = FetchType.LAZY)

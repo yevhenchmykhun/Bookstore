@@ -40,7 +40,8 @@ public class BooksController {
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     @PostMapping(value = "/books/delete", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String deleteBook(@RequestParam Long id) {
-        return "redirect:/dashboard";
+        bookService.deleteById(id);
+        return "redirect:/admin/books";
     }
 
     @GetMapping("/new-book")
