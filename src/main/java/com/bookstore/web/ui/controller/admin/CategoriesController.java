@@ -29,7 +29,8 @@ public class CategoriesController {
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     @PostMapping(value = "/categories/delete", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String deleteCategory(@RequestParam Long id) {
-        return "redirect:/dashboard";
+        categoryService.deleteById(id);
+        return "redirect:/admin/categories";
     }
 
 }

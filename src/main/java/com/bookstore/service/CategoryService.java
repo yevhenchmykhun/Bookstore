@@ -8,4 +8,6 @@ public interface CategoryService {
 
     List<Category> findAll();
 
+    void deleteById(Long id);
+
 }
