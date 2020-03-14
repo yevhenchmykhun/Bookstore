@@ -18,8 +18,8 @@ public class IndexController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/index")
-    public String get(Model model) {
+    @GetMapping("/")
+    public String index(Model model) {
         List<Book> books = bookService.findAllByCategoryId(2L, PageRequest.of(0, 12));
         model.addAttribute("books", books);
 

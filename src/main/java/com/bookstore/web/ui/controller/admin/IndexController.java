@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("${admin-console.base-path}")
 public class IndexController {
 
+    @GetMapping("/")
+    public String index() {
+        return "admin/dashboard";
+    }
+
     @GetMapping("/dashboard")
     public String getDashboard() {
         return "admin/dashboard";
