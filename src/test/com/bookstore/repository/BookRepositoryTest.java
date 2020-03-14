@@ -1,6 +1,6 @@
 package com.bookstore.repository;
 
-import com.bookstore.model.entity.Book;
+import com.bookstore.model.entity.BookEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class BookRepositoryIntegrationTest {
+public class BookRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -25,17 +25,17 @@ public class BookRepositoryIntegrationTest {
     @Test
     public void givenBook_whenFindByNameContaining_thenReturnBook() {
 
-        Book bookOne = new Book();
-        bookOne.setName("The C Programming Language");
+        BookEntity bookOne = new BookEntity();
+        bookOne.setTitle("The C Programming Language");
 
-        Book bookTwo = new Book();
-        bookTwo.setName("The C Programming Language");
+        BookEntity bookTwo = new BookEntity();
+        bookTwo.setTitle("The C Programming Language");
 
         entityManager.persist(bookOne);
         entityManager.persist(bookTwo);
         entityManager.flush();
 
-        List<Book> list = bookRepository.findByNameContaining("The");
+        List<BookEntity> list = bookRepository.findByTitleContaining("The");
 
         assertThat(list.size()).isEqualTo(2);
     }

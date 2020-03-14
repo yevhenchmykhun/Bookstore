@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@WebMvcTest(DescriptionController.class)
 @AutoConfigureMockMvc
 @Import(TestConfig.class)
-public class DescriptionControllerWithScopedProxyIntegrationTest {
+public class ShoppingCartSessionScopedProxyIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
@@ -42,14 +42,16 @@ public class DescriptionControllerWithScopedProxyIntegrationTest {
 
     @Test
     public void whenFirstRequest_thenContainsUninitializedShoppingCart() throws Exception {
-        MvcResult result = mvc.perform(post("/addToCart").contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+        MvcResult result = mvc.perform(post("/cart/add")
+                .content("id=47")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("shoppingCart"))
                 .andReturn();
 
         ShoppingCart cart = (ShoppingCart) result.getModelAndView().getModel().get("shoppingCart");
 
-        assertEquals("Items in shopping cart", 0, cart.getNumberOfItems());
+        assertEquals("Items in shopping cart", 0, cart.getItemsNumber());
     }
 
 }

@@ -1,7 +1,9 @@
-package com.bookstore.restapi;
+package com.bookstore.web.rest;
 
-import com.bookstore.model.entity.Book;
+
+import com.bookstore.model.entity.BookEntity;
 import com.bookstore.repository.BookRepository;
+import com.bookstore.web.ui.controller.user.advice.NavigationAttributesControllerAdvice;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,30 +24,33 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(BookRestController.class)
+@WebMvcTest({BookRestController.class, NavigationAttributesControllerAdvice.class})
 public class BookRestControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    private BookRepository repository;
+    private BookRepository bookRepository;
+
+    @MockBean
+    private NavigationAttributesControllerAdvice navigationAttributesControllerAdvice;
 
     @Test
     public void givenBooks_whenGetAllBooks_thenReturnJsonArray() throws Exception {
 
-        Book book = new Book();
-        book.setName("The C Programming Language");
+        BookEntity book = new BookEntity();
+        book.setTitle("The C Programming Language");
 
-        List<Book> books = Collections.singletonList(book);
+        List<BookEntity> books = Collections.singletonList(book);
 
-        given(repository.findAll()).willReturn(books);
+        given(bookRepository.findAll()).willReturn(books);
 
         mvc.perform(get("/books")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name", is(books.get(0).getName())));
+                .andExpect(jsonPath("$[0].title", is(books.get(0).getTitle())));
     }
 
 }
