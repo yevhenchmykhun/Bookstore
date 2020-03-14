@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServlet;
-
 @Controller
 @RequestMapping("/cart")
-public class CartController extends HttpServlet {
+public class CartController {
 
     private BookService bookService;
 
