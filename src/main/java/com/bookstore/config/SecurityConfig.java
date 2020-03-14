@@ -20,13 +20,16 @@ public class SecurityConfig {
     @Order(1)
     public static class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
+        public static final String ROLE_ADMIN = "ROLE_ADMIN";
+        public static final String ROLE_SUPER_ADMIN = "ROLE_SUPER_ADMIN";
+
         @Override
         public void configure(AuthenticationManagerBuilder auth) throws Exception {
             auth
                     .inMemoryAuthentication()
-                    .withUser("admin").password("{noop}admin").roles("ADMIN")
+                    .withUser("admin").password("{noop}admin").authorities(ROLE_ADMIN)
                     .and()
-                    .withUser("superadmin").password("{noop}superadmin").roles("SUPER_ADMIN");
+                    .withUser("superadmin").password("{noop}superadmin").authorities(ROLE_SUPER_ADMIN);
         }
 
         @Override
@@ -34,8 +37,8 @@ public class SecurityConfig {
             http
                     .csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/admin/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
-                    .antMatchers("/actuator/**").hasAnyRole("SUPER_ADMIN")
+                    .antMatchers("/admin/**").hasAnyAuthority(ROLE_ADMIN, ROLE_SUPER_ADMIN)
+                    .antMatchers("/actuator/**").hasAnyAuthority(ROLE_SUPER_ADMIN)
                     .and()
                     .formLogin();
         }
@@ -43,7 +46,7 @@ public class SecurityConfig {
         @Bean
         public RoleHierarchy roleHierarchy() {
             RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
-            roleHierarchy.setHierarchy("ROLE_SUPER_ADMIN > ROLE_ADMIN");
+            roleHierarchy.setHierarchy(String.format("%s > %s", ROLE_SUPER_ADMIN, ROLE_ADMIN));
             return roleHierarchy;
         }
 
