@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -27,9 +29,9 @@ public class SecurityConfig {
         public void configure(AuthenticationManagerBuilder auth) throws Exception {
             auth
                     .inMemoryAuthentication()
-                    .withUser("admin").password("{noop}admin").authorities(ROLE_ADMIN)
+                    .withUser("admin").password(passwordEncoder().encode("admin")).authorities(ROLE_ADMIN)
                     .and()
-                    .withUser("superadmin").password("{noop}superadmin").authorities(ROLE_SUPER_ADMIN);
+                    .withUser("superadmin").password(passwordEncoder().encode("superadmin")).authorities(ROLE_SUPER_ADMIN);
         }
 
         @Override
@@ -48,6 +50,11 @@ public class SecurityConfig {
             RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
             roleHierarchy.setHierarchy(String.format("%s > %s", ROLE_SUPER_ADMIN, ROLE_ADMIN));
             return roleHierarchy;
+        }
+
+        @Bean
+        public PasswordEncoder passwordEncoder() {
+            return new BCryptPasswordEncoder();
         }
 
     }
