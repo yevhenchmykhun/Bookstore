@@ -42,7 +42,11 @@ public class SecurityConfig {
                     .antMatchers("/admin/**").hasAnyAuthority(ROLE_ADMIN, ROLE_SUPER_ADMIN)
                     .antMatchers("/actuator/**").hasAnyAuthority(ROLE_SUPER_ADMIN)
                     .and()
-                    .formLogin();
+                    .formLogin()
+                    .and()
+                    .logout()
+                    .logoutUrl("/admin/logout")
+                    .logoutSuccessUrl("/");
         }
 
         @Bean
