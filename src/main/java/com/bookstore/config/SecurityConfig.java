@@ -35,6 +35,7 @@ public class SecurityConfig {
                     .csrf().disable()
                     .authorizeRequests()
                     .antMatchers("/admin/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
+                    .antMatchers("/actuator/**").hasAnyRole("SUPER_ADMIN")
                     .and()
                     .formLogin();
         }
