@@ -12,7 +12,8 @@ import java.util.List;
 public class CategoryEntity implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category")
+    @SequenceGenerator(name="category", sequenceName = "category_seq", allocationSize = 1)
     private Long id;
 
     private String name;

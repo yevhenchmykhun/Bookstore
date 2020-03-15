@@ -11,7 +11,8 @@ import java.io.Serializable;
 public class BookCoverEntity implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_cover")
+    @SequenceGenerator(name="book_cover", sequenceName = "book_cover_seq", allocationSize = 1)
     private Long id;
 
     @Lob

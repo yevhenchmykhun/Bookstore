@@ -15,7 +15,8 @@ import java.sql.Timestamp;
 public class BookEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book")
+    @SequenceGenerator(name="book", sequenceName = "book_seq", allocationSize = 1)
     private Long id;
 
     private String author;

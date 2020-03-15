@@ -1,5 +1,6 @@
 package com.bookstore.web.ui.controller.user;
 
+import com.bookstore.service.OrderService;
 import com.bookstore.web.ui.form.BillingForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,12 @@ import javax.validation.Valid;
 @Controller
 public class CheckoutController {
 
+    private OrderService orderService;
+
+    public CheckoutController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
     @GetMapping("/checkout")
     public String checkout(Model model) {
         model.addAttribute(new BillingForm());
@@ -24,6 +31,8 @@ public class CheckoutController {
         if (bindingResult.hasErrors()) {
             return "user/checkout";
         }
+
+        orderService.processOrder(billingForm);
 
         return "redirect:/goodbye";
     }
