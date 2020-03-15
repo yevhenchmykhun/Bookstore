@@ -4,16 +4,16 @@
     <title>Goodbye</title>
 </head>
 <body>
-<div class="container-fluid">
-    <div th:replace="user/fragments/common :: header(${categories})"></div>
-    <div class="row">
-        <div class="col-12" style="height: 100px; line-height: 100px">
-            <p class="text-center">Your order has been successfully processed and will be delivered within a short
-                period of time. <br/> Thank you for shopping with Bookstore.com</p>
+<th:block th:replace="user/fragments/common :: main(${categories}, ~{::main})">
+    <main class="container" role="main">
+        <div class="row">
+            <div class="col-12" style="height: 100px; line-height: 100px">
+                <p class="text-center">Your order has been successfully processed and will be delivered within a short
+                    period of time. <br/> Thank you for shopping with Bookstore.com</p>
+            </div>
         </div>
-    </div>
-    <footer th:replace="user/fragments/common :: footer"></footer>
-</div>
+    </main>
+</th:block>
 <th:block th:replace="user/fragments/common :: scripts"/>
 </body>
 </html>

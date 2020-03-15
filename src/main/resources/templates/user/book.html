@@ -4,37 +4,38 @@
     <title>Book</title>
 </head>
 <body>
-<div class="container-fluid">
-    <header th:replace="user/fragments/common :: header(${categories})"></header>
-    <div class="row my-3">
-        <div class="col-2">
-            <div class="card p-1">
-                <img alt="Book cover" class="card-img-top" th:src="*{'/book-cover/' + book.coverId}">
-                <div class="card-body">
-                    <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
+<th:block th:replace="user/fragments/common :: main(${categories}, ~{::main})">
+    <main class="container" role="main">
+        <div class="row my-3">
+            <div class="col-2">
+                <div class="card p-1">
+                    <img alt="Book cover" class="card-img-top" th:src="*{'/book-cover/' + book.coverId}">
+                    <div class="card-body">
+                        <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <div id="description">
+                    <p class="text-justify" th:text="${book.description}">Description</p>
+                </div>
+                <div>
+                    <form class="form-inline float-right" id="addToCartForm">
+                        <input name="id" th:value="${book.id}" type="hidden" value="-1"/>
+                        <div class="form-group mb-2">
+                            <label class="sr-only" for="price">Price</label>
+                            <input class="form-control-plaintext" id="price" readonly
+                                   th:value="${'Price: $' + book.price}"
+                                   type="text"
+                                   value="Price: $19.99">
+                        </div>
+                        <button class="btn btn-primary mb-2" type="submit">Add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="col-10">
-            <div id="description">
-                <p th:text="${book.description}">Description</p>
-            </div>
-            <div>
-                <form class="form-inline float-right" id="addToCartForm">
-                    <input name="id" th:value="${book.id}" type="hidden" value="-1"/>
-                    <div class="form-group mb-2">
-                        <label class="sr-only" for="price">Price</label>
-                        <input class="form-control-plaintext" id="price" readonly th:value="${'Price: $' + book.price}"
-                               type="text"
-                               value="Price: $19.99">
-                    </div>
-                    <button class="btn btn-primary mb-2" type="submit">Add to cart</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <footer th:replace="user/fragments/common :: footer"></footer>
-</div>
+    </main>
+</th:block>
 <th:block th:replace="user/fragments/common :: scripts"/>
 <script th:src="@{/js/user/cart.js}" type="text/javascript"></script>
 </body>

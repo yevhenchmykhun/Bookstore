@@ -4,25 +4,25 @@
     <title>Search Result</title>
 </head>
 <body>
-<div class="container-fluid">
-    <div th:replace="user/fragments/common :: header(${categories})"></div>
-    <div class="row my-3" th:each="book : ${books}">
-        <div class="col-2">
-            <div class="card p-1 clickable-card">
-                <a href="#" th:href="@{/book(id=${book.id})}">
-                    <img alt="Book cover" class="card-img-top" th:src="@{/img/diagonal_fabric.png}">
-                    <div class="card-body">
-                        <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
-                    </div>
-                </a>
+<th:block th:replace="user/fragments/common :: main(${categories}, ~{::main})">
+    <main class="container" role="main">
+        <div class="row my-3" th:each="book : ${books}">
+            <div class="col-2">
+                <div class="card p-1 clickable-card">
+                    <a href="#" th:href="@{/book(id=${book.id})}">
+                        <img alt="Book cover" class="card-img-top" th:src="@{/img/diagonal_fabric.png}">
+                        <div class="card-body">
+                            <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-10" style="text-overflow: ellipsis; overflow: hidden;">
+                <p class="text-justify" th:text="${book.description}">Description</p>
             </div>
         </div>
-        <div class="col-10" style="text-overflow: ellipsis; overflow: hidden;">
-            <p th:text="${book.description}">Description</p>
-        </div>
-    </div>
-    <footer th:replace="user/fragments/common :: footer"></footer>
-</div>
+    </main>
+</th:block>
 <th:block th:replace="user/fragments/common :: scripts"/>
 </body>
 </html>

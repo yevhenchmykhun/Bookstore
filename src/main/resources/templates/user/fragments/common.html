@@ -53,8 +53,18 @@
 </header>
 
 <footer class="footer" th:fragment="footer">
-    <p class="text-muted text-center">Copyright &copy; 2020 Bookstore.com</p>
+    <div class="container">
+        <div class="row justify-content-center">
+            <span class="text-muted">Copyright &copy; 2020 Bookstore.com</span>
+        </div>
+    </div>
 </footer>
+
+<th:block th:fragment="main(categories, main)">
+    <th:block th:replace="user/fragments/common :: header(${categories})"/>
+    <th:block th:replace="${main}"/>
+    <th:block th:replace="user/fragments/common :: footer"/>
+</th:block>
 
 <th:block th:fragment="scripts">
     <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
