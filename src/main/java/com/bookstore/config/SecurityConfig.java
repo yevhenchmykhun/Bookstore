@@ -37,7 +37,6 @@ public class SecurityConfig {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .csrf().disable()
                     .authorizeRequests()
                     .antMatchers("/admin/**").hasAnyAuthority(ROLE_ADMIN, ROLE_SUPER_ADMIN)
                     .antMatchers("/actuator/**").hasAnyAuthority(ROLE_SUPER_ADMIN)
@@ -70,7 +69,6 @@ public class SecurityConfig {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .csrf().disable()
                     .authorizeRequests()
                     .anyRequest()
                     .permitAll();
