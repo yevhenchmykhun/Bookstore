@@ -7,7 +7,7 @@
     <artifactId>bookstore</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <name>Bookstore</name>
+    <name>bookstore</name>
 
     <properties>
         <java.version>1.8</java.version>
