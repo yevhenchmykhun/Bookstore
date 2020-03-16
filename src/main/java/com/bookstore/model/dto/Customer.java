@@ -3,27 +3,31 @@ package com.bookstore.model.dto;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Objects;
 
 @Data
-public class Order implements Serializable {
+public class Customer implements Serializable {
 
     private Long id;
 
-    private BigDecimal totalAmount;
+    private String firstName;
 
-    private Date creationDate;
+    private String lastName;
 
-    private Customer customer;
+    private String address;
+
+    private String country;
+
+    private String state;
+
+    private String zip;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Objects.equals(id, order.id);
+        Customer customer = (Customer) o;
+        return Objects.equals(id, customer.id);
     }
 
     @Override

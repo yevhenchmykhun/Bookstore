@@ -1,5 +1,6 @@
 package com.bookstore.model.mapping;
 
+import com.bookstore.model.dto.Customer;
 import com.bookstore.model.entity.CustomerEntity;
 import com.bookstore.web.ui.form.BillingForm;
 import org.mapstruct.Mapper;
@@ -9,5 +10,7 @@ import org.mapstruct.ReportingPolicy;
 public abstract class CustomerMapper {
 
     public abstract CustomerEntity billingFormToCustomerEntity(BillingForm billingForm);
+
+    public abstract Customer customerEntityToCustomer(CustomerEntity customerEntity);
 
 }
