@@ -1,8 +1,10 @@
 package com.bookstore.model.mapping;
 
 import com.bookstore.model.dto.Book;
+import com.bookstore.model.entity.BookCoverEntity;
 import com.bookstore.model.entity.BookEntity;
 import com.bookstore.model.entity.CategoryEntity;
+import com.bookstore.repository.BookCoverRepository;
 import com.bookstore.repository.CategoryRepository;
 import com.bookstore.web.ui.form.BookForm;
 import org.mapstruct.*;
@@ -18,22 +20,43 @@ public abstract class BookMapper {
     @Autowired
     protected CategoryRepository categoryRepository;
 
+    @Autowired
+    protected BookCoverRepository bookCoverRepository;
+
     @Mapping(source = "category.name", target = "category")
     @Mapping(source = "cover.id", target = "coverId")
+    @Mapping(source = "category.id", target = "categoryId")
     public abstract Book bookEntityToBook(BookEntity bookEntity);
 
-    @Mapping(source = "category", target = "category", qualifiedByName = "category")
+    @Mapping(source = "categoryId", target = "category", qualifiedByName = "categoryById")
+    @Mapping(source = "coverId", target = "cover", qualifiedByName = "coverById")
+    public abstract BookEntity bookToBookEntity(Book book);
+
+    @Mapping(source = "category", target = "category", qualifiedByName = "categoryByName")
     @Mapping(source = "cover", target = "cover.bytes")
     public abstract BookEntity bookFormToBookEntity(BookForm bookForm);
 
     @AfterMapping
     public void bookEntityAfterMapping(@MappingTarget BookEntity bookEntity) {
-        bookEntity.getCover().setBook(bookEntity);
+        BookCoverEntity cover = bookEntity.getCover();
+        if (cover != null) {
+            cover.setBook(bookEntity);
+        }
     }
 
-    @Named("category")
+    @Named("categoryByName")
     protected CategoryEntity categoryToCategoryEntity(String category) {
         return categoryRepository.findByName(category).orElseThrow(IllegalArgumentException::new);
+    }
+
+    @Named("categoryById")
+    protected CategoryEntity categoryToCategoryEntity(Long categoryId) {
+        return categoryRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
+    }
+
+    @Named("coverById")
+    protected BookCoverEntity coverToCoverEntity(Long coverId) {
+        return bookCoverRepository.findById(coverId).orElseThrow(IllegalArgumentException::new);
     }
 
     protected byte[] multipartFileToByteArray(MultipartFile file) {

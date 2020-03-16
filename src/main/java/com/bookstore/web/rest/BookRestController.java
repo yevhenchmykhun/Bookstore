@@ -1,43 +1,45 @@
 package com.bookstore.web.rest;
 
-import com.bookstore.model.entity.BookEntity;
-import com.bookstore.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bookstore.model.dto.Book;
+import com.bookstore.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("${rest.base-path}/books")
 public class BookRestController {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
-    @GetMapping
-    public List<BookEntity> getAll() {
-        return bookRepository.findAll();
+    public BookRestController(BookService bookService) {
+        this.bookService = bookService;
     }
 
-    @GetMapping(path = "/{id}")
-    public BookEntity get(@PathVariable Long id) {
-        return bookRepository.getOne(id);
+    @GetMapping
+    public List<Book> getAll() {
+        return bookService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Book get(@PathVariable Long id) {
+        return bookService.findById(id).orElseGet(Book::new);
     }
 
     @PostMapping
-    public BookEntity post(@RequestBody BookEntity bookEntity) {
-        return bookRepository.saveAndFlush(bookEntity);
+    public Book post(@RequestBody Book book) {
+        return bookService.save(book);
     }
 
-    @PutMapping(path = "/{id}")
-    public BookEntity put(@PathVariable Long id, @RequestBody BookEntity bookEntity) {
-        bookEntity.setId(id);
-        return bookRepository.saveAndFlush(bookEntity);
+    @PutMapping("/{id}")
+    public Book put(@PathVariable Long id, @RequestBody Book book) {
+        book.setId(id);
+        return bookService.save(book);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        bookRepository.deleteById(id);
+        bookService.deleteById(id);
     }
 
 }

@@ -1,54 +1,56 @@
 package com.bookstore.web.rest;
 
-import com.bookstore.model.entity.BookEntity;
-import com.bookstore.model.entity.CategoryEntity;
-import com.bookstore.repository.BookRepository;
-import com.bookstore.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bookstore.model.dto.Book;
+import com.bookstore.model.dto.Category;
+import com.bookstore.service.BookService;
+import com.bookstore.service.CategoryService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("${rest.base-path}/categories")
 public class CategoryRestController {
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
-    @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
+
+    public CategoryRestController(CategoryService categoryService, BookService bookService) {
+        this.categoryService = categoryService;
+        this.bookService = bookService;
+    }
 
     @GetMapping
-    public List<CategoryEntity> getAll() {
-        return categoryRepository.findAll();
+    public List<Category> getAll() {
+        return categoryService.findAll();
     }
 
-    @GetMapping(path = "/{id}")
-    public CategoryEntity get(@PathVariable Long id) {
-        return categoryRepository.getOne(id);
+    @GetMapping("/{id}")
+    public Category get(@PathVariable Long id) {
+        return categoryService.findById(id).orElseGet(Category::new);
     }
 
-    @GetMapping(path = "/{id}/books")
-    public List<BookEntity> getAllCategoryBooks(@PathVariable Long id) {
-        return bookRepository.findAllByCategoryId(id, Pageable.unpaged());
+    @GetMapping("/{id}/books")
+    public List<Book> getAllCategoryBooks(@PathVariable Long id) {
+        return bookService.findAllByCategoryId(id, Pageable.unpaged());
     }
 
     @PostMapping
-    public CategoryEntity post(@RequestBody CategoryEntity categoryEntity) {
-        return categoryRepository.saveAndFlush(categoryEntity);
+    public Category post(@RequestBody Category category) {
+        return categoryService.save(category);
     }
 
-    @PutMapping(path = "/{id}")
-    public CategoryEntity put(@PathVariable Long id, @RequestBody CategoryEntity categoryEntity) {
-        categoryEntity.setId(id);
-        return categoryRepository.saveAndFlush(categoryEntity);
+    @PutMapping("/{id}")
+    public Category put(@PathVariable Long id, @RequestBody Category category) {
+        category.setId(id);
+        return categoryService.save(category);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        categoryRepository.deleteById(id);
+        categoryService.deleteById(id);
     }
 
 }

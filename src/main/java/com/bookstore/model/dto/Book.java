@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Objects;
 
 @Data
@@ -17,6 +18,8 @@ public class Book implements Serializable {
 
     private String isbn;
 
+    private Date lastUpdate;
+
     private String title;
 
     private BigDecimal price;
@@ -26,6 +29,8 @@ public class Book implements Serializable {
     private String category;
 
     private Long coverId;
+
+    private Long categoryId;
 
     @Override
     public boolean equals(Object o) {

@@ -82,6 +82,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Book save(Book book) {
+        BookEntity bookEntity = bookMapper.bookToBookEntity(book);
+        return bookMapper.bookEntityToBook(bookEntity);
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

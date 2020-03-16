@@ -14,4 +14,7 @@ public abstract class CategoryMapper {
     @Mapping(source = "books", target = "books", ignore = true)
     public abstract Category categoryEntityToCategoryFlat(CategoryEntity categoryEntity);
 
+    @Mapping(source = "books", target = "books", ignore = true)
+    public abstract CategoryEntity categoryToCategoryEntity(Category category);
+
 }
