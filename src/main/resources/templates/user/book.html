@@ -7,7 +7,7 @@
 <th:block th:replace="user/fragments/common :: main(${categories}, ~{::main})">
     <main class="container" role="main">
         <div class="row my-3">
-            <div class="col-2">
+            <div class="col-3">
                 <div class="card p-1">
                     <img alt="Book cover" class="card-img-top" th:src="*{'/book-cover/' + book.coverId}">
                     <div class="card-body">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-10">
+            <div class="col-9">
                 <div id="description">
                     <p class="text-justify" th:text="${book.description}">Description</p>
                 </div>

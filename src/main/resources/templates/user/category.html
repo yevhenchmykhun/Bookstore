@@ -7,7 +7,7 @@
 <th:block th:replace="user/fragments/common :: main(${categories}, ~{::main})">
     <main class="container" role="main">
         <div class="row my-3" th:each="book : ${books}">
-            <div class="col-2">
+            <div class="col-3">
                 <div class="card p-1 clickable-card">
                     <a href="#" th:href="@{'/book?id=' + ${book.id}}">
                         <img alt="Book cover" class="card-img-top" th:src="@{/img/diagonal_fabric.png}">
@@ -17,7 +17,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-10" style="text-overflow: ellipsis; overflow: hidden;">
+            <div class="col-9" style="text-overflow: ellipsis; overflow: hidden;">
                 <p class="text-justify" th:text="${book.description}">Description</p>
             </div>
         </div>
