@@ -7,7 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class SearchController {
@@ -20,7 +21,8 @@ public class SearchController {
 
     @GetMapping("/search")
     public String get(@RequestParam String q, Model model) {
-        List<Book> books = bookService.findByNameContaining(q);
+        Set<Book> books = new HashSet<>();
+        books.addAll(bookService.findByNameContaining(q));
         books.addAll(bookService.findByAuthorContaining(q));
         books.addAll(bookService.findByIsbnContaining(q));
 
