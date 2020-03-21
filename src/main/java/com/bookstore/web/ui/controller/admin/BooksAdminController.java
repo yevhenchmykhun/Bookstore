@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("${admin-console.base-path}")
+@RequestMapping("/admin")
 @RequiredArgsConstructor
 class BooksAdminController {
 
