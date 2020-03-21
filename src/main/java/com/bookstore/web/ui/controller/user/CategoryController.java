@@ -2,6 +2,7 @@ package com.bookstore.web.ui.controller.user;
 
 import com.bookstore.model.dto.Book;
 import com.bookstore.service.BookService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-public class CategoryController {
+@RequiredArgsConstructor
+class CategoryController {
 
     private static final int PAGE_SIZE = 5;
 
-    private BookService bookService;
-
-    public CategoryController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private final BookService bookService;
 
     @GetMapping("/category")
     public String get(@RequestParam Long id, @RequestParam Integer page, Model model) {

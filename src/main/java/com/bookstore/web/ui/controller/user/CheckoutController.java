@@ -2,6 +2,7 @@ package com.bookstore.web.ui.controller.user;
 
 import com.bookstore.service.OrderService;
 import com.bookstore.web.ui.form.BillingForm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,13 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-public class CheckoutController {
+@RequiredArgsConstructor
+class CheckoutController {
 
-    private OrderService orderService;
-
-    public CheckoutController(OrderService orderService) {
-        this.orderService = orderService;
-    }
+    private final OrderService orderService;
 
     @GetMapping("/checkout")
     public String checkout(Model model) {

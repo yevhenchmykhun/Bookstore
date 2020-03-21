@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("adminIndexController")
+@Controller
 @RequestMapping("${admin-console.base-path}")
-public class IndexController {
+class IndexAdminController {
 
     @GetMapping("/")
     public String index() {

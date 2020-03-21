@@ -1,6 +1,7 @@
 package com.bookstore.web.ui.controller.admin;
 
 import com.bookstore.service.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -12,13 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("${admin-console.base-path}")
-public class CategoriesController {
+@RequiredArgsConstructor
+class CategoriesAdminController {
 
-    private CategoryService categoryService;
-
-    public CategoriesController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+    private final CategoryService categoryService;
 
     @GetMapping("/categories")
     public String getCategories(Model model) {

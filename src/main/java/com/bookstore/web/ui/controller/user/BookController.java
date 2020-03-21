@@ -1,8 +1,8 @@
 package com.bookstore.web.ui.controller.user;
 
 import com.bookstore.model.dto.Book;
-import com.bookstore.model.entity.BookEntity;
 import com.bookstore.service.BookService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-public class BookController {
+@RequiredArgsConstructor
+class BookController {
 
-    private BookService bookService;
-
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private final BookService bookService;
 
     @GetMapping("/book")
     public String get(@RequestParam Long id, Model model) {

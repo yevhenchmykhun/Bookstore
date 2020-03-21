@@ -2,6 +2,7 @@ package com.bookstore.web.ui.controller.user;
 
 import com.bookstore.model.dto.Book;
 import com.bookstore.service.BookService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +12,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-public class SearchController {
+@RequiredArgsConstructor
+class SearchController {
 
-    private BookService bookService;
-
-    public SearchController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private final BookService bookService;
 
     @GetMapping("/search")
     public String get(@RequestParam String q, Model model) {

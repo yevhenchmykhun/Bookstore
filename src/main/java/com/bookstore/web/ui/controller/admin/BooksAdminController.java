@@ -3,6 +3,7 @@ package com.bookstore.web.ui.controller.admin;
 import com.bookstore.service.BookService;
 import com.bookstore.service.CategoryService;
 import com.bookstore.web.ui.form.BookForm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -14,16 +15,12 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("${admin-console.base-path}")
-public class BooksController {
+@RequiredArgsConstructor
+class BooksAdminController {
 
-    private BookService bookService;
+    private final BookService bookService;
 
-    private CategoryService categoryService;
-
-    public BooksController(BookService bookService, CategoryService categoryService) {
-        this.bookService = bookService;
-        this.categoryService = categoryService;
-    }
+    private final CategoryService categoryService;
 
     @GetMapping("/books")
     public String getBooks(Model model) {
