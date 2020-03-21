@@ -1,3 +1,11 @@
+info:
+  build:
+    artifact: bookstore
+    name: bookstore
+    description: Simple bookstore with admin console
+  spring:
+    profiles: ${spring.profiles.active:default}
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/bookstore
@@ -6,7 +14,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   servlet:
     # double the image size limit here in order to allow the custom file validation to be triggered
     multipart:
@@ -18,8 +26,6 @@ spring:
       schema: classpath:org/springframework/session/jdbc/schema-mysql.sql
       initialize-schema: always
       table-name: spring_session
-  thymeleaf:
-    cache: false
 
 server:
   servlet:
@@ -27,16 +33,33 @@ server:
       timeout: 15m
       tracking-modes: COOKIE
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type: DEBUG
-        type.descriptor.sql.BasicBinder: DEBUG
-
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+
+---
+
+spring:
+  profiles: development
+  thymeleaf:
+    cache: false
+
+---
+
+spring:
+  profiles: production
+  thymeleaf:
+    cache: true
+
+server:
+  compression:
+    enabled: true
+
+logging:
+  level:
+    ROOT: WARN
+    org.apache.http: WARN
+    org.apache.http.headers: WARN
+    com.bookstore.Application: INFO
