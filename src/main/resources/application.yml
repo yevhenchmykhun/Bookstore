@@ -1,0 +1,42 @@
+admin-console:
+  base-path: /admin
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: DEBUG
+        type.descriptor.sql.BasicBinder: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+rest:
+  base-path: /rest
+server:
+  servlet:
+    session:
+      timeout: 15m
+      tracking-modes: COOKIE
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/bookstore
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 256KB
+      max-request-size: 256KB
+  session:
+    jdbc:
+      initialize-schema: always
+      schema: classpath:org/springframework/session/jdbc/schema-mysql.sql
+      table-name: spring_session
+    store-type: jdbc
+  thymeleaf:
+    cache: false
