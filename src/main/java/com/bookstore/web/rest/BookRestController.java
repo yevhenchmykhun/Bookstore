@@ -2,19 +2,17 @@ package com.bookstore.web.rest;
 
 import com.bookstore.model.dto.Book;
 import com.bookstore.service.BookService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("${rest.base-path}/books")
-public class BookRestController {
+@RequiredArgsConstructor
+class BookRestController {
 
-    private BookService bookService;
-
-    public BookRestController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private final BookService bookService;
 
     @GetMapping
     public List<Book> getAll() {

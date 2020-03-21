@@ -4,6 +4,7 @@ import com.bookstore.model.dto.Book;
 import com.bookstore.model.dto.Category;
 import com.bookstore.service.BookService;
 import com.bookstore.service.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,16 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("${rest.base-path}/categories")
-public class CategoryRestController {
+@RequiredArgsConstructor
+class CategoryRestController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
-    private BookService bookService;
-
-    public CategoryRestController(CategoryService categoryService, BookService bookService) {
-        this.categoryService = categoryService;
-        this.bookService = bookService;
-    }
+    private final BookService bookService;
 
     @GetMapping
     public List<Category> getAll() {
