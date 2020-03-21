@@ -50,6 +50,9 @@ spring:
 
 spring:
   profiles: production
+  resources:
+    cache:
+      period: 1d
   thymeleaf:
     cache: true
 
