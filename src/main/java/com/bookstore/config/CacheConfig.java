@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableCaching
-public class CacheConfig {
+class CacheConfig {
 
     @Bean
     public CaffeineCache categoriesCaffeineCache() {
