@@ -6,6 +6,7 @@ import com.bookstore.model.mapping.BookMapper;
 import com.bookstore.repository.BookRepository;
 import com.bookstore.service.BookService;
 import com.bookstore.web.ui.form.BookForm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,41 +17,37 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
-    private BookRepository repository;
+    private final BookRepository repository;
 
-    private BookMapper bookMapper;
-
-    public BookServiceImpl(BookRepository repository, BookMapper bookMapper) {
-        this.repository = repository;
-        this.bookMapper = bookMapper;
-    }
+    private final BookMapper bookMapper;
 
     @Override
     public Optional<Book> findById(Long id) {
         Optional<BookEntity> bookEntity = repository.findById(id);
-        return bookEntity.map(entity -> bookMapper.bookEntityToBook(entity));
+        return bookEntity.map(bookMapper::bookEntityToBook);
     }
 
     @Override
     public List<Book> findByNameContaining(String title) {
         return repository.findByTitleContaining(title).stream()
-                .map(entity -> bookMapper.bookEntityToBook(entity))
+                .map(bookMapper::bookEntityToBook)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Book> findByAuthorContaining(String author) {
         return repository.findByAuthorContaining(author).stream()
-                .map(entity -> bookMapper.bookEntityToBook(entity))
+                .map(bookMapper::bookEntityToBook)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Book> findByIsbnContaining(String isbn) {
         return repository.findByIsbnContaining(isbn).stream()
-                .map(entity -> bookMapper.bookEntityToBook(entity))
+                .map(bookMapper::bookEntityToBook)
                 .collect(Collectors.toList());
     }
 
@@ -58,14 +55,14 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findAllByCategoryId(Long categoryId, Pageable pageable) {
         return repository.findAllByCategoryId(categoryId, pageable).stream()
-                .map(entity -> bookMapper.bookEntityToBook(entity))
+                .map(bookMapper::bookEntityToBook)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Book> findAll() {
         return repository.findAll().stream()
-                .map(entity -> bookMapper.bookEntityToBook(entity))
+                .map(bookMapper::bookEntityToBook)
                 .collect(Collectors.toList());
     }
 

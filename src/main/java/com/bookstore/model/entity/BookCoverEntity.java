@@ -19,7 +19,4 @@ public class BookCoverEntity implements Serializable {
     @Column(name = "image")
     private byte[] bytes;
 
-    @OneToOne(mappedBy = "cover", fetch = FetchType.LAZY)
-    private BookEntity book;
-
 }

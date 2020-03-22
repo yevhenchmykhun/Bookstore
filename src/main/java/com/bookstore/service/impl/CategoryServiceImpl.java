@@ -5,6 +5,7 @@ import com.bookstore.model.entity.CategoryEntity;
 import com.bookstore.model.mapping.CategoryMapper;
 import com.bookstore.repository.CategoryRepository;
 import com.bookstore.service.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,28 +19,25 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @CacheConfig(cacheNames = "categories")
+@RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
-    private CategoryRepository repository;
+    private final CategoryRepository repository;
 
-    private CategoryMapper categoryMapper;
-
-    public CategoryServiceImpl(CategoryRepository repository, CategoryMapper categoryMapper) {
-        this.repository = repository;
-        this.categoryMapper = categoryMapper;
-    }
+    private final CategoryMapper categoryMapper;
 
     @Override
+    @Cacheable
     public Optional<Category> findById(Long id) {
         Optional<CategoryEntity> categoryEntity = repository.findById(id);
-        return categoryEntity.map(entity -> categoryMapper.categoryEntityToCategoryFlat(entity));
+        return categoryEntity.map(categoryMapper::categoryEntityToCategoryFlat);
     }
 
     @Override
     @Cacheable
     public List<Category> findAll() {
         return repository.findAll().stream()
-                .map(entity -> categoryMapper.categoryEntityToCategoryFlat(entity))
+                .map(categoryMapper::categoryEntityToCategoryFlat)
                 .collect(Collectors.toList());
     }
 

@@ -36,14 +36,6 @@ public abstract class BookMapper {
     @Mapping(source = "cover", target = "cover.bytes")
     public abstract BookEntity bookFormToBookEntity(BookForm bookForm);
 
-    @AfterMapping
-    public void bookEntityAfterMapping(@MappingTarget BookEntity bookEntity) {
-        BookCoverEntity cover = bookEntity.getCover();
-        if (cover != null) {
-            cover.setBook(bookEntity);
-        }
-    }
-
     @Named("categoryByName")
     protected CategoryEntity categoryToCategoryEntity(String category) {
         return categoryRepository.findByName(category).orElseThrow(IllegalArgumentException::new);

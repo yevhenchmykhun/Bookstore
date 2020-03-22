@@ -13,6 +13,7 @@ import com.bookstore.repository.BookRepository;
 import com.bookstore.repository.OrderRepository;
 import com.bookstore.service.OrderService;
 import com.bookstore.web.ui.form.BillingForm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,39 +23,27 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
-    private OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
 
-    private CustomerMapper customerMapper;
+    private final CustomerMapper customerMapper;
 
-    private ShoppingCart cart;
-
-    public OrderServiceImpl(OrderRepository orderRepository,
-                            BookRepository bookRepository,
-                            OrderMapper orderMapper,
-                            CustomerMapper customerMapper,
-                            ShoppingCart cart) {
-        this.orderRepository = orderRepository;
-        this.bookRepository = bookRepository;
-        this.orderMapper = orderMapper;
-        this.customerMapper = customerMapper;
-        this.cart = cart;
-    }
+    private final ShoppingCart cart;
 
     @Override
     public List<Order> findAll() {
         return orderRepository.findAll().stream()
-                .map(entity -> orderMapper.orderEntityToOrder(entity))
+                .map(orderMapper::orderEntityToOrder)
                 .collect(Collectors.toList());
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public void processOrder(BillingForm billingForm) {
         CustomerEntity customerEntity = customerMapper.billingFormToCustomerEntity(billingForm);
 
@@ -69,6 +58,18 @@ public class OrderServiceImpl implements OrderService {
 
         orderRepository.saveAndFlush(orderEntity);
 
+        // update book quantities
+        for (ShoppingCartItem item : cart.getItems()) {
+            Long bookId = item.getBook().getId();
+            Optional<BookEntity> bookEntity = bookRepository.findById(bookId);
+            if (bookEntity.isPresent()) {
+                BookEntity book = bookEntity.get();
+                int newQuantity = book.getQuantity() - item.getQuantity();
+                book.setQuantity(newQuantity);
+                bookRepository.saveAndFlush(book);
+            }
+        }
+
         cart.clear();
     }
 
@@ -76,8 +77,10 @@ public class OrderServiceImpl implements OrderService {
         OrderedBookEntity orderedBookEntity = new OrderedBookEntity();
         orderedBookEntity.setQuantity(shoppingCartItem.getQuantity());
         orderedBookEntity.setOrder(orderEntity);
-        Optional<BookEntity> bookEntity = bookRepository.findById(shoppingCartItem.getBook().getId());
-        bookEntity.ifPresent(orderedBookEntity::setBook);
+
+        Long bookId = shoppingCartItem.getBook().getId();
+        bookRepository.findById(bookId)
+                .ifPresent(orderedBookEntity::setBook);
 
         return orderedBookEntity;
     }
