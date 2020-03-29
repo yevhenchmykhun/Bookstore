@@ -53,6 +53,11 @@ spring:
   resources:
     cache:
       period: 1d
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
   thymeleaf:
     cache: true
 
