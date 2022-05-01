@@ -5,21 +5,19 @@ import com.bookstore.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/cart")
 @RequiredArgsConstructor
-class CartController {
+public class CartController {
 
     private final BookService bookService;
 
     private final ShoppingCart cart;
 
     @GetMapping
-    public String get(Model model) {
-        model.addAttribute("cart", cart);
+    public String get() {
         return "user/cart";
     }
 

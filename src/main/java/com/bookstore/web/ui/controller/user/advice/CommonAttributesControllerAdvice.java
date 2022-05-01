@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 @ControllerAdvice("com.bookstore.web.ui.controller.user")
 @RequiredArgsConstructor
-public class NavigationAttributesControllerAdvice {
+public class CommonAttributesControllerAdvice {
 
     private final CategoryService categoryService;
 

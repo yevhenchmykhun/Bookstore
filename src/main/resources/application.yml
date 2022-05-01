@@ -12,9 +12,10 @@ spring:
     username: root
     password: root
   jpa:
+    database: mysql
     open-in-view: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   servlet:
     # double the image size limit here in order to allow the custom file validation to be triggered
     multipart:
@@ -23,9 +24,7 @@ spring:
   session:
     store-type: jdbc
     jdbc:
-      schema: classpath:org/springframework/session/jdbc/schema-mysql.sql
       initialize-schema: always
-      table-name: spring_session
 
 server:
   servlet:
@@ -42,14 +41,18 @@ management:
 ---
 
 spring:
-  profiles: development
+  config:
+    activate:
+      on-profile: development
   thymeleaf:
     cache: false
 
 ---
 
 spring:
-  profiles: production
+  config:
+    activate:
+      on-profile: production
   resources:
     cache:
       period: 1d

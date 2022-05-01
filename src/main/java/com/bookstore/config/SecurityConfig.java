@@ -38,8 +38,9 @@ class SecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/admin/**").hasAnyAuthority(ROLE_ADMIN, ROLE_SUPER_ADMIN)
+                    .antMatchers("/actuator/health").permitAll()
                     .antMatchers("/actuator/**").hasAnyAuthority(ROLE_SUPER_ADMIN)
+                    .antMatchers("/admin/**").hasAnyAuthority(ROLE_ADMIN, ROLE_SUPER_ADMIN)
                     .and()
                     .formLogin()
                     .and()
