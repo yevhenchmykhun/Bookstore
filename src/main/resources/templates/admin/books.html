@@ -5,8 +5,8 @@
 </head>
 <body>
 <th:block th:replace="admin/fragments/common :: main('books', ~{::main})">
-    <main class="col-md-9 ml-sm-auto col-lg-10 px-0" role="main">
-        <div class="table-responsive" sec:authorize="hasRole('ADMIN')">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+        <div class="table-responsive pt-3 pb-2" sec:authorize="hasRole('ADMIN')">
             <table class="table table-hover table-sm">
                 <thead>
                 <tr>
