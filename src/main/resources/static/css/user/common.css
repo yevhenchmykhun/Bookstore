@@ -1,7 +1,9 @@
 img {
-    border-style: solid;
-    border-width: thin;
-    border-color: darkgrey;
+    border: 1px solid lightgrey;
+}
+
+.book-cover-card {
+    border-width: 0
 }
 
 /*

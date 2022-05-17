@@ -7,7 +7,7 @@
 <th:block th:replace="user/fragments/common :: main(${categories}, ~{::main})">
     <main class="container" role="main">
         <div class="card-columns my-3" style="column-count: 4">
-            <div class="card p-1 clickable-card" th:each="book : ${books}">
+            <div class="card clickable-card book-cover-card p-1" th:each="book : ${books}">
                 <a href="#" th:href="@{'/book?id=' + ${book.id}}">
                     <img alt="Book cover" class="card-img-top" src="" th:src="*{'/book-cover/' + book.coverId}">
                     <div class="card-body">

@@ -8,7 +8,7 @@
     <main class="container" role="main">
         <div class="row my-3">
             <div class="col-3">
-                <div class="card p-1">
+                <div class="card book-cover-card p-1">
                     <img alt="Book cover" class="card-img-top" src="" th:src="*{'/book-cover/' + book.coverId}">
                     <div class="card-body">
                         <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
