@@ -31,24 +31,11 @@ public class BookService {
         return bookEntity.map(bookMapper::bookEntityToBook);
     }
 
-    public List<Book> findByNameContaining(String title) {
-        return repository.findByTitleContaining(title).stream()
+    public List<Book> findBySearchPhrase(String phrase) {
+        return repository.findBySearchPhrase(phrase).stream()
                 .map(bookMapper::bookEntityToBook)
                 .collect(Collectors.toList());
     }
-
-    public List<Book> findByAuthorContaining(String author) {
-        return repository.findByAuthorContaining(author).stream()
-                .map(bookMapper::bookEntityToBook)
-                .collect(Collectors.toList());
-    }
-
-    public List<Book> findByIsbnContaining(String isbn) {
-        return repository.findByIsbnContaining(isbn).stream()
-                .map(bookMapper::bookEntityToBook)
-                .collect(Collectors.toList());
-    }
-
 
     public List<Book> findAllByCategoryId(Long categoryId, Pageable pageable) {
         return repository.findAllByCategoryId(categoryId, pageable).stream()
