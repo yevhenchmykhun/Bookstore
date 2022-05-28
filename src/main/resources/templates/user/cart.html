@@ -23,7 +23,7 @@
                         <tbody>
                         <tr th:each="item : ${cart.items}">
                             <td>
-                                <img alt="Book cover" src="" th:src="*{'/book-cover/' + item.book.coverId}"/>
+                                <img alt="Book cover" src="" th:src="*{@s3Properties.bucketUrl + item.book.s3CoverKey}"/>
                             </td>
                             <td th:text="${item.book.title + ' by ' + item.book.author}">Product Name</td>
                             <td th:text="${item.book.quantity > 0 ? 'In Stock' : 'Out of Stock'}">In stock</td>

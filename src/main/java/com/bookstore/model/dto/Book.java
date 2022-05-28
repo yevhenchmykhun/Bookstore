@@ -1,13 +1,14 @@
 package com.bookstore.model.dto;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Objects;
 
 @Data
+@EqualsAndHashCode(of = "id")
 public class Book implements Serializable {
 
     private Long id;
@@ -28,21 +29,8 @@ public class Book implements Serializable {
 
     private String category;
 
-    private Long coverId;
+    private String s3CoverKey;
 
     private Long categoryId;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return Objects.equals(id, book.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
 }

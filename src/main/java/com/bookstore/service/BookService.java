@@ -1,31 +1,92 @@
 package com.bookstore.service;
 
 import com.bookstore.model.dto.Book;
+import com.bookstore.model.entity.BookEntity;
+import com.bookstore.model.mapping.BookMapper;
+import com.bookstore.repository.BookRepository;
 import com.bookstore.web.ui.form.BookForm;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public interface BookService {
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class BookService {
 
-    List<Book> findByNameContaining(String title);
+    private final BookRepository repository;
 
-    List<Book> findByAuthorContaining(String author);
+    private final BookMapper bookMapper;
 
-    List<Book> findByIsbnContaining(String isbn);
+    private final BookCoverService bookCoverService;
 
-    Optional<Book> findById(Long id);
+    public Optional<Book> findById(Long id) {
+        Optional<BookEntity> bookEntity = repository.findById(id);
+        return bookEntity.map(bookMapper::bookEntityToBook);
+    }
 
-    List<Book> findAllByCategoryId(Long categoryId, Pageable pageable);
+    public List<Book> findByNameContaining(String title) {
+        return repository.findByTitleContaining(title).stream()
+                .map(bookMapper::bookEntityToBook)
+                .collect(Collectors.toList());
+    }
 
-    List<Book> findAll();
+    public List<Book> findByAuthorContaining(String author) {
+        return repository.findByAuthorContaining(author).stream()
+                .map(bookMapper::bookEntityToBook)
+                .collect(Collectors.toList());
+    }
 
-    Long countByCategoryId(Long categoryId);
+    public List<Book> findByIsbnContaining(String isbn) {
+        return repository.findByIsbnContaining(isbn).stream()
+                .map(bookMapper::bookEntityToBook)
+                .collect(Collectors.toList());
+    }
 
-    Book save(BookForm bookForm);
 
-    Book save(Book book);
+    public List<Book> findAllByCategoryId(Long categoryId, Pageable pageable) {
+        return repository.findAllByCategoryId(categoryId, pageable).stream()
+                .map(bookMapper::bookEntityToBook)
+                .collect(Collectors.toList());
+    }
 
-    void deleteById(Long id);
+    public List<Book> findAll() {
+        return repository.findAll().stream()
+                .map(bookMapper::bookEntityToBook)
+                .collect(Collectors.toList());
+    }
+
+    public Long countByCategoryId(Long categoryId) {
+        return repository.countByCategoryId(categoryId);
+    }
+
+    @SneakyThrows
+    public void save(BookForm bookForm) {
+
+        // upload book cover to S3
+        byte[] bytes = bookForm.getCover().getBytes();
+        String contentType = bookForm.getCover().getContentType();
+        String key = bookCoverService.upload(bytes, contentType);
+
+        // save book to local DB
+        BookEntity entity = bookMapper.bookFormToBookEntity(bookForm);
+        entity.setS3CoverKey(key);
+        repository.saveAndFlush(entity);
+    }
+
+    public Book save(Book book) {
+        BookEntity bookEntity = bookMapper.bookToBookEntity(book);
+        return bookMapper.bookEntityToBook(bookEntity);
+    }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
 }

@@ -8,15 +8,15 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-@Data
-@ToString(of = "title")
 @Entity
 @Table(name = "book")
+@Data
+@ToString(of = "title")
 public class BookEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book")
-    @SequenceGenerator(name="book", sequenceName = "book_seq", allocationSize = 1)
+    @SequenceGenerator(name = "book", sequenceName = "book_seq", allocationSize = 1)
     private Long id;
 
     private String author;
@@ -35,14 +35,14 @@ public class BookEntity implements Serializable {
 
     private Integer quantity;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private BookCoverEntity cover;
+    @Column(name = "s3_cover_key")
+    private String s3CoverKey;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CategoryEntity category;
 
     @PreUpdate
-    private void postUpdate() {
+    private void preUpdate() {
         lastUpdate = new Timestamp(System.currentTimeMillis());
     }
 

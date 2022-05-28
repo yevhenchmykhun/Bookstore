@@ -10,7 +10,7 @@
             <div class="col-3">
                 <div class="card clickable-card book-cover-card p-1">
                     <a href="#" th:href="@{'/book?id=' + ${book.id}}">
-                        <img alt="Book cover" class="card-img-top" src="" th:src="*{'/book-cover/' + book.coverId}">
+                        <img alt="Book cover" class="card-img-top" src="" th:src="*{@s3Properties.bucketUrl + book.s3CoverKey}">
                         <div class="card-body">
                             <p class="card-text" th:text="${book.title + ' by ' + book.author}"></p>
                         </div>

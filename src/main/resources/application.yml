@@ -38,6 +38,11 @@ management:
       exposure:
         include: '*'
 
+aws:
+  s3:
+    bucket-name: bookstore-1161329424
+    bucket-url: https://bookstore-1161329424.s3.amazonaws.com/
+
 ---
 
 spring:
