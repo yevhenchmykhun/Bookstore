@@ -9,8 +9,8 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class CustomerMapper {
 
-    public abstract CustomerEntity billingFormToCustomerEntity(BillingForm billingForm);
+    public abstract CustomerEntity toCustomerEntity(BillingForm billingForm);
 
-    public abstract Customer customerEntityToCustomer(CustomerEntity customerEntity);
+    public abstract Customer toCustomer(CustomerEntity customerEntity);
 
 }

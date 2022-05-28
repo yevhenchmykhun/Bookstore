@@ -27,25 +27,24 @@ public class BookService {
     private final BookCoverService bookCoverService;
 
     public Optional<Book> findById(Long id) {
-        Optional<BookEntity> bookEntity = repository.findById(id);
-        return bookEntity.map(bookMapper::bookEntityToBook);
+        return repository.findById(id).map(bookMapper::toBook);
     }
 
     public List<Book> findBySearchPhrase(String phrase) {
         return repository.findBySearchPhrase(phrase).stream()
-                .map(bookMapper::bookEntityToBook)
+                .map(bookMapper::toBook)
                 .collect(Collectors.toList());
     }
 
     public List<Book> findAllByCategoryId(Long categoryId, Pageable pageable) {
         return repository.findAllByCategoryId(categoryId, pageable).stream()
-                .map(bookMapper::bookEntityToBook)
+                .map(bookMapper::toBook)
                 .collect(Collectors.toList());
     }
 
     public List<Book> findAll() {
         return repository.findAll().stream()
-                .map(bookMapper::bookEntityToBook)
+                .map(bookMapper::toBook)
                 .collect(Collectors.toList());
     }
 
@@ -62,14 +61,14 @@ public class BookService {
         String key = bookCoverService.upload(bytes, contentType);
 
         // save book to local DB
-        BookEntity entity = bookMapper.bookFormToBookEntity(bookForm);
+        BookEntity entity = bookMapper.toBookEntity(bookForm);
         entity.setS3CoverKey(key);
         repository.saveAndFlush(entity);
     }
 
     public Book save(Book book) {
-        BookEntity bookEntity = bookMapper.bookToBookEntity(book);
-        return bookMapper.bookEntityToBook(bookEntity);
+        BookEntity bookEntity = bookMapper.toBookEntity(book);
+        return bookMapper.toBook(bookEntity);
     }
 
     public void deleteById(Long id) {

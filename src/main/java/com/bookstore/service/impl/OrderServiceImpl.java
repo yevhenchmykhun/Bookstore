@@ -39,13 +39,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> findAll() {
         return orderRepository.findAll().stream()
-                .map(orderMapper::orderEntityToOrder)
+                .map(orderMapper::toOrder)
                 .collect(Collectors.toList());
     }
 
     @Override
     public void processOrder(BillingForm billingForm) {
-        CustomerEntity customerEntity = customerMapper.billingFormToCustomerEntity(billingForm);
+        CustomerEntity customerEntity = customerMapper.toCustomerEntity(billingForm);
 
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setTotalAmount(cart.getTotalPrice());

@@ -12,9 +12,9 @@ import org.mapstruct.ReportingPolicy;
 public abstract class CategoryMapper {
 
     @Mapping(source = "books", target = "books", ignore = true)
-    public abstract Category categoryEntityToCategoryFlat(CategoryEntity categoryEntity);
+    public abstract Category toCategory(CategoryEntity categoryEntity);
 
     @Mapping(source = "books", target = "books", ignore = true)
-    public abstract CategoryEntity categoryToCategoryEntity(Category category);
+    public abstract CategoryEntity toCategoryEntity(Category category);
 
 }

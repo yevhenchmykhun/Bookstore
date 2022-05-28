@@ -10,6 +10,6 @@ import org.mapstruct.ReportingPolicy;
 })
 public abstract class OrderMapper {
 
-    public abstract Order orderEntityToOrder(OrderEntity orderEntity);
+    public abstract Order toOrder(OrderEntity orderEntity);
 
 }

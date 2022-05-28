@@ -19,21 +19,21 @@ public abstract class BookMapper {
 
     @Mapping(source = "category.name", target = "category")
     @Mapping(source = "category.id", target = "categoryId")
-    public abstract Book bookEntityToBook(BookEntity bookEntity);
+    public abstract Book toBook(BookEntity bookEntity);
 
     @Mapping(source = "categoryId", target = "category", qualifiedByName = "categoryById")
-    public abstract BookEntity bookToBookEntity(Book book);
+    public abstract BookEntity toBookEntity(Book book);
 
     @Mapping(source = "category", target = "category", qualifiedByName = "categoryByName")
-    public abstract BookEntity bookFormToBookEntity(BookForm bookForm);
+    public abstract BookEntity toBookEntity(BookForm bookForm);
 
     @Named("categoryByName")
-    protected CategoryEntity categoryToCategoryEntity(String category) {
+    protected CategoryEntity toCategoryEntity(String category) {
         return categoryRepository.findByName(category).orElseThrow(IllegalArgumentException::new);
     }
 
     @Named("categoryById")
-    protected CategoryEntity categoryToCategoryEntity(Long categoryId) {
+    protected CategoryEntity toCategoryEntity(Long categoryId) {
         return categoryRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
     }
 

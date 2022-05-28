@@ -30,22 +30,22 @@ public class CategoryServiceImpl implements CategoryService {
     @Cacheable
     public Optional<Category> findById(Long id) {
         Optional<CategoryEntity> categoryEntity = repository.findById(id);
-        return categoryEntity.map(categoryMapper::categoryEntityToCategoryFlat);
+        return categoryEntity.map(categoryMapper::toCategory);
     }
 
     @Override
     @Cacheable
     public List<Category> findAll() {
         return repository.findAll().stream()
-                .map(categoryMapper::categoryEntityToCategoryFlat)
+                .map(categoryMapper::toCategory)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Category save(Category category) {
-        CategoryEntity categoryEntity = categoryMapper.categoryToCategoryEntity(category);
+        CategoryEntity categoryEntity = categoryMapper.toCategoryEntity(category);
         categoryEntity = repository.saveAndFlush(categoryEntity);
-        return categoryMapper.categoryEntityToCategoryFlat(categoryEntity);
+        return categoryMapper.toCategory(categoryEntity);
     }
 
     @Override
